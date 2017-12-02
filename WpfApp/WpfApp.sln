@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csproj", "{078758E6-02B3-47FE-BB6A-9C175E3DDE13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataClassLibrary", "DataClassLibrary\DataClassLibrary.csproj", "{8764AD31-018A-4798-8B14-72AE6F055C53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{1E83979A-3246-436A-B647-17EF7CAF5404}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{078758E6-02B3-47FE-BB6A-9C175E3DDE13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{078758E6-02B3-47FE-BB6A-9C175E3DDE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{078758E6-02B3-47FE-BB6A-9C175E3DDE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{078758E6-02B3-47FE-BB6A-9C175E3DDE13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8764AD31-018A-4798-8B14-72AE6F055C53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8764AD31-018A-4798-8B14-72AE6F055C53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8764AD31-018A-4798-8B14-72AE6F055C53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8764AD31-018A-4798-8B14-72AE6F055C53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E83979A-3246-436A-B647-17EF7CAF5404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E83979A-3246-436A-B647-17EF7CAF5404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E83979A-3246-436A-B647-17EF7CAF5404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E83979A-3246-436A-B647-17EF7CAF5404}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C91D0163-DEE7-43C6-9F31-4F1CB45240FF}
+	EndGlobalSection
+EndGlobal
