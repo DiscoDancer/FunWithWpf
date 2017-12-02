@@ -1,3 +1,3 @@
 # FunWithWpf
 
-![alt text](/.Capture.PNG)
+![alt text](Capture.PNG)
