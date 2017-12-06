@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TestConsoleApp
+﻿namespace DataLibrary
 {
-    class Customers:Program
+    public class Customers
     {
         public int CustomerID { get; set; }
         public string FirstName { get; set; }
