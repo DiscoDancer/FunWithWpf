@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WpfApp
 {
     /// <summary>
-    /// Interaction logic for Page.xaml
+    /// Interaction logic for Orders.xaml
     /// </summary>
-    public partial class Page : Page
+    public partial class Orders : Page
     {
-        public Page()
+        public Orders()
         {
             InitializeComponent();
         }

@@ -16,15 +16,30 @@ using System.Windows.Shapes;
 namespace WpfApp
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Page.xaml
     /// </summary>
-     public partial class MainWindow : NavigationWindow
+    public partial class Home : Page
     {
-        public MainWindow()
+        public Home()
         {
             InitializeComponent();
         }
 
+        private void Customers_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+        private void Employees_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Products_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Orders_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

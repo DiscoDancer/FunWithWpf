@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace WpfApp
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Customers.xaml
     /// </summary>
-     public partial class MainWindow : NavigationWindow
+    public partial class Customers : Page
     {
-        public MainWindow()
+        public Customers()
         {
             InitializeComponent();
         }
-
-
     }
 }
