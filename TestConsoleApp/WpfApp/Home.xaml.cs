@@ -25,21 +25,5 @@ namespace WpfApp
             InitializeComponent();
         }
 
-        private void Customers_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void Employees_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void Products_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        private void Orders_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

@@ -3,14 +3,35 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfApp"
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="Products">
+      mc:Ignorable="d"
+      Title="Products" Height="400.976" Width="527.918">
 
-    <Grid>
-        <TextBlock Height="23" HorizontalAlignment="Center" Text="Here Products" FontWeight="Bold" Margin="112,63,113,214">
-            
-        </TextBlock>
+    <Grid Margin="0,0,21,9.8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Width="70" Content="Add" HorizontalAlignment="Left" Margin="-10,-3,0,0" Height="19" VerticalAlignment="Top"></Button>
+        <Grid Grid.RowSpan="2" Margin="0,0,69.8,0.2">
+            <DataGrid x:Name="CustomerDataGrid" IsReadOnly="True" Height="383" VerticalAlignment="Top" AutoGenerateColumns="False" ItemsSource="{Binding}" Margin="-10,21,0,-37.8">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding ID_Product}" Width="80" Header="Product ID"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Width="85" Header="Name"/>
+                    <DataGridTextColumn Binding="{Binding Color}" Width="85" Header="Color"/>
+                    <DataGridTextColumn Binding="{Binding Description}" Width="85" Header="Description"/>
+                    <!--<DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button Content="Delete" Tag="{Binding Path=id_Del_Employees}"></Button>
+                                    <Button Content="Change" Tag="{Binding Path=id_Change_Employees}"></Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Page>

@@ -3,23 +3,42 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfApp"
       mc:Ignorable="d"
-      Title="Customers" Height="450" Width="570">
+      Title="Customers" Height="447.054" Width="686.741">
 
-    <Grid>
-        <Border Name="border" BorderBrush="Black" BorderThickness="1">
-            <DataGrid x:Name="CustomerDataGrid" Height="450" VerticalAlignment="Top" AutoGenerateColumns="False" ItemsSource="{Binding}" Margin="0,0,0.2,0">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding EmployeeID}" Width="75" Header="Customer ID" IsReadOnly="True" />
-                <DataGridTextColumn Binding="{Binding LastName}" Width="70" Header="Last Name"/>
-                <DataGridTextColumn Binding="{Binding MiddleName}" Width="85" Header="Middle Name"/>
-                <DataGridTextColumn Binding="{Binding FirstName}" Width="70" Header="First Name"/>
-                <DataGridTextColumn Binding="{Binding City}" Width="70" Header="City"/>
-                <DataGridTextColumn Binding="{Binding Address}" Width="100" Header="Address"/>
-                <DataGridTextColumn Binding="{Binding Phone}" Width="100" Header="Phone"/>
-            </DataGrid.Columns>
-        </DataGrid>
-            </Border>
+    <Grid Margin="0,0,9.4,-0.8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="96*"/>
+            <ColumnDefinition Width="577*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Width="70" Content="Add" HorizontalAlignment="Left" Margin="0,5,0,0" Height="19" VerticalAlignment="Top"></Button>
+        <Grid Grid.Row="0" Grid.RowSpan="2" Margin="0,0,70,0.2" Grid.ColumnSpan="2" Grid.Column="0">
+            <DataGrid x:Name="CustomerDataGrid" IsReadOnly="True" Height="432" VerticalAlignment="Top" AutoGenerateColumns="False" ItemsSource="{Binding}" Margin="0,26,-75.2,-35">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding ID_Customer}" Width="80" Header="Customer ID"/>
+                    <DataGridTextColumn Binding="{Binding LastName}" Width="85" Header="Last Name"/>
+                    <DataGridTextColumn Binding="{Binding MiddleName}" Width="85" Header="Middle Name"/>
+                    <DataGridTextColumn Binding="{Binding FirstName}" Width="80" Header="First Name"/>
+                    <DataGridTextColumn Binding="{Binding City}" Width="80" Header="City"/>
+                    <DataGridTextColumn Binding="{Binding Address}" Width="120" Header="Address"/>
+                    <DataGridTextColumn Binding="{Binding Phone}" Width="120" Header="Phone"/>
+                    <!--<DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button Content="Delete" Tag="{Binding Path=id_Del_Customer}"></Button>
+                                    <Button Content="Change" Tag="{Binding Path=id_Change_Customer}"></Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Page>

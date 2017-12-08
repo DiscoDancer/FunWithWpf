@@ -3,12 +3,38 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfApp"
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="Employees">
+      mc:Ignorable="d"
+      Title="Employees" Height="447.054" Width="686.741">
 
-    <Grid>
-        <TextBlock HorizontalAlignment="Center" Text="Here Employees" FontWeight="Bold" Margin="111,131,100,148" Width="89"/>
+    <Grid Margin="0,0,23,9.8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Width="70" Content="Add" HorizontalAlignment="Left" Margin="-10,-3,0,0" Height="19" VerticalAlignment="Top"></Button>
+        <Grid Grid.RowSpan="2" Margin="0,0,69.8,0.2">
+            <DataGrid x:Name="CustomerDataGrid" IsReadOnly="True" Height="400" VerticalAlignment="Top" AutoGenerateColumns="False" ItemsSource="{Binding}" Margin="-10,20,-105.6,-78.6">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding ID_Employee}" Width="80" Header="Employee ID"/>
+                    <DataGridTextColumn Binding="{Binding LastName}" Width="85" Header="Last Name"/>
+                    <DataGridTextColumn Binding="{Binding MiddleName}" Width="85" Header="Middle Name"/>
+                    <DataGridTextColumn Binding="{Binding FirstName}" Width="85" Header="First Name"/>
+                    <DataGridTextColumn Binding="{Binding Post}" Width="80" Header="Post"/>
+                    <DataGridTextColumn Binding="{Binding Salary}" Width="80" Header="Salary"/>
+                    <DataGridTextColumn Binding="{Binding Phone}" Width="130" Header="Phone"/>
+                    <!--<DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button Content="Delete" Tag="{Binding Path=id_Del_Employees}"></Button>
+                                    <Button Content="Change" Tag="{Binding Path=id_Change_Employees}"></Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Page>

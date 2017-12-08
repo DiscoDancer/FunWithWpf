@@ -3,14 +3,39 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfApp"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="Orders">
+      Title="Orders" Height="447.054" Width="686.741">
 
-    <Grid>
-        <TextBlock Height="23" HorizontalAlignment="Center" Text="Here Orders" FontWeight="Bold" Margin="112,63,113,214">
-
-        </TextBlock>
+    <Grid Margin="0,0,9.4,-0.8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Width="70" Content="Add" HorizontalAlignment="Left" Margin="-10,-3,0,0" Height="19" VerticalAlignment="Top"></Button>
+        <Grid Grid.RowSpan="2" Margin="0,0,69.8,0.2">
+            <DataGrid x:Name="CustomerDataGrid" IsReadOnly="True" Height="404" VerticalAlignment="Top" AutoGenerateColumns="False" ItemsSource="{Binding}" Margin="-10,19,-67,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding ID_Order}" Width="80" Header="Order ID"/>
+                    <DataGridTextColumn Binding="{Binding CustomerID}" Width="85" Header="Customer ID"/>
+                    <DataGridTextColumn Binding="{Binding EmployeeID}" Width="85" Header="Employee ID"/>
+                    <DataGridTextColumn Binding="{Binding ProductID}" Width="80" Header="Product ID"/>
+                    <DataGridTextColumn Binding="{Binding Quantity}" Width="80" Header="Quantity"/>
+                    <DataGridTextColumn Binding="{Binding Price}" Width="80" Header="Price"/>
+                    <DataGridTextColumn Binding="{Binding OrderDate}" Width="110" Header="Order Date"/>
+                    <!--<DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button Content="Delete" Tag="{Binding Path=id_Del_Customer}"></Button>
+                                    <Button Content="Change" Tag="{Binding Path=id_Change_Customer}"></Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Page>
