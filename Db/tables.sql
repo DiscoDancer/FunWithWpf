@@ -1,6 +1,6 @@
 CREATE TABLE Customers
 (
-	ID_Customer INT NOT NULL IDENTITY PRIMARY KEY,
+	CustomerID INT NOT NULL IDENTITY PRIMARY KEY,
 	FirstName nvarchar(20) NOT NULL,
 	MiddleName nvarchar(20) NOT NULL,
 	LastName nvarchar(20) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE Customers
 
 CREATE TABLE Employees
 (
-	ID_Employee INT NOT NULL IDENTITY PRIMARY KEY,
+	EmployeeID INT NOT NULL IDENTITY PRIMARY KEY,
 	FirstName nvarchar(20) NOT NULL,
 	MiddleName nvarchar(20) NOT NULL,
 	LastName nvarchar(20) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE Employees
 
 CREATE TABLE Products
 (
-	ID_Product int NOT NULL IDENTITY PRIMARY KEY,
+	ProductID int NOT NULL IDENTITY PRIMARY KEY,
 	[Name] nvarchar(50) NOT NULL,
 	Color nchar(20),
 	[Description] nvarchar(max)
@@ -31,7 +31,7 @@ CREATE TABLE Products
 
 CREATE TABLE Orders
 (
-	ID_Order int NOT NULL IDENTITY PRIMARY KEY,
+	OrderID int NOT NULL IDENTITY PRIMARY KEY,
 	CustomerID int NOT NULL,
 	EmployeeID int NOT NULL,
 	ProductID int NOT NULL,
@@ -39,15 +39,15 @@ CREATE TABLE Orders
 	Price money NOT NULL,
 	OrderDate date DEFAULT GETDATE(),
 	CONSTRAINT FK_CustomerID FOREIGN KEY (CustomerID)     
-    	REFERENCES Customers (ID_Customer)     
+    	REFERENCES Customers (CustomerID)     
     	ON DELETE CASCADE    
     	ON UPDATE CASCADE,
     CONSTRAINT FK_EmployeeID FOREIGN KEY (EmployeeID)     
-    	REFERENCES Employees (ID_Employee)     
+    	REFERENCES Employees (EmployeeID)     
     	ON DELETE CASCADE    
     	ON UPDATE CASCADE,
     CONSTRAINT FK_ProductID FOREIGN KEY (ProductID)     
-    	REFERENCES Products (ID_Product)     
+    	REFERENCES Products (ProductID)     
     	ON DELETE CASCADE    
     	ON UPDATE CASCADE
 );

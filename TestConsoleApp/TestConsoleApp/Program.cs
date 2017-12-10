@@ -10,7 +10,7 @@ namespace TestConsoleApp
         {
             //var crud = new CustomerCRUD();
             var customers = CustomerCRUD.GetAll();
-            foreach (Customers customer in customers)
+            foreach (Customer customer in customers)
             {
                 Console.OutputEncoding = Encoding.UTF8;
 
