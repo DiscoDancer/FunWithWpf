@@ -4,9 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d"
-    Title="Home" Height="300" Width="450">
+    Title="Home">
 <Border BorderBrush="Brown" BorderThickness="3">
-    <Grid>
+        <Grid>
         <Frame x:Name="_mainFrame" />
             <Button HorizontalAlignment="Left" Margin="15,30,0,0" VerticalAlignment="Top" Width="85">
             <Hyperlink NavigateUri="Customers.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
