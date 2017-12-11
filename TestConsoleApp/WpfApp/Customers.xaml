@@ -1,4 +1,4 @@
-﻿<Page x:Class="WpfApp.Customers"
+﻿<Page x:Class="namespace.Customers"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -16,7 +16,7 @@
         <Grid Grid.Row="0" Grid.RowSpan="2" Margin="0,0,70,0.2" Grid.ColumnSpan="2" Grid.Column="0">
             <DataGrid x:Name="CustomerDataGrid" IsReadOnly="True" Height="450" VerticalAlignment="Top" AutoGenerateColumns="False" ItemsSource="{Binding CustomerDataGrid}" Margin="23,26,-113.6,-20.2">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding CustomerID}" Width="80" Header="Customer ID"/>
+                    <DataGridTextColumn Binding="{Binding ID_Customer}" Width="80" Header="Customer ID"/>
                     <DataGridTextColumn Binding="{Binding LastName}" Width="85" Header="Last Name"/>
                     <DataGridTextColumn Binding="{Binding FirstName}" Width="80" Header="First Name"/>
                     <DataGridTextColumn Binding="{Binding MiddleName}" Width="85" Header="Middle Name"/>
