@@ -44,7 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerCRUD.cs" />
-    <Compile Include="Customers.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeCRUD.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderCRUD.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="ProductCRUD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

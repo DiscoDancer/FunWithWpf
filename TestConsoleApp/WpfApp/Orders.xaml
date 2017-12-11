@@ -1,11 +1,11 @@
-﻿<Page x:Class="namespace.Orders"
+﻿<Page x:Class="WpfApp.Orders"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="Orders" Height="447.054" Width="686.741">
+      d:DesignHeight="300"
+      Title="Orders" Height="480" Width="736.14">
 
     <Grid Margin="0,0,9.4,-0.8">
         <Grid.RowDefinitions>
@@ -13,17 +13,17 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Width="70" Content="Add" HorizontalAlignment="Left" Margin="-10,-3,0,0" Height="19" VerticalAlignment="Top"></Button>
+        <Button Grid.Row="0" Width="70" Content="Add" HorizontalAlignment="Left" Margin="15,-3,0,0" Height="19" VerticalAlignment="Top" x:Name="AddBtn"/>
         <Grid Grid.RowSpan="2" Margin="0,0,69.8,0.2">
-            <DataGrid x:Name="CustomerDataGrid" IsReadOnly="True" Height="404" VerticalAlignment="Top" AutoGenerateColumns="False" ItemsSource="{Binding}" Margin="-10,19,-67,0">
+            <DataGrid x:Name="OrderDataGrid" IsReadOnly="True" Height="435" VerticalAlignment="Top" AutoGenerateColumns="False" ItemsSource="{Binding}" Margin="14,19,-60.4,0">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding ID_Order}" Width="80" Header="Order ID"/>
+                    <DataGridTextColumn Binding="{Binding OrderID}" Width="80" Header="Order ID"/>
                     <DataGridTextColumn Binding="{Binding CustomerID}" Width="85" Header="Customer ID"/>
                     <DataGridTextColumn Binding="{Binding EmployeeID}" Width="85" Header="Employee ID"/>
                     <DataGridTextColumn Binding="{Binding ProductID}" Width="80" Header="Product ID"/>
                     <DataGridTextColumn Binding="{Binding Quantity}" Width="80" Header="Quantity"/>
                     <DataGridTextColumn Binding="{Binding Price}" Width="80" Header="Price"/>
-                    <DataGridTextColumn Binding="{Binding OrderDate}" Width="110" Header="Order Date"/>
+                    <DataGridTextColumn Binding="{Binding OrderDate}" Width="145" Header="Order Date"/>
                     <!--<DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

@@ -1,19 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using Dapper;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using Dapper;
 
 namespace DataLibrary
 {
-    public static class CustomerCRUD
+    public static class OrderCRUD
     {
         private const string sqlConnect = "Data Source=DESKTOP-37BI6K1;Initial Catalog=InternetShop;User ID=Kreal;Password=2137";
-        public static List<Customer> GetAll()
+        public static List<Order> GetAll()
         {
             using (SqlConnection connection = new SqlConnection(sqlConnect))
             {
 
-                return connection.Query<Customer>("select * from Customers").ToList();
+                return connection.Query<Order>("select * from Orders").ToList();
             }
         }
     }
