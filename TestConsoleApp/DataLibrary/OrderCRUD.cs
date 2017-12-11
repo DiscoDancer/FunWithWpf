@@ -7,10 +7,11 @@ namespace DataLibrary
 {
     public static class OrderCRUD
     {
-        private const string sqlConnect = "Data Source=DESKTOP-37BI6K1;Initial Catalog=InternetShop;User ID=Kreal;Password=2137";
+        private static readonly string SqlConnect = ConnectionStringsService.Resolve();
+
         public static List<Order> GetAll()
         {
-            using (SqlConnection connection = new SqlConnection(sqlConnect))
+            using (SqlConnection connection = new SqlConnection(SqlConnect))
             {
 
                 return connection.Query<Order>("select * from Orders").ToList();

@@ -8,17 +8,18 @@ namespace TestConsoleApp
     {
         static void Main(string[] args)
         {
-            //var crud = new CustomerCRUD();
-            var customers = CustomerCRUD.GetAll();
-            foreach (Customer customer in customers)
-            {
-                Console.OutputEncoding = Encoding.UTF8;
+            Console.WriteLine(Environment.UserName);
 
-                string x = customer.ToString();
+            //var customers = CustomerCRUD.GetAll();
+            //foreach (Customer customer in customers)
+            //{
+            //    Console.OutputEncoding = Encoding.UTF8;
 
-                Console.WriteLine(x);
-            }
-            Console.ReadLine();
+            //    string x = customer.ToString();
+
+            //    Console.WriteLine(x);
+            //}
+            //Console.ReadLine();
         }
     }
 }
