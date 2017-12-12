@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top">
-            <Button VerticalAlignment="Center" MinWidth="100" Margin="400,0,0,0">
+            <Button VerticalAlignment="Center" MinWidth="100" Margin="400,0,0,0" IsEnabled="False">
                 <Hyperlink NavigateUri="Customers.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
                     Customers
                 </Hyperlink>

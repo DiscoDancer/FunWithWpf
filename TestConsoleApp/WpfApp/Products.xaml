@@ -18,11 +18,12 @@
                     Customers
                 </Hyperlink>
             </Button>
+            <Button  VerticalAlignment="Center" MinWidth="100" Margin="10,0,0,0">
                 <Hyperlink NavigateUri="Employees.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
                     Employees
                 </Hyperlink>
             </Button>
-            <Button  VerticalAlignment="Center" MinWidth="100" Margin="10,0,0,0">
+            <Button  VerticalAlignment="Center" MinWidth="100" Margin="10,0,0,0" IsEnabled="False">
                 <Hyperlink NavigateUri="Products.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
                     Products
                 </Hyperlink>
