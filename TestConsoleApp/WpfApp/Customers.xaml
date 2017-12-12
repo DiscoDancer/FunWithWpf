@@ -11,7 +11,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Add customer" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="AddBtn"/>
+        <Button Grid.Row="0" Content="Add customer" Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="AddBtn"/>
         <Grid Grid.Row="1">
             <DataGrid x:Name="CustomerDataGrid" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding CustomerDataGrid}">
                 <DataGrid.Columns>
@@ -22,6 +22,24 @@
                     <DataGridTextColumn Binding="{Binding City}" Width="*" Header="City"/>
                     <DataGridTextColumn Binding="{Binding Address}" Width="*" Header="Address"/>
                     <DataGridTextColumn Binding="{Binding Phone}" Width="*" Header="Phone"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button Content="Edit" Background="Orange" Width="35" Tag="{Binding Path=id_Edit_Customer}"></Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button Content="Delete" Background="Red" Tag="{Binding Path=id_Del_Customer}"></Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

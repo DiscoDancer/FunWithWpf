@@ -4,32 +4,39 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d"
-      Title="Products" Height="790" Width="917.937">
+      Title="Products">
 
-    <Grid Margin="-50,70,59,10">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Width="70" Content="Add" HorizontalAlignment="Left" Margin="-5,-3,0,0" Height="19" VerticalAlignment="Top" x:Name="AddBtn"/>
-        <Grid Grid.RowSpan="2" Margin="0,0,69.8,0.2">
-            <DataGrid x:Name="ProductDataGrid" IsReadOnly="True" Height="650" VerticalAlignment="Top" AutoGenerateColumns="False" ItemsSource="{Binding}" Margin="-10,21,-122.6,-6.4">
+        <Button Grid.Row="0" Content="Add product" Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="AddBtn"/>
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="ProductDataGrid" IsReadOnly="True" VerticalAlignment="Top" HorizontalAlignment="Left" AutoGenerateColumns="False" ItemsSource="{Binding ProductDataGrid}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding ProductID}" Width="80" Header="Product ID"/>
-                    <DataGridTextColumn Binding="{Binding Name}" Width="200" Header="Name"/>
-                    <DataGridTextColumn Binding="{Binding Color}" Width="85" Header="Color"/>
-                    <DataGridTextColumn Binding="{Binding Description}" Width="540" Header="Description"/>
-                    <!--<DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding ProductID}" Width="*" Header="Product ID"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Width="*" Header="Name"/>
+                    <DataGridTextColumn Binding="{Binding Color}" Width="*" Header="Color"/>
+                    <DataGridTextColumn Binding="{Binding Description}" Width="*" Header="Description"/>
+                    <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Delete" Tag="{Binding Path=id_Del_Employees}"></Button>
-                                    <Button Content="Change" Tag="{Binding Path=id_Change_Employees}"></Button>
+                                    <Button Content="Edit" Background="Orange" Width="35" Tag="{Binding Path=id_Edit_Product}"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>-->
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button Content="Delete" Background="Red" Tag="{Binding Path=id_Del_Product}"></Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

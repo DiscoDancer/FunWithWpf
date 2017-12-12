@@ -5,30 +5,34 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d"
     Title="Home">
-<Border BorderBrush="Brown" BorderThickness="3">
+    <Border
+    BorderBrush="Black"
+    BorderThickness="3"
+    CornerRadius="10"
+    Background="LightGoldenrodYellow">
         <Grid>
-        <Frame x:Name="_mainFrame" />
-            <Button HorizontalAlignment="Left" Margin="15,30,0,0" VerticalAlignment="Top" Width="85">
-            <Hyperlink NavigateUri="Customers.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
-                Customers
-            </Hyperlink>
-        </Button>
-        <Button HorizontalAlignment="Left" Margin="115,30,0,0" VerticalAlignment="Top" Width="85">
-            <Hyperlink NavigateUri="Employees.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
-                Employees
-            </Hyperlink>
-        </Button>
-        <Button HorizontalAlignment="Left" Margin="215,30,0,0" VerticalAlignment="Top" Width="85" >
-            <Hyperlink NavigateUri="Products.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
-                Products
-            </Hyperlink>
-        </Button>
-        <Button HorizontalAlignment="Left" Margin="315,30,0,0" VerticalAlignment="Top" Width="85" >
-            <Hyperlink NavigateUri="Orders.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
-                Orders
-            </Hyperlink>
-        </Button>
+            
+            <Button VerticalAlignment="Center" Margin="-350,0,0,150" Width="100">
+                <Hyperlink NavigateUri="Customers.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
+                    Customers
+                </Hyperlink>
+            </Button>
+            <Button  VerticalAlignment="Center" Margin="-100,0,0,150" Width="100">
+                <Hyperlink NavigateUri="Employees.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
+                    Employees
+                </Hyperlink>
+            </Button>
+            <Button  VerticalAlignment="Center" Margin="150,0,0,150" Width="100">
+                <Hyperlink NavigateUri="Products.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
+                    Products
+                </Hyperlink>
+            </Button>
+            <Button VerticalAlignment="Center" Margin="400,0,0,150" Width="100">
+                <Hyperlink NavigateUri="Orders.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
+                    Orders
+                </Hyperlink>
+            </Button>
 
-    </Grid>
-</Border>
+        </Grid>
+    </Border>
 </Page>

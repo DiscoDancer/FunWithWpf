@@ -11,17 +11,35 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Add" Width="500" x:Name="AddBtn"/>
-        <Grid Grid.Row="1" Width="500">
-            <DataGrid x:Name="EmployeeDataGrid" IsReadOnly="True" ItemsSource="{Binding}">
+        <Button Grid.Row="0" Content="Add employee" Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="AddBtn"/>
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="EmployeeDataGrid" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding EmployeeDataGrid}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding EmployeeID}" Header="Employee ID"/>
-                    <DataGridTextColumn Binding="{Binding LastName}"  Header="Last Name"/>
-                    <DataGridTextColumn Binding="{Binding FirstName}"  Header="First Name"/>
-                    <DataGridTextColumn Binding="{Binding MiddleName}"  Header="Middle Name"/>
-                    <DataGridTextColumn Binding="{Binding Position}"  Header="Position"/>
-                    <DataGridTextColumn Binding="{Binding Salary}"  Header="Salary"/>
-                    <DataGridTextColumn Binding="{Binding Phone}" Header="Phone"/>
+                    <DataGridTextColumn Binding="{Binding EmployeeID}" Width="*" Header="Employee ID"/>
+                    <DataGridTextColumn Binding="{Binding LastName}" Width="*" Header="Last Name"/>
+                    <DataGridTextColumn Binding="{Binding FirstName}" Width="*" Header="First Name"/>
+                    <DataGridTextColumn Binding="{Binding MiddleName}" Width="*" Header="Middle Name"/>
+                    <DataGridTextColumn Binding="{Binding Position}" Width="*" Header="Position"/>
+                    <DataGridTextColumn Binding="{Binding Salary}" Width="*" Header="Salary"/>
+                    <DataGridTextColumn Binding="{Binding Phone}" Width="*" Header="Phone"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button Content="Edit" Background="Orange" Width="35" Tag="{Binding Path=id_Edit_Employee}"></Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button Content="Delete" Background="Red" Tag="{Binding Path=id_Del_Employee}"></Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
