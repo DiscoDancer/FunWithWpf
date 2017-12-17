@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using DataLibrary;
 
 namespace TestConsoleApp
@@ -10,16 +9,17 @@ namespace TestConsoleApp
         {
             Console.WriteLine(Environment.UserName);
 
-            //var customers = CustomerCRUD.GetAll();
-            //foreach (Customer customer in customers)
-            //{
-            //    Console.OutputEncoding = Encoding.UTF8;
+            var customers = CustomerCRUD.GetAll();
 
-            //    string x = customer.ToString();
+            CustomerCRUD.AddCustomer(new Customer
+            {
+                LastName = "A",
+                FirstName = "B",
+                MiddleName = "C"
+            });
 
-            //    Console.WriteLine(x);
-            //}
-            //Console.ReadLine();
+            customers = CustomerCRUD.GetAll();
+
         }
     }
 }

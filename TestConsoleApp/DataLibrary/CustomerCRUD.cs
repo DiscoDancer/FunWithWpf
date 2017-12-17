@@ -18,18 +18,41 @@ namespace DataLibrary
             }
         }
 
-        //public static List<Customer> AddCustomers()
-        //{
-        //    using (SqlConnection connection = new SqlConnection(SqlConnect))
-        //    {
+        public static void AddCustomer(Customer customer)
+        {
+            var queryDictionary = new Dictionary<string, string>();
+            var props = customer.GetType().GetProperties().Where(x => !x.Name.Contains("ID"));
+            foreach (var prop in props)
+            {
+                var val = prop.GetValue(customer, null);
+                var valToString = val?.ToString();
+                if (valToString?.Length > 0)
+                {
+                    queryDictionary.Add(prop.Name, val.ToString());
+                }
+            }
 
-        //        return connection.Query<Customer>("insert into Customers (CustomerID,FirstName,MiddleName,LastName,Address,City,Phone) values(11,'Pupkin','Vasiliy','Vasil`evich','Oktyabrskiy,84','Kemerovo',89039514782);").ToList();
-        //    }
-        //}
+            var names = "(" + queryDictionary.Keys.Aggregate((x, y) => x + "," + y) + ")";
+            var values = queryDictionary.Values
+                .Select(x => $"'{x}'")
+                .Aggregate((x, y) => x + "," + y);
+            values = $"({values})";
+            var query = $"INSERT INTO CUSTOMERS{names} VALUES{values};";
 
-        //public static void DeleteCustomers()
-        //{
-            
-        //}
+            using (var connection = new SqlConnection(SqlConnect))
+            {
+
+                connection.Query(query);
+            }
+        }
+
+        public static void DeleteCustomer(Customer customer)
+        {
+            using (var connection = new SqlConnection(SqlConnect))
+            {
+
+                connection.Query($"delete from Customers where CustomerID = {customer.CustomerID}");
+            }
+        }
     }
 }
