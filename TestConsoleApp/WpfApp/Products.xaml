@@ -40,9 +40,10 @@
             <DataGrid x:Name="ProductDataGrid" IsReadOnly="True" VerticalAlignment="Top" HorizontalAlignment="Left" AutoGenerateColumns="False" ItemsSource="{Binding ProductDataGrid}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding ProductID}" Width="*" Header="Product ID"/>
-                    <DataGridTextColumn Binding="{Binding Name}" Width="*" Header="Name"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Width="2*" Header="Name"/>
                     <DataGridTextColumn Binding="{Binding Color}" Width="*" Header="Color"/>
-                    <DataGridTextColumn Binding="{Binding Description}" Width="*" Header="Description"/>
+                    <DataGridTextColumn Binding="{Binding Description}" Width="4*" Header="Description"/>
+                    
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -61,6 +62,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+                    
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
