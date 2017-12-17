@@ -25,7 +25,11 @@ namespace WpfApp
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            _customers.Add(new Customer
+            {
+                FirstName = "AAAA"
+            });
+            CustomerDataGrid.ItemsSource = _customers;
         }
 
         private void DeleteCustomer(object sender, RoutedEventArgs e)
