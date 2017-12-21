@@ -34,8 +34,8 @@
                 </Hyperlink>
             </Button>
         </StackPanel>
-        
-        <Button Grid.Row="0" Content="Add product" Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" x:Name="AddBtn"/>
+
+        <Button Grid.Row="0" Content="Add product" Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" x:Name="AddBtn" Click="AddProductBtn"/>
         <Grid Grid.Row="1">
             <DataGrid x:Name="ProductDataGrid" IsReadOnly="True" VerticalAlignment="Top" HorizontalAlignment="Left" AutoGenerateColumns="False" ItemsSource="{Binding ProductDataGrid}">
                 <DataGrid.Columns>
@@ -57,7 +57,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Delete" Background="Red" Tag="{Binding Path=id_Del_Product}"></Button>
+                                    <Button Content="Delete" Background="Red" Click="DelCustomerBtn" Tag="{Binding Path=id_Del_Product}"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

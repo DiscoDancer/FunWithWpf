@@ -19,7 +19,7 @@ namespace TestConsoleApp
             });
 
             customers = CustomerCRUD.GetAll();
-
+            Console.ReadKey();
         }
     }
 }

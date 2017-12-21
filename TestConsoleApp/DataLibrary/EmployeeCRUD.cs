@@ -37,12 +37,20 @@ namespace DataLibrary
                 .Select(x => $"'{x}'")
                 .Aggregate((x, y) => x + "," + y);
             values = $"({values})";
-            var query = $"INSERT INTO EMPLOYEES{names} VALUES{values};";
+            var query = $"INSERT INTO Employees{names} VALUES{values};";
 
             using (var connection = new SqlConnection(SqlConnect))
             {
 
                 connection.Query(query);
+            }
+        }
+        public static void DeleteEmployee(Employee employee)
+        {
+            using (var connection = new SqlConnection(SqlConnect))
+            {
+
+                connection.Query($"delete from Employees where EmployeeID = {employee.EmployeeID}");
             }
         }
     }

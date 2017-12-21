@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using DataLibrary;
@@ -23,20 +24,27 @@ namespace WpfApp
 
         }
 
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        private void AddCustomerBtn(object sender, RoutedEventArgs e)
         {
+            
             _customers.Add(new Customer
             {
-                FirstName = "AAAA"
+                FirstName = "AAAA",
+                MiddleName = "BBBB",
+                LastName = "CCCC"
+
             });
             CustomerDataGrid.ItemsSource = _customers;
+            CustomerCRUD.AddCustomer(_customers.Last());
+            
         }
 
-        private void DeleteCustomer(object sender, RoutedEventArgs e)
+        private void DelCustomerBtn(object sender, RoutedEventArgs e)
         {
-            CustomerCRUD.DeleteCustomer(_customers.First());
+            CustomerCRUD.DeleteCustomer(_customers.Last());
             _customers = CustomerCRUD.GetAll();
             CustomerDataGrid.ItemsSource = _customers;
+            
         }
 
         private void EditCustomer(object sender, RoutedEventArgs e)

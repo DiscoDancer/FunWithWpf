@@ -14,7 +14,7 @@ namespace DataLibrary
         public int ProductID { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
-        public string OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
 
         public override string ToString()
         {

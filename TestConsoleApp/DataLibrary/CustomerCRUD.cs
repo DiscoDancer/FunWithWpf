@@ -37,7 +37,7 @@ namespace DataLibrary
                 .Select(x => $"'{x}'")
                 .Aggregate((x, y) => x + "," + y);
             values = $"({values})";
-            var query = $"INSERT INTO CUSTOMERS{names} VALUES{values};";
+            var query = $"INSERT INTO Customers{names} VALUES{values};";
 
             using (var connection = new SqlConnection(SqlConnect))
             {

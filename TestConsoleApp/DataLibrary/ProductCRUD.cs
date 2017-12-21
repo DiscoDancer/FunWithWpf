@@ -17,5 +17,41 @@ namespace DataLibrary
                 return connection.Query<Product>("select * from Products").ToList();
             }
         }
+        public static void AddProduct(Product product)
+        {
+            var queryDictionary = new Dictionary<string, string>();
+            var props = product.GetType().GetProperties().Where(x => !x.Name.Contains("ID"));
+            foreach (var prop in props)
+            {
+                var val = prop.GetValue(product, null);
+                var valToString = val?.ToString();
+                if (valToString?.Length > 0)
+                {
+                    queryDictionary.Add(prop.Name, val.ToString());
+                }
+            }
+
+            var names = "(" + queryDictionary.Keys.Aggregate((x, y) => x + "," + y) + ")";
+            var values = queryDictionary.Values
+                .Select(x => $"'{x}'")
+                .Aggregate((x, y) => x + "," + y);
+            values = $"({values})";
+            var query = $"INSERT INTO Products{names} VALUES{values};";
+
+            using (var connection = new SqlConnection(SqlConnect))
+            {
+
+                connection.Query(query);
+            }
+        }
+
+        public static void DeleteProduct(Product product)
+        {
+            using (var connection = new SqlConnection(SqlConnect))
+            {
+
+                connection.Query($"delete from Products where ProductID = {product.ProductID}");
+            }
+        }
     }
 }
