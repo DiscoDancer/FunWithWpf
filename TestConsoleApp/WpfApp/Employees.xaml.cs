@@ -23,7 +23,9 @@ namespace WpfApp
             {
                 FirstName = "AAAA",
                 MiddleName = "BBBB",
-                LastName = "CCCC"
+                LastName = "CCCC",
+                Salary = 100,
+                PriorSalary = 50
                 
             });
             EmployeeDataGrid.ItemsSource = _employees;

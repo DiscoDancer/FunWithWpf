@@ -7,6 +7,12 @@ namespace DataLibrary
 {
     public static class EmployeeCRUD
     {
+        public class ValueType
+        {
+            public bool IsString { get; set; } 
+            public string Value { get; set; } 
+        }
+
         private static readonly string SqlConnect = ConnectionStringsService.Resolve();
 
         public static List<Employee> GetAll()
@@ -20,7 +26,7 @@ namespace DataLibrary
 
         public static void AddEmployee(Employee employee)
         {
-            var queryDictionary = new Dictionary<string, string>();
+            var queryDictionary = new Dictionary<string, ValueType>();
             var props = employee.GetType().GetProperties().Where(x => !x.Name.Contains("ID"));
             foreach (var prop in props)
             {
@@ -28,13 +34,17 @@ namespace DataLibrary
                 var valToString = val?.ToString();
                 if (valToString?.Length > 0)
                 {
-                    queryDictionary.Add(prop.Name, val.ToString());
+                    queryDictionary.Add(prop.Name, new ValueType
+                    {
+                        IsString = prop.PropertyType == typeof(string),
+                        Value = val.ToString()
+                    });
                 }
             }
 
             var names = "(" + queryDictionary.Keys.Aggregate((x, y) => x + "," + y) + ")";
             var values = queryDictionary.Values
-                .Select(x => $"'{x}'")
+                .Select(x => x.IsString ? $"'{x.Value}'" : x.Value)
                 .Aggregate((x, y) => x + "," + y);
             values = $"({values})";
             var query = $"INSERT INTO Employees{names} VALUES{values};";

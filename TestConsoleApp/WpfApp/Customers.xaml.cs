@@ -34,9 +34,10 @@ namespace WpfApp
                 LastName = "CCCC"
 
             });
-            CustomerDataGrid.ItemsSource = _customers;
             CustomerCRUD.AddCustomer(_customers.Last());
-            
+
+            _customers = CustomerCRUD.GetAll();
+            CustomerDataGrid.ItemsSource = _customers;
         }
 
         private void DelCustomerBtn(object sender, RoutedEventArgs e)
