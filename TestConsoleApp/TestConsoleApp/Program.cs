@@ -7,19 +7,31 @@ namespace TestConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Environment.UserName);
-
-            var customers = CustomerCRUD.GetAll();
-
-            CustomerCRUD.AddCustomer(new Customer
+            var customer = new Customer
             {
                 LastName = "A",
                 FirstName = "B",
                 MiddleName = "C"
-            });
+            };
 
-            customers = CustomerCRUD.GetAll();
-            Console.ReadKey();
+            var q = CustomerCRUD.UpdateCustomer(customer);
+
+            // CustomerCRUD
+
+
+            //Console.WriteLine(Environment.UserName);
+
+            //var customers = CustomerCRUD.GetAll();
+
+            //CustomerCRUD.AddCustomer(new Customer
+            //{
+            //    LastName = "A",
+            //    FirstName = "B",
+            //    MiddleName = "C"
+            //});
+
+            //customers = CustomerCRUD.GetAll();
+            //Console.ReadKey();
         }
     }
 }

@@ -18,6 +18,11 @@ namespace DataLibrary
             }
         }
 
+        public static string UpdateCustomer(Customer customer)
+        {
+            return "UPDATE CUSTOMERS SET ID=42 WHERE ID=42";
+        }
+
         public static void AddCustomer(Customer customer)
         {
             var queryDictionary = new Dictionary<string, string>();
