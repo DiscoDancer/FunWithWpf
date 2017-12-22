@@ -46,16 +46,16 @@
                     <DataGridTextColumn Binding="{Binding City}" Width="*" Header="City"/>
                     <DataGridTextColumn Binding="{Binding Address}" Width="*" Header="Address"/>
                     <DataGridTextColumn Binding="{Binding Phone}" Width="*" Header="Phone"/>
-                    <DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Edit" Background="Orange" Click="EditCustomer" Width="35" Tag="{Binding Path=id_Edit_Customer}"></Button>
+                                    <Button Content="Edit" Background="Orange" Click="EditCustomer" Tag="{Binding Path=id_Edit_Customer}"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
