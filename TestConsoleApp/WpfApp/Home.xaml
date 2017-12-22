@@ -1,4 +1,4 @@
-﻿<Page x:Class="WpfApp.Page"
+﻿<Page x:Class="WpfApp.Home"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,12 +11,13 @@
     CornerRadius="10"
     Background="LightGoldenrodYellow">
         <Grid>
-            
-            <Button VerticalAlignment="Center" Margin="-350,0,0,150" Width="100">
-                <Hyperlink NavigateUri="Customers.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
+
+            <Button VerticalAlignment="Center" Margin="-350,0,0,150" Width="100" x:Name="ButtonCustomers" Click="ButtonCustomers_Click">
+                <TextBlock>
                     Customers
-                </Hyperlink>
+                </TextBlock>
             </Button>
+            
             <Button  VerticalAlignment="Center" Margin="-100,0,0,150" Width="100">
                 <Hyperlink NavigateUri="Employees.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
                     Employees

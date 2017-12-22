@@ -25,5 +25,9 @@ namespace WpfApp
             InitializeComponent();
         }
 
+        private void ButtonCustomers_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Customers.xaml", UriKind.Relative));
+        }
     }
 }
