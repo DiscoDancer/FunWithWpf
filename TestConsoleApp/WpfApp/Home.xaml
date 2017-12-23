@@ -12,26 +12,28 @@
     Background="LightGoldenrodYellow">
         <Grid>
 
-            <Button VerticalAlignment="Center" Margin="-350,0,0,150" Width="100" x:Name="ButtonCustomers" Click="ButtonCustomers_Click">
+            <Button VerticalAlignment="Center" Margin="-360,0,0,150" Width="100" x:Name="ButtonCustomers" Click="ButtonCustomers_Click" FontSize="15" FontWeight="Bold">
                 <TextBlock>
                     Customers
                 </TextBlock>
             </Button>
-            
-            <Button  VerticalAlignment="Center" Margin="-100,0,0,150" Width="100">
-                <Hyperlink NavigateUri="Employees.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
+
+            <Button  VerticalAlignment="Center" Margin="-110,0,0,150" Width="100" Click="ButtonEmployees_Click" FontSize="15" FontWeight="Bold">
+                <TextBlock>
                     Employees
-                </Hyperlink>
+                </TextBlock>
             </Button>
-            <Button  VerticalAlignment="Center" Margin="150,0,0,150" Width="100">
-                <Hyperlink NavigateUri="Products.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
+
+            <Button  VerticalAlignment="Center" Margin="140,0,0,150" Width="100" Click="ButtonProducts_Click" FontSize="15" FontWeight="Bold">
+                <TextBlock>
                     Products
-                </Hyperlink>
+                </TextBlock>
             </Button>
-            <Button VerticalAlignment="Center" Margin="400,0,0,150" Width="100">
-                <Hyperlink NavigateUri="Orders.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
+
+            <Button VerticalAlignment="Center" Margin="390,0,0,150" Width="100" Click="ButtonOrders_Click" FontSize="15" FontWeight="Bold">
+                <TextBlock>
                     Orders
-                </Hyperlink>
+                </TextBlock>
             </Button>
 
         </Grid>

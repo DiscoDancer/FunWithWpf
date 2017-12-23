@@ -13,30 +13,28 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Height="50" VerticalAlignment="Top">
-            <Button VerticalAlignment="Center" MinWidth="100" Margin="400,0,0,0">
-                <Hyperlink NavigateUri="Customers.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
-                    Customers
-                </Hyperlink>
-            </Button>
-            <Button  VerticalAlignment="Center" MinWidth="100" Margin="10,0,0,0">
-                <Hyperlink NavigateUri="Employees.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
-                    Employees
-                </Hyperlink>
-            </Button>
-            <Button  VerticalAlignment="Center" MinWidth="100" Margin="10,0,0,0">
-                <Hyperlink NavigateUri="Products.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
-                    Products
-                </Hyperlink>
-            </Button>
-            <Button VerticalAlignment="Center" MinWidth="100" Margin="10,0,0,0" IsEnabled="False">
-                <Hyperlink NavigateUri="Orders.xaml" FontSize="14" FontWeight="Bold" FontFamily="Times New Roman" Foreground="Black" TextDecorations="none">
-                    Orders
-                </Hyperlink>
-            </Button>
-        </StackPanel>
-        
-        <Button Grid.Row="0" Content="Add order" Background="LightGreen" BorderThickness="2" Width="70" HorizontalAlignment="Left" VerticalAlignment="Bottom" x:Name="AddBtn"/>
+        <Button VerticalAlignment="Center" Width="100" Margin="-320,10,0,10" Click="ButtonCustomers_Click" FontSize="14" FontWeight="Bold">
+            <TextBlock>
+                Customers
+            </TextBlock>
+        </Button>
+        <Button  VerticalAlignment="Center" Width="100" Margin="-80,10,0,10" Click="ButtonEmployees_Click" FontSize="14" FontWeight="Bold">
+            <TextBlock>
+                Employees
+            </TextBlock>
+        </Button>
+        <Button  VerticalAlignment="Center" Width="100" Margin="160,10,0,10" Click="ButtonProducts_Click" FontSize="14" FontWeight="Bold">
+            <TextBlock>
+                Products
+            </TextBlock>
+        </Button>
+        <Button VerticalAlignment="Center" Width="100" Margin="400,10,0,10" IsEnabled="False" Click="ButtonOrders_Click" FontSize="14" FontWeight="Bold">
+            <TextBlock>
+                Orders
+            </TextBlock>
+        </Button>
+
+        <Button Grid.Row="0" Content="Add order" Width="90" FontWeight="Bold" Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" x:Name="AddBtn"/>
         <Grid Grid.Row="1">
             <DataGrid x:Name="OrderDataGrid" IsReadOnly="True" VerticalAlignment="Top" AutoGenerateColumns="False" ItemsSource="{Binding OrderDataGrid}">
                 <DataGrid.Columns>

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using DataLibrary;
+using System;
 
 namespace WpfApp
 {
@@ -38,6 +39,22 @@ namespace WpfApp
             EmployeeCRUD.DeleteEmployee(_employees.Last());
             _employees = EmployeeCRUD.GetAll();
             EmployeeDataGrid.ItemsSource = _employees;
+        }
+        private void ButtonCustomers_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Customers.xaml", UriKind.Relative));
+        }
+        private void ButtonEmployees_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Employees.xaml", UriKind.Relative));
+        }
+        private void ButtonProducts_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Products.xaml", UriKind.Relative));
+        }
+        private void ButtonOrders_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));
         }
     }
 
