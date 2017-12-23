@@ -41,19 +41,19 @@
                     <DataGridTextColumn Binding="{Binding LastName}" Width="*" Header="Last Name"/>
                     <DataGridTextColumn Binding="{Binding FirstName}" Width="*" Header="First Name"/>
                     <DataGridTextColumn Binding="{Binding MiddleName}" Width="*" Header="Middle Name"/>
-                    <DataGridTextColumn Binding="{Binding Position}" Width="*" Header="Position"/>
+                    <DataGridTextColumn Binding="{Binding Position}" Width="2*" Header="Position"/>
                     <DataGridTextColumn Binding="{Binding Salary}" Width="*" Header="Salary"/>
                     <DataGridTextColumn Binding="{Binding Phone}" Width="*" Header="Phone"/>
-                    <DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Edit" Background="Orange" Width="35" Tag="{Binding Path=id_Edit_Employee}"></Button>
+                                    <Button Content="Edit" Background="Orange" Tag="{Binding Path=id_Edit_Employee}"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>

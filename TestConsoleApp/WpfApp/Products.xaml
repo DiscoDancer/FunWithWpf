@@ -38,20 +38,20 @@
             <DataGrid x:Name="ProductDataGrid" IsReadOnly="True" VerticalAlignment="Top" HorizontalAlignment="Left" AutoGenerateColumns="False" ItemsSource="{Binding ProductDataGrid}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding ProductID}" Width="*" Header="Product ID"/>
-                    <DataGridTextColumn Binding="{Binding Name}" Width="2*" Header="Name"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Width="3*" Header="Name"/>
                     <DataGridTextColumn Binding="{Binding Color}" Width="*" Header="Color"/>
-                    <DataGridTextColumn Binding="{Binding Description}" Width="4*" Header="Description"/>
+                    <DataGridTextColumn Binding="{Binding Description}" Width="6*" Header="Description"/>
                     
-                    <DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Edit" Background="Orange" Width="35" Tag="{Binding Path=id_Edit_Product}"></Button>
+                                    <Button Content="Edit" Background="Orange" Tag="{Binding Path=id_Edit_Product}"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>

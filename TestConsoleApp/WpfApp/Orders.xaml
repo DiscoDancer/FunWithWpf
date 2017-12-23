@@ -44,17 +44,17 @@
                     <DataGridTextColumn Binding="{Binding ProductID}" Width="*" Header="Product ID"/>
                     <DataGridTextColumn Binding="{Binding Quantity}" Width="*" Header="Quantity"/>
                     <DataGridTextColumn Binding="{Binding Price}" Width="*" Header="Price"/>
-                    <DataGridTextColumn Binding="{Binding OrderDate}" Width="*" Header="Order Date"/>
-                    <DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding OrderDate}" Width="2*" Header="Order Date"/>
+                    <DataGridTemplateColumn Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Edit" Background="Orange" Width="35" Tag="{Binding Path=id_Edit_Order}"></Button>
+                                    <Button Content="Edit" Background="Orange" Tag="{Binding Path=id_Edit_Order}"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
