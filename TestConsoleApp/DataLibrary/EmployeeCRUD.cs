@@ -9,8 +9,8 @@ namespace DataLibrary
     {
         public class ValueType
         {
-            public bool IsString { get; set; } 
-            public string Value { get; set; } 
+            public bool IsString { get; set; }
+            public string Value { get; set; }
         }
 
         private static readonly string SqlConnect = ConnectionStringsService.Resolve();
@@ -55,6 +55,7 @@ namespace DataLibrary
                 connection.Query(query);
             }
         }
+
         public static void DeleteEmployee(Employee employee)
         {
             using (var connection = new SqlConnection(SqlConnect))

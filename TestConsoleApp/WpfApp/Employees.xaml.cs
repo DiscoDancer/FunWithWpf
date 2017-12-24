@@ -12,6 +12,7 @@ namespace WpfApp
     public partial class Employees
     {
         private List<Employee> _employees = EmployeeCRUD.GetAll();
+
         public Employees()
         {
             InitializeComponent();
@@ -22,15 +23,41 @@ namespace WpfApp
             
             _employees.Add(new Employee
             {
-                FirstName = "AAAA",
-                MiddleName = "BBBB",
-                LastName = "CCCC",
-                Salary = 100,
-                PriorSalary = 50
+                FirstName = "Семен",
+                MiddleName = "Васильевич",
+                LastName = "Иванов",
+                Position = "Продавец-консультант",
+                Salary = 26000,
+                PriorSalary = 2500,
+                Phone = "89039738735"
                 
             });
-            EmployeeDataGrid.ItemsSource = _employees;
+            _employees.Add(new Employee
+            {
+                FirstName = "Михаил",
+                MiddleName = "Сергеевич",
+                LastName = "Петров",
+                Position = "Менеджер",
+                Salary = 32000,
+                PriorSalary = 3000,
+                Phone = "89069434179"
+
+            });
+            _employees.Add(new Employee
+            {
+                FirstName = "Алексей",
+                MiddleName = "Анатольевич",
+                LastName = "Малинин",
+                Position = "Продавец-консультант",
+                Salary = 23000,
+                PriorSalary = 1500,
+                Phone = "89235167428"
+
+            });
             EmployeeCRUD.AddEmployee(_employees.Last());
+            _employees = EmployeeCRUD.GetAll();
+            EmployeeDataGrid.ItemsSource = _employees;
+
 
         }
 

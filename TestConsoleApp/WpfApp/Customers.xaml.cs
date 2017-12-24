@@ -30,9 +30,32 @@ namespace WpfApp
             
             _customers.Add(new Customer
             {
-                FirstName = "AAAA",
-                MiddleName = "BBBB",
-                LastName = "CCCC"
+                FirstName = "Валерий",
+                MiddleName = "Егорович",
+                LastName = "Жорин",
+                Address = "Балтийская 28а, 34",
+                City = "Кемерово",
+                Phone = "89089252481"
+
+            });
+            _customers.Add(new Customer
+            {
+                FirstName = "Дмитрий",
+                MiddleName = "Анатольевич",
+                LastName = "Елкин",
+                Address = "Вершовская 14",
+                City = "Новосибирск",
+                Phone = "89089148142"
+
+            });
+            _customers.Add(new Customer
+            {
+                FirstName = "Владимир",
+                MiddleName = "Михайлович",
+                LastName = "Копытин",
+                Address = "Кирова 25а",
+                City = "Кемерово",
+                Phone = "89069325829"
 
             });
             CustomerCRUD.AddCustomer(_customers.Last());
