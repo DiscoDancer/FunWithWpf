@@ -20,7 +20,8 @@ namespace DataLibrary
 
         public static string UpdateCustomer(Customer customer)
         {
-            return "UPDATE CUSTOMERS SET ID=42 WHERE ID=42";
+
+            return "UPDATE Customers SET FirstName = 'Василий', MiddleName = 'Васильевич', LastName = 'Васильев', Address = 'Ленинградский 30/4', City = 'Новосибирск', Phone = '89235151238' WHERE CustomerID = 1073";
         }
 
         public static void AddCustomer(Customer customer)

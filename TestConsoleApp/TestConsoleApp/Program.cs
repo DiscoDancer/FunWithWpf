@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using DataLibrary;
 
 namespace TestConsoleApp
@@ -11,10 +12,13 @@ namespace TestConsoleApp
             {
                 LastName = "A",
                 FirstName = "B",
-                MiddleName = "C"
+                MiddleName = "C",
+                City = "Кемерово"
             };
 
             var q = CustomerCRUD.UpdateCustomer(customer);
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.WriteLine(q);
 
             // CustomerCRUD
 
@@ -31,7 +35,7 @@ namespace TestConsoleApp
             //});
 
             //customers = CustomerCRUD.GetAll();
-            //Console.ReadKey();
+            Console.ReadKey();
         }
     }
 }

@@ -68,8 +68,7 @@ namespace WpfApp
         {
             CustomerCRUD.DeleteCustomer(_customers.Last());
             _customers = CustomerCRUD.GetAll();
-            CustomerDataGrid.ItemsSource = _customers;
-            
+            CustomerDataGrid.ItemsSource = _customers;     
         }
 
         private void EditCustomer(object sender, RoutedEventArgs e)
