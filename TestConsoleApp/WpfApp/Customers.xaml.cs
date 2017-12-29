@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -66,7 +67,8 @@ namespace WpfApp
 
         private void DelCustomerBtn(object sender, RoutedEventArgs e)
         {
-            CustomerCRUD.DeleteCustomer(_customers.Last());
+            var customer = ((FrameworkElement)sender).DataContext as Customer;
+            CustomerCRUD.DeleteCustomer(customer);
             _customers = CustomerCRUD.GetAll();
             CustomerDataGrid.ItemsSource = _customers;     
         }

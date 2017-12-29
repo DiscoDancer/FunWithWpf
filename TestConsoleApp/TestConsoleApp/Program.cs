@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Text;
+using System.Linq;
 using DataLibrary;
 
 namespace TestConsoleApp
@@ -8,17 +8,20 @@ namespace TestConsoleApp
     {
         static void Main(string[] args)
         {
-            var customer = new Customer
-            {
-                LastName = "A",
-                FirstName = "B",
-                MiddleName = "C",
-                City = "Кемерово"
-            };
+            var x = CustomerCRUD.GetAll();
 
-            var q = CustomerCRUD.UpdateCustomer(customer);
-            Console.OutputEncoding = Encoding.UTF8;
-            Console.WriteLine(q);
+            CustomerCRUD.DeleteCustomer(x.First());
+
+
+            var y = CustomerCRUD.GetAll();
+            //var customer = new Customer
+            //{
+            //    LastName = "A",
+            //    FirstName = "B",
+            //    MiddleName = "C"
+            //};
+
+            //var q = CustomerCRUD.UpdateCustomer(customer);
 
             // CustomerCRUD
 
@@ -35,7 +38,7 @@ namespace TestConsoleApp
             //});
 
             //customers = CustomerCRUD.GetAll();
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }
