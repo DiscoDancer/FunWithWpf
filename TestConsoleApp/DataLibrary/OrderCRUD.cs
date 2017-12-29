@@ -17,5 +17,13 @@ namespace DataLibrary
                 return connection.Query<Order>("select * from Orders").ToList();
             }
         }
+        public static void DeleteOrder(Order order)
+        {
+            using (var connection = new SqlConnection(SqlConnect))
+            {
+
+                connection.Query($"delete from Orders where OrderID = {order.OrderID}");
+            }
+        }
     }
 }

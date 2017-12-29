@@ -63,7 +63,8 @@ namespace WpfApp
 
         private void DelEmployeeBtn(object sender, RoutedEventArgs e)
         {
-            EmployeeCRUD.DeleteEmployee(_employees.Last());
+            var employee = ((FrameworkElement)sender).DataContext as Employee;
+            EmployeeCRUD.DeleteEmployee(employee);
             _employees = EmployeeCRUD.GetAll();
             EmployeeDataGrid.ItemsSource = _employees;
         }

@@ -44,9 +44,10 @@ namespace WpfApp
 
         }
 
-        private void DelCustomerBtn(object sender, RoutedEventArgs e)
+        private void DelProductBtn(object sender, RoutedEventArgs e)
         {
-            ProductCRUD.DeleteProduct(_products.Last());
+            var product = ((FrameworkElement)sender).DataContext as Product;
+            ProductCRUD.DeleteProduct(product);
             _products = ProductCRUD.GetAll();
             ProductDataGrid.ItemsSource = _products;
         }
