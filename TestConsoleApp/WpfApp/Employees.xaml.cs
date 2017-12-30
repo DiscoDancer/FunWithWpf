@@ -68,6 +68,13 @@ namespace WpfApp
             _employees = EmployeeCRUD.GetAll();
             EmployeeDataGrid.ItemsSource = _employees;
         }
+
+        private void EditEmployeeBtn(object sender, RoutedEventArgs e)
+        {
+            Uri uri = new Uri("EmployeeForm.xaml", UriKind.Relative);
+            this.NavigationService.Navigate(uri);
+        }
+
         private void ButtonCustomers_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Customers.xaml", UriKind.Relative));

@@ -1,36 +1,29 @@
-﻿using DataLibrary;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace WpfApp
 {
     /// <summary>
-    /// Interaction logic for Orders.xaml
+    /// Interaction logic for OrderForm.xaml
     /// </summary>
-    public partial class Orders
+    public partial class OrderForm : Page
     {
-        private List<Order> _orders = OrderCRUD.GetAll();
-        public Orders()
+        public OrderForm()
         {
             InitializeComponent();
-            OrderDataGrid.ItemsSource = _orders;
-
         }
-        private void DelOrderBtn(object sender, RoutedEventArgs e)
-        {
-            var order = ((FrameworkElement)sender).DataContext as Order;
-            OrderCRUD.DeleteOrder(order);
-            _orders = OrderCRUD.GetAll();
-            OrderDataGrid.ItemsSource = _orders;
-        }
-
-        private void EditOrderBtn(object sender, RoutedEventArgs e)
-        {
-            Uri uri = new Uri("OrderForm.xaml", UriKind.Relative);
-            this.NavigationService.Navigate(uri);
-        }
-
         private void ButtonCustomers_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Customers.xaml", UriKind.Relative));

@@ -48,7 +48,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Edit" Background="Orange" Tag="{Binding Path=id_Edit_Employee}"></Button>
+                                    <Button Content="Edit" Background="Orange" Click="EditEmployeeBtn" Tag="{Binding Path=id_Edit_Employee}"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

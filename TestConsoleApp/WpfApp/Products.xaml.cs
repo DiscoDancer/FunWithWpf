@@ -51,6 +51,13 @@ namespace WpfApp
             _products = ProductCRUD.GetAll();
             ProductDataGrid.ItemsSource = _products;
         }
+
+        private void EditProductBtn(object sender, RoutedEventArgs e)
+        {
+            Uri uri = new Uri("ProductForm.xaml", UriKind.Relative);
+            this.NavigationService.Navigate(uri);
+        }
+
         private void ButtonCustomers_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Customers.xaml", UriKind.Relative));

@@ -58,7 +58,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CustomerForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Customers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -74,8 +82,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CustomerForm.xaml.cs">
+      <DependentUpon>CustomerForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Customers.xaml.cs">
       <DependentUpon>Customers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeForm.xaml.cs">
+      <DependentUpon>EmployeeForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Employees.xaml.cs">
       <DependentUpon>Employees.xaml</DependentUpon>
@@ -88,7 +102,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="OrderForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Orders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,8 +123,14 @@
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OrderForm.xaml.cs">
+      <DependentUpon>OrderForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Orders.xaml.cs">
       <DependentUpon>Orders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProductForm.xaml.cs">
+      <DependentUpon>ProductForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Products.xaml.cs">
       <DependentUpon>Products.xaml</DependentUpon>

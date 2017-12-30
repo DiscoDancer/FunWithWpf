@@ -49,7 +49,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Edit" Background="Orange" Click="EditCustomer" Tag="{Binding Path=id_Edit_Customer}"></Button>
+                                    <Button Content="Edit" Background="Orange" Click="EditCustomerBtn" Tag="{Binding Path=id_Edit_Customer}"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
