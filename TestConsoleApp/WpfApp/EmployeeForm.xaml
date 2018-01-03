@@ -12,25 +12,60 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Button VerticalAlignment="Center" Width="100" Margin="-320,10,0,10" Click="ButtonCustomers_Click" FontSize="14" FontWeight="Bold">
+        <Button VerticalAlignment="Center" Width="100" Margin="-320,0,0,420" Click="ButtonCustomers_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                 Customers
             </TextBlock>
         </Button>
-        <Button  VerticalAlignment="Center" Width="100" Margin="-80,10,0,10" Click="ButtonEmployees_Click" FontSize="14" FontWeight="Bold">
+        <Button  VerticalAlignment="Center" Width="100" Margin="-80,0,0,420" Click="ButtonEmployees_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                 Employees
             </TextBlock>
         </Button>
-        <Button  VerticalAlignment="Center" Width="100" Margin="160,10,0,10" Click="ButtonProducts_Click" FontSize="14" FontWeight="Bold">
+        <Button  VerticalAlignment="Center" Width="100" Margin="160,0,0,420" Click="ButtonProducts_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                 Products
             </TextBlock>
         </Button>
-        <Button VerticalAlignment="Center" Width="100" Margin="400,10,0,10" Click="ButtonOrders_Click" FontSize="14" FontWeight="Bold">
+        <Button VerticalAlignment="Center" Width="100" Margin="400,0,0,420" Click="ButtonOrders_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                 Orders
             </TextBlock>
         </Button>
+        <Grid Margin="100,100,100,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Label HorizontalAlignment="Center"  Content="Edit Employee" FontSize="15" FontWeight="Medium"/>
+
+            <StackPanel x:Name="stackone" Grid.Row="1" Width="400">
+                <Label HorizontalContentAlignment="Center" Content="First Name"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=FirstName, Mode=TwoWay}"/>
+                <Label HorizontalContentAlignment="Center" Content="Middle Name"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=MiddleName, Mode=TwoWay}"/>
+                <Label HorizontalContentAlignment="Center" Content="Last Name"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=LastName, Mode=TwoWay}"/>
+                <Label HorizontalContentAlignment="Center" Content="Position"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Position, Mode=TwoWay}"/>
+                <Label HorizontalContentAlignment="Center" Content="Salary"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Salary, Mode=TwoWay}"/>
+                <Label HorizontalContentAlignment="Center" Content="Prior Salary"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=PriorSalary, Mode=TwoWay}"/>
+                <Label HorizontalContentAlignment="Center" Content="Phone"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Phone, Mode=TwoWay}"/>
+
+                <Grid Margin="0,5,0,0">
+                    <Button Content="Save" Background="LightGreen" Height="20" Grid.Column="0"/>
+                    <Button Content="Delete" Background="Red" Height="20" Grid.Column="1"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </Page>

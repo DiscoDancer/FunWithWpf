@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 using System.Windows;
 using DataLibrary;
+using WpfApp.Services;
 
 namespace WpfApp
 {
@@ -28,41 +26,9 @@ namespace WpfApp
 
         private void AddCustomerBtn(object sender, RoutedEventArgs e)
         {
-            
-            _customers.Add(new Customer
-            {
-                FirstName = "Валерий",
-                MiddleName = "Егорович",
-                LastName = "Жорин",
-                Address = "Балтийская 28а, 34",
-                City = "Кемерово",
-                Phone = "89089252481"
-
-            });
-            _customers.Add(new Customer
-            {
-                FirstName = "Дмитрий",
-                MiddleName = "Анатольевич",
-                LastName = "Елкин",
-                Address = "Вершовская 14",
-                City = "Новосибирск",
-                Phone = "89089148142"
-
-            });
-            _customers.Add(new Customer
-            {
-                FirstName = "Владимир",
-                MiddleName = "Михайлович",
-                LastName = "Копытин",
-                Address = "Кирова 25а",
-                City = "Кемерово",
-                Phone = "89069325829"
-
-            });
-            CustomerCRUD.AddCustomer(_customers.Last());
-
-            _customers = CustomerCRUD.GetAll();
-            CustomerDataGrid.ItemsSource = _customers;
+            StateService.CurrentCustomer = new Customer();
+            Uri uri = new Uri("CustomerForm.xaml", UriKind.Relative);
+            this.NavigationService.Navigate(uri);
         }
 
 
@@ -76,6 +42,9 @@ namespace WpfApp
 
         private void EditCustomerBtn(object sender, RoutedEventArgs e)
         {
+            var customer = ((FrameworkElement)sender).DataContext as Customer;
+            StateService.CurrentCustomer = customer;
+
             Uri uri = new Uri("CustomerForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
 

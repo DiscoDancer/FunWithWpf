@@ -24,6 +24,37 @@ namespace DataLibrary
             }
         }
 
+        public static string UpdateEmployee(Employee employee)
+        {
+            {
+                var queryDictionary = new Dictionary<string, ValueType>();
+
+                var props = employee.GetType().GetProperties().Where(x => !x.Name.Contains("ID"));
+                foreach (var prop in props)
+                {
+                    var val = prop.GetValue(employee, null);
+                    var valToString = val?.ToString();
+                    if (valToString?.Length > 0)
+                    {
+                        queryDictionary.Add(prop.Name, new ValueType
+                        {
+                            IsString = prop.PropertyType == typeof(string),
+                            Value = valToString
+                        });
+                    }
+                }
+
+                var names = "(" + queryDictionary.Keys.Aggregate((x, y) => x + "," + y) + ")";
+                var values = queryDictionary.Values
+                        .Select(x => x.IsString ? $"'{x.Value}'" : x.Value)
+                        .Aggregate((x, y) => x + "," + y);
+                values = $"({values})";
+                var query =
+                    $"UPDATE Employees SET{names} VALUES{values} WHERE EmployeeID = {employee.EmployeeID}";
+                return query;
+            }
+        }
+
         public static void AddEmployee(Employee employee)
         {
             var queryDictionary = new Dictionary<string, ValueType>();
@@ -37,7 +68,7 @@ namespace DataLibrary
                     queryDictionary.Add(prop.Name, new ValueType
                     {
                         IsString = prop.PropertyType == typeof(string),
-                        Value = val.ToString()
+                        Value = valToString
                     });
                 }
             }

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using DataLibrary;
 using System;
+using WpfApp.Services;
 
 namespace WpfApp
 {
@@ -20,45 +21,9 @@ namespace WpfApp
         }
         private void AddEmployeeBtn(object sender, RoutedEventArgs e)
         {
-            
-            _employees.Add(new Employee
-            {
-                FirstName = "Семен",
-                MiddleName = "Васильевич",
-                LastName = "Иванов",
-                Position = "Продавец-консультант",
-                Salary = 26000,
-                PriorSalary = 2500,
-                Phone = "89039738735"
-                
-            });
-            _employees.Add(new Employee
-            {
-                FirstName = "Михаил",
-                MiddleName = "Сергеевич",
-                LastName = "Петров",
-                Position = "Менеджер",
-                Salary = 32000,
-                PriorSalary = 3000,
-                Phone = "89069434179"
-
-            });
-            _employees.Add(new Employee
-            {
-                FirstName = "Алексей",
-                MiddleName = "Анатольевич",
-                LastName = "Малинин",
-                Position = "Продавец-консультант",
-                Salary = 23000,
-                PriorSalary = 1500,
-                Phone = "89235167428"
-
-            });
-            EmployeeCRUD.AddEmployee(_employees.Last());
-            _employees = EmployeeCRUD.GetAll();
-            EmployeeDataGrid.ItemsSource = _employees;
-
-
+            StateService.CurrentEmployee = new Employee();
+            Uri uri = new Uri("EmployeeForm.xaml", UriKind.Relative);
+            this.NavigationService.Navigate(uri);
         }
 
         private void DelEmployeeBtn(object sender, RoutedEventArgs e)
@@ -71,6 +36,9 @@ namespace WpfApp
 
         private void EditEmployeeBtn(object sender, RoutedEventArgs e)
         {
+            var employee = ((FrameworkElement)sender).DataContext as Employee;
+            StateService.CurrentEmployee = employee;
+
             Uri uri = new Uri("EmployeeForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
         }
