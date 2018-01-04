@@ -8,18 +8,19 @@ namespace TestConsoleApp
     {
         public static void Main(string[] args)
         {
-            var customer = new Customer
-            {
-                CustomerID = 1088,
-                LastName = "A",
-                FirstName = "B",
-                MiddleName = "C",
-                Address = "qwert123",
-                City = "Хельсинки",
-                Phone = "89049387419"
-            };
+            //var customer = new Customer
+            //{
+            //    CustomerID = 1088,
+            //    LastName = "A",
+            //    FirstName = "B",
+            //    MiddleName = "C",
+            //    Address = "qwert123",
+            //    City = "Хельсинки",
+            //    Phone = "89049387419"
+            //};
 
-            var zz = CustomerCRUD.UpdateCustomer(customer);
+            //var zz = CustomerCRUD.UpdateCustomer(customer);
+            var x = OrderCRUD.GetAll();
         }
     }
 }
