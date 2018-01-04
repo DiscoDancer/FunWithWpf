@@ -40,5 +40,15 @@ namespace WpfApp
         {
             this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));
         }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
