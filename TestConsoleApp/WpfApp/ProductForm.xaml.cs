@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataLibrary;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp.Services;
@@ -33,6 +34,15 @@ namespace WpfApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            var product = DataContext as Product;
+            if (product.ProductID > 0)
+            {
+                ProductCRUD.UpdateProduct(product);
+            }
+            else
+            {
+                ProductCRUD.AddProduct(DataContext as Product);
+            }
             this.NavigationService.Navigate(new Uri("Products.xaml", UriKind.Relative));
         }
 

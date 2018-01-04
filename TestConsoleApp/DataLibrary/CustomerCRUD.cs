@@ -19,40 +19,44 @@ namespace DataLibrary
         {
             using (SqlConnection connection = new SqlConnection(SqlConnect))
             {
-
                 return connection.Query<Customer>("select * from Customers").ToList();
             }
         }
 
-        public static string UpdateCustomer(Customer customer)
+        public static void UpdateCustomer(Customer customer)
         {
+            var queryDictionary = new Dictionary<string, ValueType>();
+
+            var props = customer.GetType().GetProperties().Where(x => !x.Name.Contains("ID"));
+            foreach (var prop in props)
             {
-                var queryDictionary = new Dictionary<string, ValueType>();
-
-                var props = customer.GetType().GetProperties().Where(x => !x.Name.Contains("ID"));
-                foreach (var prop in props)
+                var val = prop.GetValue(customer, null);
+                var valToString = val?.ToString();
+                if (valToString?.Length > 0)
                 {
-                    var val = prop.GetValue(customer, null);
-                    var valToString = val?.ToString();
-                    if (valToString?.Length > 0)
+                    queryDictionary.Add(prop.Name, new ValueType
                     {
-                        queryDictionary.Add(prop.Name, new ValueType
-                        {
-                            IsString = prop.PropertyType == typeof(string),
-                            Value = valToString
-                        });
-                    }
+                        IsString = prop.PropertyType == typeof(string),
+                        Value = valToString
+                    });
                 }
+            }
 
-                var names = "(" + queryDictionary.Keys.Aggregate((x, y) => x + "," + y) + ")";
-                var values = queryDictionary.Values
-                        .Select(x => x.IsString ? $"'{x.Value}'" : x.Value)
-                        .Aggregate((x, y) => x + "," + y);
-                values = $"({values})";
-                var query =
-                    $"UPDATE Customers SET{names} VALUES{values} WHERE CustomerID = {customer.CustomerID}";
-                //UPDATE Customers SET FirstName = 'Василий', MiddleName = 'Васильевич', LastName = 'Васильев', Address = 'Ленинградский 30/4', City = 'Новосибирск', Phone = '89235151238' WHERE CustomerID = 1088";
-                return query;
+            var pairs = new List<string>();
+
+            foreach (var p in queryDictionary)
+            {
+                pairs.Add(p.Key + " = " + (p.Value.IsString ? $"'{p.Value.Value}'" : p.Value.Value));
+            }
+
+            var mergedPairs = pairs.Aggregate((x, y) => $" {x}, {y} ");
+
+            var query =
+                $"UPDATE Customers SET {mergedPairs} WHERE CustomerID = {customer.CustomerID}";
+
+            using (var connection = new SqlConnection(SqlConnect))
+            {
+                connection.Query(query);
             }
         }
 
@@ -79,7 +83,6 @@ namespace DataLibrary
 
             using (var connection = new SqlConnection(SqlConnect))
             {
-
                 connection.Query(query);
             }
         }
@@ -88,7 +91,6 @@ namespace DataLibrary
         {
             using (var connection = new SqlConnection(SqlConnect))
             {
-
                 connection.Query($"delete from Customers where CustomerID = {customer.CustomerID}");
             }
         }

@@ -24,9 +24,9 @@ namespace DataLibrary
             }
         }
 
-        public static string UpdateEmployee(Employee employee)
+        public static void UpdateEmployee(Employee employee)
         {
-            {
+            
                 var queryDictionary = new Dictionary<string, ValueType>();
 
                 var props = employee.GetType().GetProperties().Where(x => !x.Name.Contains("ID"));
@@ -44,56 +44,63 @@ namespace DataLibrary
                     }
                 }
 
-                var names = "(" + queryDictionary.Keys.Aggregate((x, y) => x + "," + y) + ")";
-                var values = queryDictionary.Values
-                        .Select(x => x.IsString ? $"'{x.Value}'" : x.Value)
-                        .Aggregate((x, y) => x + "," + y);
-                values = $"({values})";
-                var query =
-                    $"UPDATE Employees SET{names} VALUES{values} WHERE EmployeeID = {employee.EmployeeID}";
-                return query;
-            }
-        }
+                var pairs = new List<string>();
 
-        public static void AddEmployee(Employee employee)
-        {
-            var queryDictionary = new Dictionary<string, ValueType>();
-            var props = employee.GetType().GetProperties().Where(x => !x.Name.Contains("ID"));
-            foreach (var prop in props)
-            {
-                var val = prop.GetValue(employee, null);
-                var valToString = val?.ToString();
-                if (valToString?.Length > 0)
+                foreach (var p in queryDictionary)
                 {
-                    queryDictionary.Add(prop.Name, new ValueType
-                    {
-                        IsString = prop.PropertyType == typeof(string),
-                        Value = valToString
-                    });
+                    pairs.Add(p.Key + " = " + (p.Value.IsString ? $"'{p.Value.Value}'" : p.Value.Value));
+                }
+
+                var mergedPairs = pairs.Aggregate((x, y) => $" {x}, {y} ");
+
+                var query =
+                    $"UPDATE Employees SET {mergedPairs} WHERE EmployeeID = {employee.EmployeeID}";
+
+                using (var connection = new SqlConnection(SqlConnect))
+                {
+                    connection.Query(query);
                 }
             }
 
-            var names = "(" + queryDictionary.Keys.Aggregate((x, y) => x + "," + y) + ")";
-            var values = queryDictionary.Values
-                .Select(x => x.IsString ? $"'{x.Value}'" : x.Value)
-                .Aggregate((x, y) => x + "," + y);
-            values = $"({values})";
-            var query = $"INSERT INTO Employees{names} VALUES{values};";
-
-            using (var connection = new SqlConnection(SqlConnect))
+            public static void AddEmployee(Employee employee)
             {
+                var queryDictionary = new Dictionary<string, ValueType>();
+                var props = employee.GetType().GetProperties().Where(x => !x.Name.Contains("ID"));
+                foreach (var prop in props)
+                {
+                    var val = prop.GetValue(employee, null);
+                    var valToString = val?.ToString();
+                    if (valToString?.Length > 0)
+                    {
+                        queryDictionary.Add(prop.Name, new ValueType
+                        {
+                            IsString = prop.PropertyType == typeof(string),
+                            Value = valToString
+                        });
+                    }
+                }
 
-                connection.Query(query);
+                var names = "(" + queryDictionary.Keys.Aggregate((x, y) => x + "," + y) + ")";
+                var values = queryDictionary.Values
+                    .Select(x => x.IsString ? $"'{x.Value}'" : x.Value)
+                    .Aggregate((x, y) => x + "," + y);
+                values = $"({values})";
+                var query = $"INSERT INTO Employees{names} VALUES{values};";
+
+                using (var connection = new SqlConnection(SqlConnect))
+                {
+
+                    connection.Query(query);
+                }
             }
-        }
 
-        public static void DeleteEmployee(Employee employee)
-        {
-            using (var connection = new SqlConnection(SqlConnect))
+            public static void DeleteEmployee(Employee employee)
             {
+                using (var connection = new SqlConnection(SqlConnect))
+                {
 
-                connection.Query($"delete from Employees where EmployeeID = {employee.EmployeeID}");
+                    connection.Query($"delete from Employees where EmployeeID = {employee.EmployeeID}");
+                }
             }
-        }
     }
 }

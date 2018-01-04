@@ -24,8 +24,8 @@ namespace DataLibrary
             }
         }
 
-        public static string UpdateProduct(Product product)
-        {
+        public static void UpdateProduct(Product product)
+        
             {
                 var queryDictionary = new Dictionary<string, ValueType>();
 
@@ -44,16 +44,23 @@ namespace DataLibrary
                     }
                 }
 
-                var names = "(" + queryDictionary.Keys.Aggregate((x, y) => x + "," + y) + ")";
-                var values = queryDictionary.Values
-                        .Select(x => x.IsString ? $"'{x.Value}'" : x.Value)
-                        .Aggregate((x, y) => x + "," + y);
-                values = $"({values})";
+                var pairs = new List<string>();
+
+                foreach (var p in queryDictionary)
+                {
+                    pairs.Add(p.Key + " = " + (p.Value.IsString ? $"'{p.Value.Value}'" : p.Value.Value));
+                }
+
+                var mergedPairs = pairs.Aggregate((x, y) => $" {x}, {y} ");
+
                 var query =
-                    $"UPDATE Products SET{names} VALUES{values} WHERE ProductID = {product.ProductID}";
-                return query;
+                    $"UPDATE Products SET {mergedPairs} WHERE ProductID = {product.ProductID}";
+
+                using (var connection = new SqlConnection(SqlConnect))
+                {
+                    connection.Query(query);
+                }
             }
-        }
 
         public static void AddProduct(Product product)
         {

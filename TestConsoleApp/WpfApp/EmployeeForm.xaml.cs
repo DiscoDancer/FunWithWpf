@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataLibrary;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp.Services;
@@ -34,6 +35,15 @@ namespace WpfApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            var employee = DataContext as Employee;
+            if (employee.EmployeeID > 0)
+            {
+                EmployeeCRUD.UpdateEmployee(employee);
+            }
+            else
+            {
+                EmployeeCRUD.AddEmployee(DataContext as Employee);
+            }
             this.NavigationService.Navigate(new Uri("Employees.xaml", UriKind.Relative));
         }
 

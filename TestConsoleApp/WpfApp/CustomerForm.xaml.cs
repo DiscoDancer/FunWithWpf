@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using DataLibrary;
 using WpfApp.Services;
 
 namespace WpfApp
@@ -35,6 +36,16 @@ namespace WpfApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            var customer = DataContext as Customer;
+            if (customer.CustomerID > 0)
+            {
+                CustomerCRUD.UpdateCustomer(customer);
+            }
+            else
+            {
+                CustomerCRUD.AddCustomer(DataContext as Customer);
+            }
+
             this.NavigationService.Navigate(new Uri("Customers.xaml", UriKind.Relative));
         }
 
