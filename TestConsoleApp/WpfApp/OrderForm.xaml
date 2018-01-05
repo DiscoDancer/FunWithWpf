@@ -50,16 +50,10 @@
                 <ComboBox Margin="0,5,0,0" Name="ListCustomers" ItemsSource="{Binding Path=AllCustomers, Mode=TwoWay}" SelectedValue="{Binding Path=CurrentCustomer}">
                 </ComboBox>
                 <Label HorizontalContentAlignment="Center" Content="Choose Employee"/>
-                <ComboBox Margin="0,5,0,0" Name="ListEmployees">
-                    <ComboBoxItem>qqq</ComboBoxItem>
-                    <ComboBoxItem>www</ComboBoxItem>
-                    <ComboBoxItem>rrr</ComboBoxItem>
+                <ComboBox Margin="0,5,0,0" Name="ListEmployees" ItemsSource="{Binding Path=AllEmployees, Mode=TwoWay}" SelectedValue="{Binding Path=CurrentEmployee}">
                 </ComboBox>
                 <Label HorizontalContentAlignment="Center" Content="Choose Product"/>
-                <ComboBox Margin="0,5,0,0" Name="ListProducts">
-                    <ComboBoxItem>qqq</ComboBoxItem>
-                    <ComboBoxItem>www</ComboBoxItem>
-                    <ComboBoxItem>rrr</ComboBoxItem>
+                <ComboBox Margin="0,5,0,0" Name="ListProducts" ItemsSource="{Binding Path=AllProducts, Mode=TwoWay}" SelectedValue="{Binding Path=CurrentProduct}">
                 </ComboBox>
                 <Grid Margin="0,5,0,0">
                     <Button Content="Save" Background="LightGreen" Height="20" Grid.Column="0" Click="BtnSave_Click"/>

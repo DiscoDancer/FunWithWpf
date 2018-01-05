@@ -34,7 +34,7 @@
             </TextBlock>
         </Button>
 
-        <Button Grid.Row="0" Content="Add order" Width="90" FontWeight="Bold" Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" x:Name="AddBtn"/>
+        <Button Grid.Row="0" Content="Add order" Width="90" FontWeight="Bold" Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="AddOrderBtn" x:Name="AddBtn"/>
         <Grid Grid.Row="1">
             <DataGrid x:Name="OrderDataGrid" IsReadOnly="True" VerticalAlignment="Top" AutoGenerateColumns="False" ItemsSource="{Binding OrderDataGrid}">
                 <DataGrid.Columns>

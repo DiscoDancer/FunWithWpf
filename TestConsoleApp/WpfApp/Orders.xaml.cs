@@ -50,5 +50,12 @@ namespace WpfApp
         {
             this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));
         }
+
+        private void AddOrderBtn(object sender, RoutedEventArgs e)
+        {
+            StateService.CurrentOrder = new Order();
+            Uri uri = new Uri("OrderForm.xaml", UriKind.Relative);
+            this.NavigationService.Navigate(uri);
+        }
     }
 }

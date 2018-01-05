@@ -98,5 +98,15 @@ namespace DataLibrary
                 connection.Query($"delete from Products where ProductID = {product.ProductID}");
             }
         }
+        public static List<NameID> GetNameIds()
+        {
+            var all = GetAll();
+
+            return all.Select(x => new NameID
+            {
+                ID = x.ProductID,
+                Name = $"{x.Name}"
+            }).ToList();
+        }
     }
 }
