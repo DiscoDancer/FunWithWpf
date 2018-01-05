@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using WpfApp.Services;
 
 namespace WpfApp
 {
@@ -27,6 +28,8 @@ namespace WpfApp
 
         private void EditOrderBtn(object sender, RoutedEventArgs e)
         {
+            var order = ((FrameworkElement)sender).DataContext as Order;
+            StateService.CurrentOrder = order;
             Uri uri = new Uri("OrderForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp.Models;
+using WpfApp.Services;
 
 namespace WpfApp
 {
@@ -22,7 +25,18 @@ namespace WpfApp
     {
         public OrderForm()
         {
+            var customersOptions = CustomerCRUD.GetAll().Select(x => new ValueID
+            {
+                Value = $"{x.FirstName} {x.MiddleName} {x.LastName}",
+                ID = x.CustomerID
+            });
+
             InitializeComponent();
+            DataContext = new OrderViewModel
+            {
+                CustomersList = customersOptions.ToList(),
+                Order = StateService.CurrentOrder
+            };
         }
         private void ButtonCustomers_Click(object sender, RoutedEventArgs e)
         {
@@ -48,7 +62,7 @@ namespace WpfApp
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));
         }
     }
 }

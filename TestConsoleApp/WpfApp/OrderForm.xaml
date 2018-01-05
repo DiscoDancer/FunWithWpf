@@ -41,10 +41,27 @@
 
             <StackPanel x:Name="stackone" Grid.Row="1" Width="400">
                 <Label HorizontalContentAlignment="Center" Content="Quantity"/>
-                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Quantity, Mode=TwoWay}"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Order.Quantity, Mode=TwoWay}"/>
                 <Label HorizontalContentAlignment="Center" Content="Price"/>
-                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Price, Mode=TwoWay}"/>
-
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Order.Price, Mode=TwoWay}"/>
+                <Label HorizontalContentAlignment="Center" Content="Choose Customer"/>
+                <ComboBox Margin="0,5,0,0" Name="ListCustomers">
+                    <ComboBoxItem>qqq</ComboBoxItem>
+                    <ComboBoxItem>www</ComboBoxItem>
+                    <ComboBoxItem>rrr</ComboBoxItem>
+                </ComboBox>
+                <Label HorizontalContentAlignment="Center" Content="Choose Employee"/>
+                <ComboBox Margin="0,5,0,0" Name="ListEmployees">
+                    <ComboBoxItem>qqq</ComboBoxItem>
+                    <ComboBoxItem>www</ComboBoxItem>
+                    <ComboBoxItem>rrr</ComboBoxItem>
+                </ComboBox>
+                <Label HorizontalContentAlignment="Center" Content="Choose Product"/>
+                <ComboBox Margin="0,5,0,0" Name="ListProducts">
+                    <ComboBoxItem>qqq</ComboBoxItem>
+                    <ComboBoxItem>www</ComboBoxItem>
+                    <ComboBoxItem>rrr</ComboBoxItem>
+                </ComboBox>
                 <Grid Margin="0,5,0,0">
                     <Button Content="Save" Background="LightGreen" Height="20" Grid.Column="0" Click="BtnSave_Click"/>
                     <Button Content="Cancel" Background="Red" Height="20" Grid.Column="1" Click="BtnCancel_Click"/>
