@@ -48,6 +48,7 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeCRUD.cs" />
+    <Compile Include="NameID.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderCRUD.cs" />
     <Compile Include="Product.cs" />

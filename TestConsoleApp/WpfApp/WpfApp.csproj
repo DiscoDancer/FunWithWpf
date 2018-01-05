@@ -60,7 +60,6 @@
     </ApplicationDefinition>
     <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Services\StateService.cs" />
-    <Compile Include="Models\ValueID.cs" />
     <Page Include="CustomerForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

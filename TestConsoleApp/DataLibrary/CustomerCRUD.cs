@@ -94,5 +94,16 @@ namespace DataLibrary
                 connection.Query($"delete from Customers where CustomerID = {customer.CustomerID}");
             }
         }
+
+        public static List<NameID> GetNameIds()
+        {
+            var all = GetAll();
+
+            return all.Select(x => new NameID
+            {
+                ID = x.CustomerID,
+                Name = $"{x.FirstName} {x.MiddleName} {x.LastName}"
+            }).ToList();
+        }
     }
 }
