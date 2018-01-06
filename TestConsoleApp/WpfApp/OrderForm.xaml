@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       Title="OrderForm">
 
@@ -12,27 +13,27 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Button VerticalAlignment="Center" Width="100" Margin="-320,0,0,395" Click="ButtonCustomers_Click" FontSize="14" FontWeight="Bold">
+        <Button VerticalAlignment="Center" Width="100" Margin="-320,0,0,550" Click="ButtonCustomers_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                     Customers
             </TextBlock>
         </Button>
-        <Button  VerticalAlignment="Center" Width="100" Margin="-80,0,0,395" Click="ButtonEmployees_Click" FontSize="14" FontWeight="Bold">
+        <Button  VerticalAlignment="Center" Width="100" Margin="-80,0,0,550" Click="ButtonEmployees_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                 Employees
             </TextBlock>
         </Button>
-        <Button  VerticalAlignment="Center" Width="100" Margin="160,0,0,395" Click="ButtonProducts_Click" FontSize="14" FontWeight="Bold">
+        <Button  VerticalAlignment="Center" Width="100" Margin="160,0,0,550" Click="ButtonProducts_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                 Products
             </TextBlock>
         </Button>
-        <Button VerticalAlignment="Center" Width="100" Margin="400,0,0,395" Click="ButtonOrders_Click" FontSize="14" FontWeight="Bold">
+        <Button VerticalAlignment="Center" Width="100" Margin="400,0,0,550" Click="ButtonOrders_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                 Orders
             </TextBlock>
         </Button>
-        <Grid Margin="100,100,100,10">
+        <Grid Margin="108,78,92,31.2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -55,6 +56,8 @@
                 <Label HorizontalContentAlignment="Center" Content="Choose Product"/>
                 <ComboBox Margin="0,5,0,0" Name="ListProducts" ItemsSource="{Binding Path=AllProducts, Mode=TwoWay}" SelectedValue="{Binding Path=CurrentProduct}">
                 </ComboBox>
+                <Label HorizontalContentAlignment="Center" Content="Choose Date"/>
+                <DatePicker Height="25" Width="120" HorizontalAlignment="Center" Name="datePicker1"  DisplayDate="{x:Static System:DateTime.Now}" SelectedDate="{Binding  Path=AvailableFrom, Mode=TwoWay}"/>
                 <Grid Margin="0,5,0,0">
                     <Button Content="Save" Background="LightGreen" Height="20" Grid.Column="0" Click="BtnSave_Click"/>
                     <Button Content="Cancel" Background="Red" Height="20" Grid.Column="1" Click="BtnCancel_Click"/>
