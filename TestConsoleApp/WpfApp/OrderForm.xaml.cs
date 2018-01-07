@@ -18,8 +18,6 @@ namespace WpfApp
             InitializeComponent();
 
             DataContext = new OrderViewModel();
-
-
         }
         private void ButtonCustomers_Click(object sender, RoutedEventArgs e)
         {
@@ -40,7 +38,21 @@ namespace WpfApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            var context = DataContext as OrderViewModel;
+            var order = context.Order as Order;
 
+            order.CustomerID = context.CurrentCustomer.ID;
+            order.EmployeeID = context.CurrentEmployee.ID;
+            order.ProductID = context.CurrentProduct.ID;
+
+            if (order.OrderID > 0)
+            {
+                OrderCRUD.UpdateOrder(order);
+            }
+            else
+            {
+                OrderCRUD.AddOrder(order);
+            }
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)

@@ -50,6 +50,7 @@
     <Compile Include="EmployeeCRUD.cs" />
     <Compile Include="NameID.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="OrderExtended.cs" />
     <Compile Include="OrderCRUD.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductCRUD.cs" />

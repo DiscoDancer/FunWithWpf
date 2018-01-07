@@ -18,7 +18,7 @@ namespace WpfApp.Models
             CurrentProduct = AllProducts.FirstOrDefault(x => x.ID == Order.ProductID);
         }
 
-        public Order Order { get; set; }
+        public OrderExtended Order { get; set; }
         public List<NameID> AllCustomers { get; set; }
         public NameID CurrentCustomer { get; set; }
         public List<NameID> AllEmployees { get; set; }

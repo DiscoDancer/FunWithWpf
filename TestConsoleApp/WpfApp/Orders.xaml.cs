@@ -11,7 +11,7 @@ namespace WpfApp
     /// </summary>
     public partial class Orders
     {
-        private List<Order> _orders = OrderCRUD.GetAll();
+        private List<OrderExtended> _orders = OrderCRUD.GetAll();
         public Orders()
         {
             InitializeComponent();
@@ -20,7 +20,7 @@ namespace WpfApp
         }
         private void DelOrderBtn(object sender, RoutedEventArgs e)
         {
-            var order = ((FrameworkElement)sender).DataContext as Order;
+            var order = ((FrameworkElement)sender).DataContext as OrderExtended;
             OrderCRUD.DeleteOrder(order);
             _orders = OrderCRUD.GetAll();
             OrderDataGrid.ItemsSource = _orders;
@@ -28,7 +28,7 @@ namespace WpfApp
 
         private void EditOrderBtn(object sender, RoutedEventArgs e)
         {
-            var order = ((FrameworkElement)sender).DataContext as Order;
+            var order = ((FrameworkElement)sender).DataContext as OrderExtended;
             StateService.CurrentOrder = order;
             Uri uri = new Uri("OrderForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
@@ -53,7 +53,7 @@ namespace WpfApp
 
         private void AddOrderBtn(object sender, RoutedEventArgs e)
         {
-            StateService.CurrentOrder = new Order();
+            StateService.CurrentOrder = new OrderExtended();
             Uri uri = new Uri("OrderForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
         }

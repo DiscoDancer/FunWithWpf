@@ -2,15 +2,12 @@
 
 namespace DataLibrary
 {
-    public  class Order
+    public class Order
     {
         public int OrderID { get; set; }
         public int CustomerID { get; set; }
-        public string CustomerName { get; set; }
         public int EmployeeID { get; set; }
-        public string EmployeeName { get; set; }
         public int ProductID { get; set; }
-        public string ProductName { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
         public DateTime OrderDate { get; set; }
