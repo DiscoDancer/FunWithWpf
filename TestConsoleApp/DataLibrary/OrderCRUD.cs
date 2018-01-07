@@ -32,7 +32,7 @@ namespace DataLibrary
         public static void AddOrder(Order order)
         {
             var queryDictionary = new Dictionary<string, ValueType>();
-            var props = order.GetType().GetProperties().Where(x => !x.Name.Contains("ID"));
+            var props = order.GetType().GetProperties().Where(x => !x.Name.Contains("OrderID"));
             foreach (var prop in props)
             {
                 var val = prop.GetValue(order, null);
@@ -54,18 +54,18 @@ namespace DataLibrary
             values = $"({values})";
             var query = $"INSERT INTO Orders{names} VALUES{values};";
 
-            //using (var connection = new SqlConnection(SqlConnect))
-            //{
+            using (var connection = new SqlConnection(SqlConnect))
+            {
 
-            //    connection.Query(query);
-            //}
+                connection.Query(query);
+            }
         }
 
         public static void UpdateOrder(Order order)
         {
             var queryDictionary = new Dictionary<string, ValueType>();
 
-            var props = order.GetType().GetProperties().Where(x => !x.Name.Contains("ID"));
+            var props = order.GetType().GetProperties().Where(x => !x.Name.Contains("OrderID"));
             foreach (var prop in props)
             {
                 var val = prop.GetValue(order, null);
