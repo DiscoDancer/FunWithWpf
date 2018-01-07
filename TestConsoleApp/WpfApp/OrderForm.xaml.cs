@@ -39,7 +39,13 @@ namespace WpfApp
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             var context = DataContext as OrderViewModel;
-            var order = context.Order as Order;
+            var orderExtended = context.Order;
+
+            orderExtended.CustomerName = null;
+            orderExtended.EmployeeName = null;
+            orderExtended.ProductName = null;
+
+            var order = (Order) orderExtended;
 
             order.CustomerID = context.CurrentCustomer.ID;
             order.EmployeeID = context.CurrentEmployee.ID;
@@ -51,8 +57,11 @@ namespace WpfApp
             }
             else
             {
+                
                 OrderCRUD.AddOrder(order);
             }
+
+            this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)

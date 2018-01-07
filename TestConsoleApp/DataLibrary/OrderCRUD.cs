@@ -92,10 +92,10 @@ namespace DataLibrary
             var query =
                 $"UPDATE Orders SET {mergedPairs} WHERE OrderID = {order.OrderID}";
 
-            //using (var connection = new SqlConnection(SqlConnect))
-            //{
-            //    connection.Query(query);
-            //}
+            using (var connection = new SqlConnection(SqlConnect))
+            {
+                connection.Query(query);
+            }
         }
 
         public static void DeleteOrder(OrderExtended order)
