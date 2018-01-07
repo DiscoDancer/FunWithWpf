@@ -42,9 +42,29 @@
 
             <StackPanel x:Name="stackone" Grid.Row="1" Width="400">
                 <Label HorizontalContentAlignment="Center" Content="Quantity"/>
-                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Order.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Order.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel>
+                                <!-- Placeholder for the TextBox itself -->
+                                <AdornedElementPlaceholder x:Name="textBoxQuantity"/>
+                                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
                 <Label HorizontalContentAlignment="Center" Content="Price"/>
-                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Order.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox  Margin="0,5,0,5" Text="{Binding Path=Order.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel>
+                                <!-- Placeholder for the TextBox itself -->
+                                <AdornedElementPlaceholder x:Name="textBoxQuantity"/>
+                                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
                 <Label HorizontalContentAlignment="Center" Content="Choose Customer"/>
                 <ComboBox Margin="0,5,0,0" Name="ListCustomers" ItemsSource="{Binding Path=AllCustomers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=CurrentCustomer}">
                 </ComboBox>
