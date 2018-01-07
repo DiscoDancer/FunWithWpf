@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp"
       xmlns:System="clr-namespace:System;assembly=mscorlib"
+      xmlns:validationRules="clr-namespace:WpfApp.ValidationRules"
       mc:Ignorable="d" 
       Title="OrderForm">
 
@@ -46,7 +47,7 @@
                     <TextBox.Text>
                         <Binding Path="Order.Quantity" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                <validationRules:StringToIntValidationRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -64,7 +65,7 @@
                     <TextBox.Text>
                         <Binding Path="Order.Price" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                <validationRules:StringToIntValidationRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -86,7 +87,7 @@
                     <ComboBox.SelectedValue>
                         <Binding Path="CurrentCustomer" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <local:NotNullValidationRule ValidationStep="RawProposedValue"/>
+                                <validationRules:NotNullValidationRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </ComboBox.SelectedValue>
@@ -104,7 +105,7 @@
                     <ComboBox.SelectedValue>
                         <Binding Path="CurrentEmployee" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <local:NotNullValidationRule ValidationStep="RawProposedValue"/>
+                                <validationRules:NotNullValidationRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </ComboBox.SelectedValue>
@@ -122,7 +123,7 @@
                     <ComboBox.SelectedValue>
                         <Binding Path="CurrentProduct" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <local:NotNullValidationRule ValidationStep="RawProposedValue"/>
+                                <validationRules:NotNullValidationRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </ComboBox.SelectedValue>

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp"
+      xmlns:validationRules="clr-namespace:WpfApp.ValidationRules"
       mc:Ignorable="d" 
       Title="EmployeeForm">
 
@@ -45,7 +46,7 @@
                     <TextBox.Text>
                         <Binding Path="FirstName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <local:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                                <validationRules:NotEmptyStringRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -63,7 +64,7 @@
                     <TextBox.Text>
                         <Binding Path="MiddleName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <local:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                                <validationRules:NotEmptyStringRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -81,7 +82,7 @@
                     <TextBox.Text>
                         <Binding Path="LastName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <local:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                                <validationRules:NotEmptyStringRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -101,7 +102,7 @@
                     <TextBox.Text>
                         <Binding Path="Salary" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                <validationRules:StringToIntValidationRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -119,7 +120,7 @@
                     <TextBox.Text>
                         <Binding Path="PriorSalary" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                                <validationRules:StringToIntValidationRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>

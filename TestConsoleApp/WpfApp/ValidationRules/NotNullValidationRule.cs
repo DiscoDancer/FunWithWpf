@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace WpfApp
+namespace WpfApp.ValidationRules
 {
     public class NotNullValidationRule : ValidationRule
     {

@@ -69,9 +69,9 @@
     <Compile Include="Services\ComboBoxService.cs" />
     <Compile Include="Services\ComboBoxTargets.cs" />
     <Compile Include="Services\StateService.cs" />
-    <Compile Include="Validation\NotEmptyStringValidationRule.cs" />
-    <Compile Include="Validation\NotNullValidationRule.cs" />
-    <Compile Include="Validation\StringToIntValidationRule.cs" />
+    <Compile Include="ValidationRules\NotEmptyStringValidationRule.cs" />
+    <Compile Include="ValidationRules\NotNullValidationRule.cs" />
+    <Compile Include="ValidationRules\StringToIntValidationRule.cs" />
     <Page Include="CustomerForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

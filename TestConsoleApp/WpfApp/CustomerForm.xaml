@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:wpfApp="clr-namespace:WpfApp"
+      xmlns:validationRules="clr-namespace:WpfApp.ValidationRules"
       mc:Ignorable="d"
       Title="CustomerForm">
 
@@ -45,7 +46,7 @@
                     <TextBox.Text>
                         <Binding Path="FirstName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <wpfApp:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                                <validationRules:NotEmptyStringRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -63,7 +64,7 @@
                     <TextBox.Text>
                         <Binding Path="MiddleName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <wpfApp:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                                <validationRules:NotEmptyStringRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -81,7 +82,7 @@
                     <TextBox.Text>
                         <Binding Path="LastName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <wpfApp:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                                <validationRules:NotEmptyStringRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
