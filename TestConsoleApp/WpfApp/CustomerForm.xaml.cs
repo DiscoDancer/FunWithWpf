@@ -11,7 +11,6 @@ namespace WpfApp
     /// </summary>
     public partial class CustomerForm : Page
     {
-
         public CustomerForm()
         {
             InitializeComponent();

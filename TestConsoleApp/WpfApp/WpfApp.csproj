@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Services\StateService.cs" />
+    <Compile Include="Validation\StringToIntValidationRule.cs" />
     <Page Include="CustomerForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -172,5 +173,6 @@
       <Name>DataLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

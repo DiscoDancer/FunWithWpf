@@ -49,7 +49,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Edit" Background="Orange" Click="EditOrderBtn" Tag="{Binding Path=id_Edit_Order}"></Button>
+                                    <Button Content="Edit" Background="Orange" Click="EditOrderBtn"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -58,7 +58,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Delete" Background="Red" Click="DelOrderBtn" Tag="{Binding Path=id_Del_Order}"></Button>
+                                    <Button Content="Delete" Background="Red" Click="DelOrderBtn"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

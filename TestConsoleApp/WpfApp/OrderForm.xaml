@@ -42,7 +42,14 @@
 
             <StackPanel x:Name="stackone" Grid.Row="1" Width="400">
                 <Label HorizontalContentAlignment="Center" Content="Quantity"/>
-                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Order.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox Margin="0,5,0,0">
+                    <TextBox.Text>
+                        <Binding Path="Order.Quantity" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
                     <Validation.ErrorTemplate>
                         <ControlTemplate>
                             <StackPanel>
@@ -54,7 +61,14 @@
                     </Validation.ErrorTemplate>
                 </TextBox>
                 <Label HorizontalContentAlignment="Center" Content="Price"/>
-                <TextBox  Margin="0,5,0,5" Text="{Binding Path=Order.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox  Margin="0,5,0,5">
+                    <TextBox.Text>
+                        <Binding Path="Order.Price" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
                     <Validation.ErrorTemplate>
                         <ControlTemplate>
                             <StackPanel>

@@ -45,7 +45,7 @@ namespace WpfApp
             orderExtended.EmployeeName = null;
             orderExtended.ProductName = null;
 
-            var order = (Order) orderExtended;
+            var order = (Order)orderExtended;
 
             order.CustomerID = context.CurrentCustomer.ID;
             order.EmployeeID = context.CurrentEmployee.ID;
@@ -57,7 +57,7 @@ namespace WpfApp
             }
             else
             {
-                
+
                 OrderCRUD.AddOrder(order);
             }
 
