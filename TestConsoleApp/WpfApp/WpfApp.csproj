@@ -37,9 +37,15 @@
     <StartupObject>WpfApp.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MoreLinq, Version=2.9.21302.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.2.9.0\lib\net40\MoreLinq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -60,6 +66,8 @@
     </ApplicationDefinition>
     <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Services\StateService.cs" />
+    <Compile Include="Validation\NotEmptyStringValidationRule.cs" />
+    <Compile Include="Validation\NotNullValidationRule.cs" />
     <Compile Include="Validation\StringToIntValidationRule.cs" />
     <Page Include="CustomerForm.xaml">
       <SubType>Designer</SubType>
@@ -156,6 +164,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

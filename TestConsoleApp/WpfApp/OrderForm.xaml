@@ -80,13 +80,62 @@
                     </Validation.ErrorTemplate>
                 </TextBox>
                 <Label HorizontalContentAlignment="Center" Content="Choose Customer"/>
-                <ComboBox Margin="0,5,0,0" Name="ListCustomers" ItemsSource="{Binding Path=AllCustomers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=CurrentCustomer}">
+                <ComboBox Margin="0,5,0,0" x:Name="ListCustomers">
+                    <ComboBox.ItemsSource>
+                        <Binding Path="AllCustomers" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        </Binding>
+                    </ComboBox.ItemsSource>
+                    <ComboBox.SelectedValue>
+                        <Binding Path="CurrentCustomer" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:NotNullValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel>
+                                <AdornedElementPlaceholder x:Name="textBoxQuantity"/>
+                                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
                 </ComboBox>
                 <Label HorizontalContentAlignment="Center" Content="Choose Employee"/>
-                <ComboBox Margin="0,5,0,0" Name="ListEmployees" ItemsSource="{Binding Path=AllEmployees, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=CurrentEmployee}">
+                <ComboBox Margin="0,5,0,0" x:Name="ListEmployees" ItemsSource="{Binding Path=AllEmployees, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="CurrentEmployee" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:NotNullValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel>
+                                <AdornedElementPlaceholder x:Name="textBoxQuantity"/>
+                                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
                 </ComboBox>
                 <Label HorizontalContentAlignment="Center" Content="Choose Product"/>
-                <ComboBox Margin="0,5,0,0" Name="ListProducts" ItemsSource="{Binding Path=AllProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=CurrentProduct}">
+                <ComboBox Margin="0,5,0,0" x:Name="ListProducts" ItemsSource="{Binding Path=AllProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ComboBox.SelectedValue>
+                        <Binding Path="CurrentProduct" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:NotNullValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel>
+                                <AdornedElementPlaceholder x:Name="textBoxQuantity"/>
+                                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
                 </ComboBox>
                 <Label HorizontalContentAlignment="Center" Content="Choose Date"/>
                 <DatePicker Height="25" Width="120" HorizontalAlignment="Center" Name="datePicker1"  DisplayDate="{x:Static System:DateTime.Now}" SelectedDate="{Binding  Path=Order.OrderDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

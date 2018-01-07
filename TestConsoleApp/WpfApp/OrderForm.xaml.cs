@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using MoreLinq;
 using WpfApp.Models;
 using WpfApp.Services;
 
@@ -38,30 +39,45 @@ namespace WpfApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var context = DataContext as OrderViewModel;
-            var orderExtended = context.Order;
-
-            orderExtended.CustomerName = null;
-            orderExtended.EmployeeName = null;
-            orderExtended.ProductName = null;
-
-            var order = (Order)orderExtended;
-
-            order.CustomerID = context.CurrentCustomer.ID;
-            order.EmployeeID = context.CurrentEmployee.ID;
-            order.ProductID = context.CurrentProduct.ID;
-
-            if (order.OrderID > 0)
+            var controls = new[]
             {
-                OrderCRUD.UpdateOrder(order);
-            }
-            else
+                ListCustomers,
+                ListEmployees,
+                ListProducts
+            };
+
+            controls.ForEach(x => x.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource());
+            var haveErrors = controls
+                .Select(Validation.GetHasError)
+                .Aggregate((x, y) => x || y);
+
+            if (!haveErrors)
             {
+                var context = DataContext as OrderViewModel;
+                var orderExtended = context.Order;
 
-                OrderCRUD.AddOrder(order);
+                orderExtended.CustomerName = null;
+                orderExtended.EmployeeName = null;
+                orderExtended.ProductName = null;
+
+                var order = (Order)orderExtended;
+
+                order.CustomerID = context.CurrentCustomer.ID;
+                order.EmployeeID = context.CurrentEmployee.ID;
+                order.ProductID = context.CurrentProduct.ID;
+
+                if (order.OrderID > 0)
+                {
+                    OrderCRUD.UpdateOrder(order);
+                }
+                else
+                {
+
+                    OrderCRUD.AddOrder(order);
+                }
+
+                this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));
             }
-
-            this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
