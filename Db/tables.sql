@@ -1,3 +1,8 @@
+DROP TABLE Orders;
+DROP TABLE Customers;
+DROP TABLE Employees;
+DROP TABLE Products;
+
 CREATE TABLE Customers
 (
 	CustomerID INT NOT NULL IDENTITY PRIMARY KEY,
@@ -52,19 +57,7 @@ CREATE TABLE Orders
     	ON UPDATE CASCADE
 );
 
-ALTER TABLE Customers
-ADD
-CHECK (Phone LIKE '[8][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]');
-
-ALTER TABLE Employees
-ADD
-CHECK (Phone LIKE '[8][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]');
-
-ALTER TABLE Employees
-ADD
-CHECK(PriorSalary < Salary);
-
-ALTER TABLE Orders
-ADD
-CHECK (OrderDate >= DATEADD(DAY, -90, GETDATE()) AND OrderDate <= GETDATE());
-
+DBCC CHECKIDENT (Products, RESEED, 1);
+DBCC CHECKIDENT (Customers, RESEED, 1);
+DBCC CHECKIDENT (Employees, RESEED, 1);
+DBCC CHECKIDENT (Orders, RESEED, 1);
