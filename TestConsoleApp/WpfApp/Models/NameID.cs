@@ -1,4 +1,4 @@
-﻿namespace DataLibrary
+﻿namespace WpfApp.Models
 {
     public class NameID
     {

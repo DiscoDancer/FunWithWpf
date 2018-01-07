@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using DataLibrary.Models;
+using DataLibrary.Models.Entities;
+using DataLibrary.Services.Repository;
 using MoreLinq;
 using WpfApp.Services;
 
@@ -55,11 +57,11 @@ namespace WpfApp
                 var employee = DataContext as Employee;
                 if (employee.EmployeeID > 0)
                 {
-                    EmployeeCRUD.UpdateEmployee(employee);
+                    UnitOfWork.Employees.Update(employee);
                 }
                 else
                 {
-                    EmployeeCRUD.AddEmployee(DataContext as Employee);
+                    UnitOfWork.Employees.Add(employee);
                 }
                 this.NavigationService.Navigate(new Uri("Employees.xaml", UriKind.Relative));
             }

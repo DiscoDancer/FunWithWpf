@@ -1,6 +1,5 @@
-﻿using System;
-using System.Linq;
-using DataLibrary;
+﻿using DataLibrary.Models.Entities;
+using DataLibrary.Services.Repository;
 
 namespace TestConsoleApp
 {
@@ -8,19 +7,15 @@ namespace TestConsoleApp
     {
         public static void Main(string[] args)
         {
-            //var customer = new Customer
-            //{
-            //    CustomerID = 1088,
-            //    LastName = "A",
-            //    FirstName = "B",
-            //    MiddleName = "C",
-            //    Address = "qwert123",
-            //    City = "Хельсинки",
-            //    Phone = "89049387419"
-            //};
+            var x = UnitOfWork.Products.GetAll();
 
-            //var zz = CustomerCRUD.UpdateCustomer(customer);
-            var x = OrderCRUD.GetAll();
+            var customer = new Customer
+            {
+                CustomerID = 1,
+                FirstName = "VLADIK"
+            };
+
+            UnitOfWork.Customers.Delete(customer);
         }
     }
 }

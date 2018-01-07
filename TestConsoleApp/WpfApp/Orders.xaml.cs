@@ -1,7 +1,9 @@
-﻿using DataLibrary;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using DataLibrary.Models;
+using DataLibrary.Models.Entities;
+using DataLibrary.Services.Repository;
 using WpfApp.Services;
 
 namespace WpfApp
@@ -11,24 +13,25 @@ namespace WpfApp
     /// </summary>
     public partial class Orders
     {
-        private List<OrderExtended> _orders = OrderCRUD.GetAll();
+        private List<OrderExtended> _orders = UnitOfWork.GetAllExtendedOrders();
+
         public Orders()
         {
             InitializeComponent();
             OrderDataGrid.ItemsSource = _orders;
-
         }
+
         private void DelOrderBtn(object sender, RoutedEventArgs e)
         {
-            var order = ((FrameworkElement)sender).DataContext as OrderExtended;
-            OrderCRUD.DeleteOrder(order);
-            _orders = OrderCRUD.GetAll();
+            var order = ((FrameworkElement) sender).DataContext as Order;
+            UnitOfWork.Orders.Delete(order);
+            _orders = UnitOfWork.GetAllExtendedOrders();
             OrderDataGrid.ItemsSource = _orders;
         }
 
         private void EditOrderBtn(object sender, RoutedEventArgs e)
         {
-            var order = ((FrameworkElement)sender).DataContext as OrderExtended;
+            var order = ((FrameworkElement) sender).DataContext as OrderExtended;
             StateService.CurrentOrder = order;
             Uri uri = new Uri("OrderForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
@@ -38,14 +41,17 @@ namespace WpfApp
         {
             this.NavigationService.Navigate(new Uri("Customers.xaml", UriKind.Relative));
         }
+
         private void ButtonEmployees_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Employees.xaml", UriKind.Relative));
         }
+
         private void ButtonProducts_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Products.xaml", UriKind.Relative));
         }
+
         private void ButtonOrders_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));

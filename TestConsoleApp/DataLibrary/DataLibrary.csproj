@@ -35,6 +35,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,19 +48,21 @@
   <ItemGroup>
     <Compile Include="Attributes\ForeignKey.cs" />
     <Compile Include="Attributes\PrimaryKey.cs" />
-    <Compile Include="ConnectionStringsService.cs" />
-    <Compile Include="CustomerCRUD.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Employee.cs" />
-    <Compile Include="EmployeeCRUD.cs" />
-    <Compile Include="NameID.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="OrderExtended.cs" />
-    <Compile Include="OrderCRUD.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="ProductCRUD.cs" />
+    <Compile Include="Services\ConnectionStringsService.cs" />
+    <Compile Include="Models\Entities\Customer.cs" />
+    <Compile Include="Models\Entities\Employee.cs" />
+    <Compile Include="Models\IsQuotedValue.cs" />
+    <Compile Include="Models\Entities\Order.cs" />
+    <Compile Include="Models\ExtendedOrder.cs" />
+    <Compile Include="Models\Entities\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IRepository.cs" />
+    <Compile Include="Services\Repository\CustomerRepository.cs" />
+    <Compile Include="Services\Repository\EmployeeRepository.cs" />
+    <Compile Include="Services\Repository\IRepository.cs" />
+    <Compile Include="Services\Repository\OrderRepository.cs" />
+    <Compile Include="Services\Repository\ProductRepository.cs" />
+    <Compile Include="Services\Repository\SQLServerRepository.cs" />
+    <Compile Include="Services\Repository\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,6 +1,6 @@
-﻿using DataLibrary.Models;
+﻿using DataLibrary.Models.Entities;
 
-namespace DataLibrary
+namespace DataLibrary.Models
 {
     public  class OrderExtended: Order
     {

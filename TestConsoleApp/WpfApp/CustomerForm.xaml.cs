@@ -4,6 +4,8 @@ using System.Windows;
 using System.Windows.Controls;
 using DataLibrary;
 using DataLibrary.Models;
+using DataLibrary.Models.Entities;
+using DataLibrary.Services.Repository;
 using MoreLinq;
 using WpfApp.Services;
 
@@ -55,11 +57,11 @@ namespace WpfApp
                 var customer = DataContext as Customer;
                 if (customer.CustomerID > 0)
                 {
-                    CustomerCRUD.UpdateCustomer(customer);
+                    UnitOfWork.Customers.Update(customer);
                 }
                 else
                 {
-                    CustomerCRUD.AddCustomer(DataContext as Customer);
+                    UnitOfWork.Customers.Add(customer);
                 }
 
                 this.NavigationService.Navigate(new Uri("Customers.xaml", UriKind.Relative));

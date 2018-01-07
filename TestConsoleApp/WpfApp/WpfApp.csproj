@@ -64,7 +64,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\NameID.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="Services\ComboBoxService.cs" />
+    <Compile Include="Services\ComboBoxTargets.cs" />
     <Compile Include="Services\StateService.cs" />
     <Compile Include="Validation\NotEmptyStringValidationRule.cs" />
     <Compile Include="Validation\NotNullValidationRule.cs" />
@@ -146,7 +149,6 @@
     <Compile Include="Products.xaml.cs">
       <DependentUpon>Products.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataLibrary
+namespace DataLibrary.Services
 {
     public static class ConnectionStringsService
     {

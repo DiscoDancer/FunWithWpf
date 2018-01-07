@@ -1,7 +1,7 @@
 ﻿using System;
 using DataLibrary.Attributes;
 
-namespace DataLibrary.Models
+namespace DataLibrary.Models.Entities
 {
     public class Order
     {

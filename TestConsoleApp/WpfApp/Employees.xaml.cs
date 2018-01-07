@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
-using DataLibrary;
 using System;
-using DataLibrary.Models;
+using DataLibrary.Models.Entities;
+using DataLibrary.Services.Repository;
 using WpfApp.Services;
 
 namespace WpfApp
@@ -13,7 +12,7 @@ namespace WpfApp
     /// </summary>
     public partial class Employees
     {
-        private List<Employee> _employees = EmployeeCRUD.GetAll();
+        private List<Employee> _employees = UnitOfWork.Employees.GetAll();
 
         public Employees()
         {
@@ -23,15 +22,15 @@ namespace WpfApp
         private void AddEmployeeBtn(object sender, RoutedEventArgs e)
         {
             StateService.CurrentEmployee = new Employee();
-            Uri uri = new Uri("EmployeeForm.xaml", UriKind.Relative);
+            var uri = new Uri("EmployeeForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
         }
 
         private void DelEmployeeBtn(object sender, RoutedEventArgs e)
         {
             var employee = ((FrameworkElement)sender).DataContext as Employee;
-            EmployeeCRUD.DeleteEmployee(employee);
-            _employees = EmployeeCRUD.GetAll();
+            UnitOfWork.Employees.Delete(employee);
+            _employees = UnitOfWork.Employees.GetAll();
             EmployeeDataGrid.ItemsSource = _employees;
         }
 
@@ -40,7 +39,7 @@ namespace WpfApp
             var employee = ((FrameworkElement)sender).DataContext as Employee;
             StateService.CurrentEmployee = employee;
 
-            Uri uri = new Uri("EmployeeForm.xaml", UriKind.Relative);
+            var uri = new Uri("EmployeeForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
         }
 

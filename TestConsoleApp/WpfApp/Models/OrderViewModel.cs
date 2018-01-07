@@ -1,6 +1,6 @@
-﻿using DataLibrary;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using DataLibrary.Models;
 using WpfApp.Services;
 
 namespace WpfApp.Models
@@ -10,11 +10,11 @@ namespace WpfApp.Models
         public OrderViewModel()
         {
             Order = StateService.CurrentOrder;
-            AllCustomers = CustomerCRUD.GetNameIds();
+            AllCustomers = ComboBoxService.GetOptions(ComboBoxTargets.Customers);
             CurrentCustomer = AllCustomers.FirstOrDefault(x => x.ID == Order.CustomerID);
-            AllEmployees = EmployeeCRUD.GetNameIds();
+            AllEmployees = ComboBoxService.GetOptions(ComboBoxTargets.Employees);
             CurrentEmployee = AllEmployees.FirstOrDefault(x => x.ID == Order.EmployeeID);
-            AllProducts = ProductCRUD.GetNameIds();
+            AllProducts = ComboBoxService.GetOptions(ComboBoxTargets.Products);
             CurrentProduct = AllProducts.FirstOrDefault(x => x.ID == Order.ProductID);
         }
 

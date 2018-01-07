@@ -1,12 +1,11 @@
-﻿using DataLibrary;
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using DataLibrary.Models;
+using DataLibrary.Models.Entities;
+using DataLibrary.Services.Repository;
 using MoreLinq;
 using WpfApp.Models;
-using WpfApp.Services;
 
 namespace WpfApp
 {
@@ -69,12 +68,11 @@ namespace WpfApp
 
                 if (order.OrderID > 0)
                 {
-                    OrderCRUD.UpdateOrder(order);
+                    UnitOfWork.Orders.Update(order);
                 }
                 else
                 {
-
-                    OrderCRUD.AddOrder(order);
+                    UnitOfWork.Orders.Add(order);
                 }
 
                 this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));

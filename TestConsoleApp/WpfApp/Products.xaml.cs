@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
-using DataLibrary;
-using System.Linq;
 using System;
-using DataLibrary.Models;
+using DataLibrary.Models.Entities;
+using DataLibrary.Services.Repository;
 using WpfApp.Services;
 
 namespace WpfApp
@@ -13,7 +12,7 @@ namespace WpfApp
     /// </summary>
     public partial class Products
     {
-        private List<Product> _products = ProductCRUD.GetAll();
+        private List<Product> _products = UnitOfWork.Products.GetAll();
         public Products()
         {
             InitializeComponent();
@@ -30,8 +29,8 @@ namespace WpfApp
         private void DelProductBtn(object sender, RoutedEventArgs e)
         {
             var product = ((FrameworkElement)sender).DataContext as Product;
-            ProductCRUD.DeleteProduct(product);
-            _products = ProductCRUD.GetAll();
+            UnitOfWork.Products.Delete(product);
+            _products = UnitOfWork.Products.GetAll();
             ProductDataGrid.ItemsSource = _products;
         }
 

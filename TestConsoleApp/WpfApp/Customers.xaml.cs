@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Windows;
 using DataLibrary;
 using DataLibrary.Models;
+using DataLibrary.Models.Entities;
+using DataLibrary.Services.Repository;
 using WpfApp.Services;
 
 namespace WpfApp
@@ -12,7 +14,7 @@ namespace WpfApp
     /// </summary>
     public partial class Customers
     {
-        private List<Customer> _customers = CustomerCRUD.GetAll();
+        private List<Customer> _customers = UnitOfWork.Customers.GetAll();
 
         public Customers()
         {
@@ -36,8 +38,8 @@ namespace WpfApp
         private void DelCustomerBtn(object sender, RoutedEventArgs e)
         {
             var customer = ((FrameworkElement)sender).DataContext as Customer;
-            CustomerCRUD.DeleteCustomer(customer);
-            _customers = CustomerCRUD.GetAll();
+            UnitOfWork.Customers.Delete(customer);
+            _customers = UnitOfWork.Customers.GetAll();
             CustomerDataGrid.ItemsSource = _customers;     
         }
 

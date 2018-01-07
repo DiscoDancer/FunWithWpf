@@ -1,11 +1,12 @@
-﻿using DataLibrary;
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using DataLibrary.Models;
+using DataLibrary.Models.Entities;
+using DataLibrary.Services.Repository;
 using MoreLinq;
 using WpfApp.Services;
+
 namespace WpfApp
 {
     /// <summary>
@@ -18,18 +19,22 @@ namespace WpfApp
             InitializeComponent();
             DataContext = StateService.CurrentProduct;
         }
+
         private void ButtonCustomers_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Customers.xaml", UriKind.Relative));
         }
+
         private void ButtonEmployees_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Employees.xaml", UriKind.Relative));
         }
+
         private void ButtonProducts_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Products.xaml", UriKind.Relative));
         }
+
         private void ButtonOrders_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));
@@ -52,12 +57,13 @@ namespace WpfApp
                 var product = DataContext as Product;
                 if (product.ProductID > 0)
                 {
-                    ProductCRUD.UpdateProduct(product);
+                    UnitOfWork.Products.Update(product);
                 }
                 else
                 {
-                    ProductCRUD.AddProduct(DataContext as Product);
+                    UnitOfWork.Products.Add(product);
                 }
+
                 this.NavigationService.Navigate(new Uri("Products.xaml", UriKind.Relative));
             }
         }
