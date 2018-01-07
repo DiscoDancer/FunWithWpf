@@ -1,4 +1,5 @@
 ﻿using DataLibrary;
+using DataLibrary.Models;
 
 namespace WpfApp.Services
 {

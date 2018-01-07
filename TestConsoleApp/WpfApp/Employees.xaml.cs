@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using DataLibrary;
 using System;
+using DataLibrary.Models;
 using WpfApp.Services;
 
 namespace WpfApp

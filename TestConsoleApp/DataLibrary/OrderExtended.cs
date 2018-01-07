@@ -1,4 +1,6 @@
-﻿namespace DataLibrary
+﻿using DataLibrary.Models;
+
+namespace DataLibrary
 {
     public  class OrderExtended: Order
     {

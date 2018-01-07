@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using DataLibrary;
+using DataLibrary.Models;
 using MoreLinq;
 using WpfApp.Services;
 

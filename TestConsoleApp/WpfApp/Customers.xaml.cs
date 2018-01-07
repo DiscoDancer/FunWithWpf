@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using DataLibrary;
+using DataLibrary.Models;
 using WpfApp.Services;
 
 namespace WpfApp
