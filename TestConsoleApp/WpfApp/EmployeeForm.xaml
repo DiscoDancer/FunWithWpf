@@ -97,9 +97,41 @@
                 <Label HorizontalContentAlignment="Center" Content="Position"/>
                 <TextBox  Margin="0,5,0,0" Text="{Binding Path=Position, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label HorizontalContentAlignment="Center" Content="Salary"/>
-                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Salary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox  Margin="0,5,0,5">
+                    <TextBox.Text>
+                        <Binding Path="Salary" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel>
+                                <AdornedElementPlaceholder x:Name="textBoxQuantity"/>
+                                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
                 <Label HorizontalContentAlignment="Center" Content="Prior Salary"/>
-                <TextBox  Margin="0,5,0,0" Text="{Binding Path=PriorSalary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox  Margin="0,5,0,0">
+                    <TextBox.Text>
+                        <Binding Path="PriorSalary" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:StringToIntValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel>
+                                <AdornedElementPlaceholder x:Name="textBoxQuantity"/>
+                                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
                 <Label HorizontalContentAlignment="Center" Content="Phone"/>
                 <TextBox  Margin="0,5,0,0" Text="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
