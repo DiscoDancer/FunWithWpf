@@ -42,22 +42,20 @@
 
             <StackPanel x:Name="stackone" Grid.Row="1" Width="400">
                 <Label HorizontalContentAlignment="Center" Content="Quantity"/>
-                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Order.Quantity, Mode=TwoWay}"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Order.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label HorizontalContentAlignment="Center" Content="Price"/>
-                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Order.Price, Mode=TwoWay}"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Order.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label HorizontalContentAlignment="Center" Content="Choose Customer"/>
-                <!--<ComboBox Margin="0,5,0,0" Name="ListCustomers" ItemsSource="{Binding Path=AllCustomers, Mode=TwoWay}" SelectedValue="{Binding Path=CurrentCustomer}" HorizontalAlignment="Left" Width="400">
-                </ComboBox>-->
-                <ComboBox Margin="0,5,0,0" Name="ListCustomers" ItemsSource="{Binding Path=AllCustomers, Mode=TwoWay}" SelectedValue="{Binding Path=CurrentCustomer}">
+                <ComboBox Margin="0,5,0,0" Name="ListCustomers" ItemsSource="{Binding Path=AllCustomers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=CurrentCustomer}">
                 </ComboBox>
                 <Label HorizontalContentAlignment="Center" Content="Choose Employee"/>
-                <ComboBox Margin="0,5,0,0" Name="ListEmployees" ItemsSource="{Binding Path=AllEmployees, Mode=TwoWay}" SelectedValue="{Binding Path=CurrentEmployee}">
+                <ComboBox Margin="0,5,0,0" Name="ListEmployees" ItemsSource="{Binding Path=AllEmployees, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=CurrentEmployee}">
                 </ComboBox>
                 <Label HorizontalContentAlignment="Center" Content="Choose Product"/>
-                <ComboBox Margin="0,5,0,0" Name="ListProducts" ItemsSource="{Binding Path=AllProducts, Mode=TwoWay}" SelectedValue="{Binding Path=CurrentProduct}">
+                <ComboBox Margin="0,5,0,0" Name="ListProducts" ItemsSource="{Binding Path=AllProducts, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding Path=CurrentProduct}">
                 </ComboBox>
                 <Label HorizontalContentAlignment="Center" Content="Choose Date"/>
-                <DatePicker Height="25" Width="120" HorizontalAlignment="Center" Name="datePicker1"  DisplayDate="{x:Static System:DateTime.Now}" SelectedDate="{Binding  Path=Order.OrderDate, Mode=TwoWay}"/>
+                <DatePicker Height="25" Width="120" HorizontalAlignment="Center" Name="datePicker1"  DisplayDate="{x:Static System:DateTime.Now}" SelectedDate="{Binding  Path=Order.OrderDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Grid Margin="0,5,0,0">
                     <Button Content="Save" Background="LightGreen" Height="20" Grid.Column="0" Click="BtnSave_Click"/>
                     <Button Content="Cancel" Background="Red" Height="20" Grid.Column="1" Click="BtnCancel_Click"/>
