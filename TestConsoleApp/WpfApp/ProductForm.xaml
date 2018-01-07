@@ -41,7 +41,23 @@
 
             <StackPanel x:Name="stackone" Grid.Row="1" Width="400">
                 <Label HorizontalContentAlignment="Center" Content="Name"/>
-                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox  Margin="0,5,0,0" x:Name="TextBoxName">
+                    <TextBox.Text>
+                        <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:NotEmptyStringRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel>
+                                <AdornedElementPlaceholder x:Name="textBoxQuantity"/>
+                                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </TextBox>
                 <Label HorizontalContentAlignment="Center" Content="Color"/>
                 <TextBox  Margin="0,5,0,0" Text="{Binding Path=Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label HorizontalContentAlignment="Center" Content="Description"/>

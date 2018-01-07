@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <Button VerticalAlignment="Center" Width="100" Margin="-320,0,0,395" Click="ButtonCustomers_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
-                    Customers
+                Customers
             </TextBlock>
         </Button>
         <Button  VerticalAlignment="Center" Width="100" Margin="-80,0,0,395" Click="ButtonEmployees_Click" FontSize="14" FontWeight="Bold">
@@ -52,7 +52,6 @@
                     <Validation.ErrorTemplate>
                         <ControlTemplate>
                             <StackPanel>
-                                <!-- Placeholder for the TextBox itself -->
                                 <AdornedElementPlaceholder x:Name="textBoxQuantity"/>
                                 <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
                             </StackPanel>

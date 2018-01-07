@@ -1,7 +1,9 @@
 ﻿using DataLibrary;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using MoreLinq;
 using WpfApp.Services;
 
 namespace WpfApp
@@ -35,16 +37,31 @@ namespace WpfApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var employee = DataContext as Employee;
-            if (employee.EmployeeID > 0)
+            var controls = new[]
             {
-                EmployeeCRUD.UpdateEmployee(employee);
-            }
-            else
+                TextBoxFirstName,
+                TextBoxMiddleName,
+                TextBoxLastName
+            };
+
+            controls.ForEach(x => x.GetBindingExpression(TextBox.TextProperty).UpdateSource());
+            var haveErrors = controls
+                .Select(Validation.GetHasError)
+                .Aggregate((x, y) => x || y);
+
+            if (!haveErrors)
             {
-                EmployeeCRUD.AddEmployee(DataContext as Employee);
+                var employee = DataContext as Employee;
+                if (employee.EmployeeID > 0)
+                {
+                    EmployeeCRUD.UpdateEmployee(employee);
+                }
+                else
+                {
+                    EmployeeCRUD.AddEmployee(DataContext as Employee);
+                }
+                this.NavigationService.Navigate(new Uri("Employees.xaml", UriKind.Relative));
             }
-            this.NavigationService.Navigate(new Uri("Employees.xaml", UriKind.Relative));
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)

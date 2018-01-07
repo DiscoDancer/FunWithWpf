@@ -1,7 +1,9 @@
 ﻿using DataLibrary;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using MoreLinq;
 using WpfApp.Services;
 namespace WpfApp
 {
@@ -34,16 +36,29 @@ namespace WpfApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var product = DataContext as Product;
-            if (product.ProductID > 0)
+            var controls = new[]
             {
-                ProductCRUD.UpdateProduct(product);
-            }
-            else
+                TextBoxName
+            };
+
+            controls.ForEach(x => x.GetBindingExpression(TextBox.TextProperty).UpdateSource());
+            var haveErrors = controls
+                .Select(Validation.GetHasError)
+                .Aggregate((x, y) => x || y);
+
+            if (!haveErrors)
             {
-                ProductCRUD.AddProduct(DataContext as Product);
+                var product = DataContext as Product;
+                if (product.ProductID > 0)
+                {
+                    ProductCRUD.UpdateProduct(product);
+                }
+                else
+                {
+                    ProductCRUD.AddProduct(DataContext as Product);
+                }
+                this.NavigationService.Navigate(new Uri("Products.xaml", UriKind.Relative));
             }
-            this.NavigationService.Navigate(new Uri("Products.xaml", UriKind.Relative));
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
