@@ -57,7 +57,7 @@
                 <ComboBox Margin="0,5,0,0" Name="ListProducts" ItemsSource="{Binding Path=AllProducts, Mode=TwoWay}" SelectedValue="{Binding Path=CurrentProduct}">
                 </ComboBox>
                 <Label HorizontalContentAlignment="Center" Content="Choose Date"/>
-                <DatePicker Height="25" Width="120" HorizontalAlignment="Center" Name="datePicker1"  DisplayDate="{x:Static System:DateTime.Now}" SelectedDate="{Binding  Path=AvailableFrom, Mode=TwoWay}"/>
+                <DatePicker Height="25" Width="120" HorizontalAlignment="Center" Name="datePicker1"  DisplayDate="{x:Static System:DateTime.Now}" SelectedDate="{Binding  Path=Order.OrderDate, Mode=TwoWay}"/>
                 <Grid Margin="0,5,0,0">
                     <Button Content="Save" Background="LightGreen" Height="20" Grid.Column="0" Click="BtnSave_Click"/>
                     <Button Content="Cancel" Background="Red" Height="20" Grid.Column="1" Click="BtnCancel_Click"/>
