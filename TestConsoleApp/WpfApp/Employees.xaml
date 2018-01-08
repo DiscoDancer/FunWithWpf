@@ -43,6 +43,7 @@
                     <DataGridTextColumn Binding="{Binding MiddleName}" Width="*" Header="Middle Name"/>
                     <DataGridTextColumn Binding="{Binding Position}" Width="2*" Header="Position"/>
                     <DataGridTextColumn Binding="{Binding Salary}" Width="*" Header="Salary"/>
+                    <DataGridTextColumn Binding="{Binding PriorSalary}" Width="*" Header="Prior Salary"/>
                     <DataGridTextColumn Binding="{Binding Phone}" Width="*" Header="Phone"/>
                     <DataGridTemplateColumn Width="*">
                         <DataGridTemplateColumn.CellTemplate>

@@ -21,8 +21,8 @@ namespace DataLibrary.Services.Repository
             using (var connection = new SqlConnection(SqlConnect))
             {
 
-                return connection.Query<OrderExtended>("Select Orders.OrderID, Customers.CustomerID, Employees.EmployeeID, Products.ProductID, CONCAT(Customers.LastName, + space(1) + Customers.MiddleName, + space(1) + Customers.FirstName) as CustomerName," +
-                                                       " CONCAT(Employees.LastName, + space(1) + Employees.MiddleName, + space(1) + Employees.FirstName) as EmployeeName, Products.Name as ProductName," +
+                return connection.Query<OrderExtended>("Select Orders.OrderID, Customers.CustomerID, Employees.EmployeeID, Products.ProductID, CONCAT(Customers.LastName, + space(1) + Customers.FirstName, + space(1) + Customers.MiddleName) as CustomerName," +
+                                                       " CONCAT(Employees.LastName, + space(1) + Employees.FirstName, + space(1) + Employees.MiddleName) as EmployeeName, Products.Name as ProductName," +
                                                        " Orders.Quantity, Orders.Price, Orders.OrderDate from Orders left join Customers on Orders.CustomerID = Customers.CustomerID" +
                                                        " left join Employees on Orders.EmployeeID = Employees.EmployeeID left join Products on Orders.ProductID = Products.ProductID")
                     .ToList();
