@@ -26,12 +26,23 @@ CREATE TABLE Employees
 	Phone char(11)
 );
 
+CREATE TABLE ProductCategory
+(
+	CategoryID INT NOT NULL IDENTITY PRIMARY KEY,
+	[Name] varchar(100) NOT NULL
+);
+
 CREATE TABLE Products
 (
 	ProductID int NOT NULL IDENTITY PRIMARY KEY,
+	CategoryID INT NOT NULL,
 	[Name] nvarchar(50) NOT NULL,
 	Color nchar(20),
-	[Description] nvarchar(max)
+	[Description] nvarchar(max),
+	CONSTRAINT FK_CategoryID FOREIGN KEY (CategoryID)     
+    	REFERENCES ProductCategory (CategoryID)     
+    	ON DELETE CASCADE    
+    	ON UPDATE CASCADE
 );
 
 CREATE TABLE Orders
@@ -57,6 +68,7 @@ CREATE TABLE Orders
     	ON UPDATE CASCADE
 );
 
+DBCC CHECKIDENT (ProductCategory, RESEED, 1);
 DBCC CHECKIDENT (Products, RESEED, 1);
 DBCC CHECKIDENT (Customers, RESEED, 1);
 DBCC CHECKIDENT (Employees, RESEED, 1);

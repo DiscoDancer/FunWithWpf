@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="Attributes\ForeignKey.cs" />
     <Compile Include="Attributes\PrimaryKey.cs" />
+    <Compile Include="Models\Entities\ProductCategory.cs" />
+    <Compile Include="Models\ExtendedProduct.cs" />
     <Compile Include="Services\ConnectionStringsService.cs" />
     <Compile Include="Models\Entities\Customer.cs" />
     <Compile Include="Models\Entities\Employee.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="Services\Repository\EmployeeRepository.cs" />
     <Compile Include="Services\Repository\IRepository.cs" />
     <Compile Include="Services\Repository\OrderRepository.cs" />
+    <Compile Include="Services\Repository\ProductCategoryRepository.cs" />
     <Compile Include="Services\Repository\ProductRepository.cs" />
     <Compile Include="Services\Repository\SQLServerRepository.cs" />
     <Compile Include="Services\Repository\UnitOfWork.cs" />

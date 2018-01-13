@@ -66,6 +66,9 @@
     </ApplicationDefinition>
     <Compile Include="Models\NameID.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="ProductCategory.xaml.cs">
+      <DependentUpon>ProductCategory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\ComboBoxService.cs" />
     <Compile Include="Services\ComboBoxTargets.cs" />
     <Compile Include="Services\StateService.cs" />
@@ -121,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Orders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

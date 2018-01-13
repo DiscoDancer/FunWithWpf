@@ -1,21 +1,20 @@
-﻿<Page x:Class="WpfApp.Orders"
+﻿<Page x:Class="WpfApp.ProductCategory"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      mc:Ignorable="d" 
-      d:DesignHeight="300"
-      Title="Orders">
+      mc:Ignorable="d"
+      Title="ProductCategory">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Button VerticalAlignment="Center" Width="100" Margin="-320,10,0,10" Click="ButtonCustomers_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
-                Customers
+                    Customers
             </TextBlock>
         </Button>
         <Button  VerticalAlignment="Center" Width="100" Margin="-80,10,0,10" Click="ButtonEmployees_Click" FontSize="14" FontWeight="Bold">
@@ -23,33 +22,28 @@
                 Employees
             </TextBlock>
         </Button>
-        <Button  VerticalAlignment="Center" Width="100" Margin="160,10,0,10" Click="ButtonProducts_Click" FontSize="14" FontWeight="Bold">
+        <Button  VerticalAlignment="Center" Width="100" Margin="160,10,0,10" IsEnabled="False" Click="ButtonProducts_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                 Products
             </TextBlock>
         </Button>
-        <Button VerticalAlignment="Center" Width="100" Margin="400,10,0,10" IsEnabled="False" Click="ButtonOrders_Click" FontSize="14" FontWeight="Bold">
+        <Button VerticalAlignment="Center" Width="100" Margin="400,10,0,10" Click="ButtonOrders_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                 Orders
             </TextBlock>
         </Button>
 
-        <Button Grid.Row="0" Content="Add order" Width="90" FontWeight="Bold" Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="AddOrderBtn" x:Name="AddBtn"/>
+        <Button Grid.Row="0" Content="Add category" Width="90" FontWeight="Bold" Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" x:Name="AddBtn" Click="AddProductBtn"/>
         <Grid Grid.Row="1">
-            <DataGrid x:Name="OrderDataGrid" IsReadOnly="True" VerticalAlignment="Top" AutoGenerateColumns="False" ItemsSource="{Binding OrderDataGrid}">
+            <DataGrid x:Name="ProductCategoryDataGrid" IsReadOnly="True" VerticalAlignment="Top" HorizontalAlignment="Left" AutoGenerateColumns="False" ItemsSource="{Binding ProductDataGrid}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding OrderID}" Width="*" Header="Order ID"/>
-                    <DataGridTextColumn Binding="{Binding CustomerName}" Width="2*" Header="Customer FIO"/>
-                    <DataGridTextColumn Binding="{Binding EmployeeName}" Width="2*" Header="Employee FIO"/>
-                    <DataGridTextColumn Binding="{Binding ProductName}" Width="3*" Header="Product Name"/>
-                    <DataGridTextColumn Binding="{Binding Quantity}" Width="*" Header="Quantity"/>
-                    <DataGridTextColumn Binding="{Binding Price}" Width="*" Header="Price"/>
-                    <DataGridTextColumn Binding="{Binding OrderDate, StringFormat='dd/MM/yyyy'}" Width="2*" Header="Order Date"/>
+                    <DataGridTextColumn Binding="{Binding CategoryID}" Width="*" Header="Product ID"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Width="3*" Header="Name"/>
                     <DataGridTemplateColumn Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Edit" Background="Orange" Click="EditOrderBtn"></Button>
+                                    <Button Content="Edit" Background="Orange" Click="EditProductBtn"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -58,11 +52,12 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Delete" Background="Red" Click="DelOrderBtn"></Button>
+                                    <Button Content="Delete" Background="Red" Click="DelProductBtn"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
