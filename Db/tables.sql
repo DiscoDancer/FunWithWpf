@@ -2,6 +2,7 @@ DROP TABLE Orders;
 DROP TABLE Customers;
 DROP TABLE Employees;
 DROP TABLE Products;
+DROP TABLE ProductCategory;
 
 CREATE TABLE Customers
 (

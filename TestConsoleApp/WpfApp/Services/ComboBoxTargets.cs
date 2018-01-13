@@ -4,6 +4,7 @@
     {
         Customers,
         Employees,
-        Products
+        Products,
+        ProductCategory
     }
 }

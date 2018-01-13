@@ -10,5 +10,6 @@ namespace WpfApp.Services
         public static Employee CurrentEmployee { get; set; }
         public static Product CurrentProduct { get; set; }
         public static OrderExtended CurrentOrder { get; set; }
+        public static ProductCategory CurrentCategory { get; set; } 
     }
 }

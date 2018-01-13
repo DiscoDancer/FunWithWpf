@@ -22,7 +22,7 @@
                 Employees
             </TextBlock>
         </Button>
-        <Button  VerticalAlignment="Center" Width="100" Margin="160,10,0,10" IsEnabled="False" Click="ButtonProducts_Click" FontSize="14" FontWeight="Bold">
+        <Button  VerticalAlignment="Center" Width="100" Margin="160,10,0,10" Click="ButtonProducts_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                 Products
             </TextBlock>
@@ -33,17 +33,17 @@
             </TextBlock>
         </Button>
 
-        <Button Grid.Row="0" Content="Add category" Width="90" FontWeight="Bold" Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" x:Name="AddBtn" Click="AddProductBtn"/>
+        <Button Grid.Row="0" Content="Add category" Width="90" FontWeight="Bold" Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" x:Name="AddBtn" Click="AddCategoryBtn"/>
         <Grid Grid.Row="1">
-            <DataGrid x:Name="ProductCategoryDataGrid" IsReadOnly="True" VerticalAlignment="Top" HorizontalAlignment="Left" AutoGenerateColumns="False" ItemsSource="{Binding ProductDataGrid}">
+            <DataGrid x:Name="ProductCategoryDataGrid" IsReadOnly="True" HorizontalAlignment="Left" AutoGenerateColumns="False" ItemsSource="{Binding ProductDataGrid}" Margin="0,0,0,-0.4">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding CategoryID}" Width="*" Header="Product ID"/>
+                    <DataGridTextColumn Binding="{Binding CategoryID}" Width="*" Header="Category ID"/>
                     <DataGridTextColumn Binding="{Binding Name}" Width="3*" Header="Name"/>
                     <DataGridTemplateColumn Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Edit" Background="Orange" Click="EditProductBtn"></Button>
+                                    <Button Content="Edit" Background="Orange" Click="EditCategoryBtn"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -52,7 +52,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Button Content="Delete" Background="Red" Click="DelProductBtn"></Button>
+                                    <Button Content="Delete" Background="Red" Click="DelCategoryBtn"></Button>
                                 </Grid>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

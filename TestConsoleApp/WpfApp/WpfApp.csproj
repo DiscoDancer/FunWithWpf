@@ -69,6 +69,9 @@
     <Compile Include="ProductCategory.xaml.cs">
       <DependentUpon>ProductCategory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProductCategoryForm.xaml.cs">
+      <DependentUpon>ProductCategoryForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\ComboBoxService.cs" />
     <Compile Include="Services\ComboBoxTargets.cs" />
     <Compile Include="Services\StateService.cs" />
@@ -128,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ProductCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProductCategoryForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
