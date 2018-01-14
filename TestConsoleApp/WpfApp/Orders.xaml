@@ -47,6 +47,7 @@
                     <DataGridTextColumn Binding="{Binding CustomerName}" Width="2*" Header="Customer FIO"/>
                     <DataGridTextColumn Binding="{Binding EmployeeName}" Width="2*" Header="Employee FIO"/>
                     <DataGridTextColumn Binding="{Binding ProductName}" Width="3*" Header="Product Name"/>
+                    <DataGridTextColumn Binding="{Binding ProductCategory}" Width="3*" Header="Product Category"/>
                     <DataGridTextColumn Binding="{Binding Quantity}" Width="*" Header="Quantity"/>
                     <DataGridTextColumn Binding="{Binding Price}" Width="*" Header="Price"/>
                     <DataGridTextColumn Binding="{Binding OrderDate, StringFormat='dd/MM/yyyy'}" Width="2*" Header="Order Date"/>
