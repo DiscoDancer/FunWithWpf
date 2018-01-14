@@ -1,8 +1,9 @@
-DROP TABLE Orders;
-DROP TABLE Customers;
-DROP TABLE Employees;
-DROP TABLE Products;
-DROP TABLE ProductCategory;
+DROP TABLE IF EXISTS Orders;
+DROP TABLE IF EXISTS Customers;
+DROP TABLE IF EXISTS Employees;
+DROP TABLE IF EXISTS Products;
+DROP TABLE IF EXISTS ProductCategories;
+DROP TABLE IF EXISTS ProductCategory;
 
 CREATE TABLE Customers
 (
@@ -27,7 +28,7 @@ CREATE TABLE Employees
 	Phone char(11)
 );
 
-CREATE TABLE ProductCategory
+CREATE TABLE ProductCategories
 (
 	CategoryID INT NOT NULL IDENTITY PRIMARY KEY,
 	[Name] varchar(100) NOT NULL
@@ -41,7 +42,7 @@ CREATE TABLE Products
 	Color nchar(20),
 	[Description] nvarchar(max),
 	CONSTRAINT FK_CategoryID FOREIGN KEY (CategoryID)     
-    	REFERENCES ProductCategory (CategoryID)     
+    	REFERENCES ProductCategories (CategoryID)     
     	ON DELETE CASCADE    
     	ON UPDATE CASCADE
 );
@@ -69,7 +70,7 @@ CREATE TABLE Orders
     	ON UPDATE CASCADE
 );
 
-DBCC CHECKIDENT (ProductCategory, RESEED, 1);
+DBCC CHECKIDENT (ProductCategories, RESEED, 1);
 DBCC CHECKIDENT (Products, RESEED, 1);
 DBCC CHECKIDENT (Customers, RESEED, 1);
 DBCC CHECKIDENT (Employees, RESEED, 1);

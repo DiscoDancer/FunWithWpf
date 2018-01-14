@@ -2,7 +2,7 @@
 
 namespace DataLibrary.Models
 {
-    public  class OrderExtended: Order
+    public  class ExtendedOrder: Order
     {
         public string CustomerName { get; set; }
         public string EmployeeName { get; set; }

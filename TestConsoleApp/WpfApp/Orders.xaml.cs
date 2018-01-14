@@ -13,7 +13,7 @@ namespace WpfApp
     /// </summary>
     public partial class Orders
     {
-        private List<OrderExtended> _orders = UnitOfWork.GetAllExtendedOrders();
+        private List<ExtendedOrder> _orders = UnitOfWork.GetAllExtendedOrders();
 
         public Orders()
         {
@@ -31,7 +31,7 @@ namespace WpfApp
 
         private void EditOrderBtn(object sender, RoutedEventArgs e)
         {
-            var order = ((FrameworkElement) sender).DataContext as OrderExtended;
+            var order = ((FrameworkElement) sender).DataContext as ExtendedOrder;
             StateService.CurrentOrder = order;
             Uri uri = new Uri("OrderForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
@@ -60,7 +60,7 @@ namespace WpfApp
 
         private void AddOrderBtn(object sender, RoutedEventArgs e)
         {
-            StateService.CurrentOrder = new OrderExtended();
+            StateService.CurrentOrder = new ExtendedOrder();
             Uri uri = new Uri("OrderForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
         }
