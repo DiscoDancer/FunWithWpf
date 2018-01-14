@@ -33,6 +33,10 @@ namespace WpfApp
         {
             this.NavigationService.Navigate(new Uri("Products.xaml", UriKind.Relative));
         }
+        private void ButtonCategory_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("ProductCategory.xaml", UriKind.Relative));
+        }
         private void ButtonOrders_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));

@@ -12,25 +12,31 @@
     Background="LightGoldenrodYellow">
         <Grid>
 
-            <Button VerticalAlignment="Center" Margin="-360,0,0,150" Width="100" x:Name="ButtonCustomers" Click="ButtonCustomers_Click" FontSize="15" FontWeight="Bold">
+            <Button VerticalAlignment="Center" Margin="-470,0,0,150" Width="100" x:Name="ButtonCustomers" Click="ButtonCustomers_Click" FontSize="15" FontWeight="Bold">
                 <TextBlock>
                     Customers
                 </TextBlock>
             </Button>
 
-            <Button  VerticalAlignment="Center" Margin="-110,0,0,150" Width="100" Click="ButtonEmployees_Click" FontSize="15" FontWeight="Bold">
+            <Button  VerticalAlignment="Center" Margin="-230,0,0,150" Width="100" Click="ButtonEmployees_Click" FontSize="15" FontWeight="Bold">
                 <TextBlock>
                     Employees
                 </TextBlock>
             </Button>
 
-            <Button  VerticalAlignment="Center" Margin="140,0,0,150" Width="100" Click="ButtonProducts_Click" FontSize="15" FontWeight="Bold">
+            <Button  VerticalAlignment="Center" Margin="10,0,0,150" Width="100" Click="ButtonProducts_Click" FontSize="15" FontWeight="Bold">
                 <TextBlock>
                     Products
                 </TextBlock>
             </Button>
+            
+            <Button  VerticalAlignment="Center" Margin="250,0,0,150" Width="100" Click="ButtonCategory_Click" FontSize="15" FontWeight="Bold">
+                <TextBlock>
+                    Categories
+                </TextBlock>
+            </Button>
 
-            <Button VerticalAlignment="Center" Margin="390,0,0,150" Width="100" Click="ButtonOrders_Click" FontSize="15" FontWeight="Bold">
+            <Button VerticalAlignment="Center" Margin="490,0,0,150" Width="100" Click="ButtonOrders_Click" FontSize="15" FontWeight="Bold">
                 <TextBlock>
                     Orders
                 </TextBlock>

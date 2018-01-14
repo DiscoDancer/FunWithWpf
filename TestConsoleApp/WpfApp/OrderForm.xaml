@@ -14,22 +14,27 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Button VerticalAlignment="Center" Width="100" Margin="-320,0,0,550" Click="ButtonCustomers_Click" FontSize="14" FontWeight="Bold">
+        <Button VerticalAlignment="Center" Width="100" Margin="-400,-10,0,395" Click="ButtonCustomers_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
-                    Customers
+                Customers
             </TextBlock>
         </Button>
-        <Button  VerticalAlignment="Center" Width="100" Margin="-80,0,0,550" Click="ButtonEmployees_Click" FontSize="14" FontWeight="Bold">
+        <Button  VerticalAlignment="Center" Width="100" Margin="-160,-10,0,395" Click="ButtonEmployees_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                 Employees
             </TextBlock>
         </Button>
-        <Button  VerticalAlignment="Center" Width="100" Margin="160,0,0,550" Click="ButtonProducts_Click" FontSize="14" FontWeight="Bold">
+        <Button  VerticalAlignment="Center" Width="100" Margin="80,-10,0,395" Click="ButtonProducts_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                 Products
             </TextBlock>
         </Button>
-        <Button VerticalAlignment="Center" Width="100" Margin="400,0,0,550" Click="ButtonOrders_Click" FontSize="14" FontWeight="Bold">
+        <Button  VerticalAlignment="Center" Width="100" Margin="320,-10,0,395" Click="ButtonCategory_Click" FontSize="14" FontWeight="Bold">
+            <TextBlock>
+                Categories
+            </TextBlock>
+        </Button>
+        <Button VerticalAlignment="Center" Width="100" Margin="560,-10,0,395" Click="ButtonOrders_Click" FontSize="14" FontWeight="Bold">
             <TextBlock>
                 Orders
             </TextBlock>

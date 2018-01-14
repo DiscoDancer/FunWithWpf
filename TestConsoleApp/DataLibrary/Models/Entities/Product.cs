@@ -13,9 +13,5 @@ namespace DataLibrary.Models.Entities
         public string Color { get; set; }
         public string Description { get; set; }
 
-        public static implicit operator Product(global::WpfApp.ProductCategory v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

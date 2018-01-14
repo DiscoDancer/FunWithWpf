@@ -5,10 +5,59 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
       Title="ProductCategoryForm">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Button VerticalAlignment="Center" Width="100" Margin="-400,10,0,395" Click="ButtonCustomers_Click" FontSize="14" FontWeight="Bold">
+            <TextBlock>
+                Customers
+            </TextBlock>
+        </Button>
+        <Button  VerticalAlignment="Center" Width="100" Margin="-160,10,0,395" Click="ButtonEmployees_Click" FontSize="14" FontWeight="Bold">
+            <TextBlock>
+                Employees
+            </TextBlock>
+        </Button>
+        <Button  VerticalAlignment="Center" Width="100" Margin="80,10,0,395" Click="ButtonProducts_Click" FontSize="14" FontWeight="Bold">
+            <TextBlock>
+                Products
+            </TextBlock>
+        </Button>
+        <Button  VerticalAlignment="Center" Width="100" Margin="320,10,0,395" Click="ButtonCategory_Click" FontSize="14" FontWeight="Bold">
+            <TextBlock>
+                Categories
+            </TextBlock>
+        </Button>
+        <Button VerticalAlignment="Center" Width="100" Margin="560,10,0,395" Click="ButtonOrders_Click" FontSize="14" FontWeight="Bold">
+            <TextBlock>
+                Orders
+            </TextBlock>
+        </Button>
+        <Grid Margin="100,100,100,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Label HorizontalAlignment="Center"  Content="Edit Category Product" FontSize="15" FontWeight="Medium"/>
+
+            <StackPanel x:Name="stackone" Grid.Row="1" Width="400">
+                <Label HorizontalContentAlignment="Center" Content="Name"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Name, Mode=TwoWay}"/>
+                <Grid Margin="0,5,0,0">
+                    <Button Content="Save" Background="LightGreen" Height="20" Grid.Column="0" Click="BtnSave_Click"/>
+                    <Button Content="Cancel" Background="Red" Height="20" Grid.Column="1" Click="BtnCancel_Click"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </Page>

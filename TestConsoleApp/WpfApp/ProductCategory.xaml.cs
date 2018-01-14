@@ -12,7 +12,7 @@ namespace WpfApp
     /// </summary>
     public partial class ProductCategory
     {
-        //private List<ProductCategory> _categories = UnitOfWork.ProductCategory.GetAll();
+        //private List<ProductCategory> _category = UnitOfWork.ProductCategory.GetAll();
         public ProductCategory()
         {
             InitializeComponent();
@@ -20,7 +20,6 @@ namespace WpfApp
 
         private void AddCategoryBtn(object sender, RoutedEventArgs e)
         {
-            StateService.CurrentCategory = new ProductCategory();
             Uri uri = new Uri("ProductCategoryForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
         }
@@ -31,10 +30,29 @@ namespace WpfApp
         }
         private void EditCategoryBtn(object sender, RoutedEventArgs e)
         {
-            var category = ((FrameworkElement)sender).DataContext as ProductCategory;
-            StateService.CurrentCategory = category;
-            Uri uri = new Uri("ProductForm.xaml", UriKind.Relative);
+            Uri uri = new Uri("ProductCategoryForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
         }
+        private void ButtonCustomers_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Customers.xaml", UriKind.Relative));
+        }
+        private void ButtonEmployees_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Employees.xaml", UriKind.Relative));
+        }
+        private void ButtonProducts_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Products.xaml", UriKind.Relative));
+        }
+        private void ButtonCategory_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("ProductCategory.xaml", UriKind.Relative));
+        }
+        private void ButtonOrders_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));
+        }
     }
+
 }
