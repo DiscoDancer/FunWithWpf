@@ -36,10 +36,18 @@ namespace DataLibrary.Services.Repository
             using (var connection = new SqlConnection(SqlConnect))
             {
                 return connection.Query<ExtendedOrder>(
-                        "Select Orders.OrderID, Customers.CustomerID, Employees.EmployeeID, Products.ProductID, CONCAT(Customers.LastName, + space(1) + Customers.FirstName, + space(1) + Customers.MiddleName) as CustomerName," +
-                        " CONCAT(Employees.LastName, + space(1) + Employees.FirstName, + space(1) + Employees.MiddleName) as EmployeeName, Products.Name as ProductName," +
-                        " Orders.Quantity, Orders.Price, Orders.OrderDate from Orders left join Customers on Orders.CustomerID = Customers.CustomerID" +
-                        " left join Employees on Orders.EmployeeID = Employees.EmployeeID left join Products on Orders.ProductID = Products.ProductID")
+                    " Select" +
+                    " Orders.OrderID, Orders.Quantity, Orders.Price, Orders.OrderDate," +
+                    " Customers.CustomerID, CONCAT(Customers.LastName, + space(1) + Customers.FirstName, + space(1) + Customers.MiddleName) as CustomerName," +
+                    " Employees.EmployeeID, CONCAT(Employees.LastName, + space(1) + Employees.FirstName, + space(1) + Employees.MiddleName) as EmployeeName," +
+                    " Products.ProductID, Products.Name as ProductName," +
+                    " ProductCategories.Name as ProductCategory" +
+                    " from Orders " +
+                    " left join Customers on Orders.CustomerID = Customers.CustomerID" +
+                    " left join Employees on Orders.EmployeeID = Employees.EmployeeID" +
+                    " left join Products on Orders.ProductID = Products.ProductID" +
+                    " left join ProductCategories on Products.CategoryID = ProductCategories.CategoryID"
+                        )
                     .ToList();
             }
         }
