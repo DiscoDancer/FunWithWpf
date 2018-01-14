@@ -3,6 +3,6 @@ namespace DataLibrary.Services.Repository
 {
     class ProductCategoryRepository : SQLServerRepository<ProductCategory>
     {
-        protected override string TableName => "ProductCategory";
+        protected override string TableName => "ProductCategories";
     }
 }

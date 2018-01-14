@@ -13,7 +13,7 @@ namespace DataLibrary.Services.Repository
         public static IRepository<Customer> Customers { get; } = new CustomerRepository();
         public static IRepository<Employee> Employees { get; } = new EmployeeRepository();
         public static IRepository<Product> Products { get; } = new ProductRepository();
-        public static IRepository<ProductCategory> ProductCategory { get; } = new ProductCategoryRepository();
+        public static IRepository<ProductCategory> ProductCategories { get; } = new ProductCategoryRepository();
         public static IRepository<Order> Orders { get; } = new OrderRepository();
 
         private static readonly string SqlConnect = ConnectionStringsService.Resolve();

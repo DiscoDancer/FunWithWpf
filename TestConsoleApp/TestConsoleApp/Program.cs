@@ -7,12 +7,7 @@ namespace TestConsoleApp
     {
         public static void Main(string[] args)
         {
-            var customer = new Customer
-            {
-                Address = "RRR"
-            };
-
-            UnitOfWork.Customers.Add(customer);
+            var zz = UnitOfWork.ProductCategories.GetAll();
         }
     }
 }
