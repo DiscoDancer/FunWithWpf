@@ -1,5 +1,4 @@
-﻿using DataLibrary.Models.Entities;
-using DataLibrary.Services.Repository;
+﻿using DataLibrary.Services.Repository;
 
 namespace TestConsoleApp
 {
@@ -7,7 +6,7 @@ namespace TestConsoleApp
     {
         public static void Main(string[] args)
         {
-            var zz = UnitOfWork.ProductCategories.GetAll();
+            var zz = UnitOfWork.GetAllExtendedProducts();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
@@ -20,18 +19,27 @@ namespace DataLibrary.Services.Repository
 
         public static List<ExtendedProduct> GetAllExtendedProducts()
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(SqlConnect))
+            {
+                return connection.Query<ExtendedProduct>(
+                    " Select Products.ProductID, Products.CategoryID, Products.Name, Products.Color, Products.Description," +
+                    " ProductCategories.Name as CategoryName" +
+                    " From Products" +
+                    " Inner Join ProductCategories" +
+                    " On Products.CategoryID = ProductCategories.CategoryID"
+                ).ToList();
+            }
         }
 
         public static List<ExtendedOrder> GetAllExtendedOrders()
         {
             using (var connection = new SqlConnection(SqlConnect))
             {
-
-                return connection.Query<ExtendedOrder>("Select Orders.OrderID, Customers.CustomerID, Employees.EmployeeID, Products.ProductID, CONCAT(Customers.LastName, + space(1) + Customers.FirstName, + space(1) + Customers.MiddleName) as CustomerName," +
-                                                       " CONCAT(Employees.LastName, + space(1) + Employees.FirstName, + space(1) + Employees.MiddleName) as EmployeeName, Products.Name as ProductName," +
-                                                       " Orders.Quantity, Orders.Price, Orders.OrderDate from Orders left join Customers on Orders.CustomerID = Customers.CustomerID" +
-                                                       " left join Employees on Orders.EmployeeID = Employees.EmployeeID left join Products on Orders.ProductID = Products.ProductID")
+                return connection.Query<ExtendedOrder>(
+                        "Select Orders.OrderID, Customers.CustomerID, Employees.EmployeeID, Products.ProductID, CONCAT(Customers.LastName, + space(1) + Customers.FirstName, + space(1) + Customers.MiddleName) as CustomerName," +
+                        " CONCAT(Employees.LastName, + space(1) + Employees.FirstName, + space(1) + Employees.MiddleName) as EmployeeName, Products.Name as ProductName," +
+                        " Orders.Quantity, Orders.Price, Orders.OrderDate from Orders left join Customers on Orders.CustomerID = Customers.CustomerID" +
+                        " left join Employees on Orders.EmployeeID = Employees.EmployeeID left join Products on Orders.ProductID = Products.ProductID")
                     .ToList();
             }
         }
