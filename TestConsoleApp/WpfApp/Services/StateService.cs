@@ -1,5 +1,4 @@
-﻿using DataLibrary;
-using DataLibrary.Models;
+﻿using DataLibrary.Models;
 using DataLibrary.Models.Entities;
 
 namespace WpfApp.Services

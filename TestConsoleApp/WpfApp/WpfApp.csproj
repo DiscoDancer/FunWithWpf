@@ -66,8 +66,8 @@
     </ApplicationDefinition>
     <Compile Include="Models\NameID.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
-    <Compile Include="ProductCategory.xaml.cs">
-      <DependentUpon>ProductCategory.xaml</DependentUpon>
+    <Compile Include="ProductCategories.xaml.cs">
+      <DependentUpon>ProductCategories.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProductCategoryForm.xaml.cs">
       <DependentUpon>ProductCategoryForm.xaml</DependentUpon>
@@ -130,7 +130,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProductCategory.xaml">
+    <Page Include="ProductCategories.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

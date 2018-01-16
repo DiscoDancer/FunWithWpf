@@ -8,25 +8,31 @@ using WpfApp.Services;
 namespace WpfApp
 {
     /// <summary>
-    /// Interaction logic for ProductCategory.xaml
+    /// Interaction logic for ProductCategories.xaml
     /// </summary>
-    public partial class ProductCategory
+    public partial class ProductCategories
     {
-        //private List<ProductCategory> _category = UnitOfWork.ProductCategory.GetAll();
-        public ProductCategory()
+        private List<ProductCategory> _categories = UnitOfWork.ProductCategories.GetAll();
+
+        public ProductCategories()
         {
             InitializeComponent();
+            ProductCategoryDataGrid.ItemsSource = _categories;
         }
 
         private void AddCategoryBtn(object sender, RoutedEventArgs e)
         {
+            StateService.CurrentCategory = new ProductCategory();
             Uri uri = new Uri("ProductCategoryForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
         }
 
         private void DelCategoryBtn(object sender, RoutedEventArgs e)
         {
-            
+            var category = ((FrameworkElement)sender).DataContext as ProductCategory;
+            UnitOfWork.ProductCategories.Delete(category);
+            _categories = UnitOfWork.ProductCategories.GetAll();
+            ProductCategoryDataGrid.ItemsSource = _categories;
         }
         private void EditCategoryBtn(object sender, RoutedEventArgs e)
         {
@@ -47,7 +53,7 @@ namespace WpfApp
         }
         private void ButtonCategory_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("ProductCategory.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("ProductCategories.xaml", UriKind.Relative));
         }
         private void ButtonOrders_Click(object sender, RoutedEventArgs e)
         {

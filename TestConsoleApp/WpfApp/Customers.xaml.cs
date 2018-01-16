@@ -40,7 +40,7 @@ namespace WpfApp
             var customer = ((FrameworkElement)sender).DataContext as Customer;
             UnitOfWork.Customers.Delete(customer);
             _customers = UnitOfWork.Customers.GetAll();
-            CustomerDataGrid.ItemsSource = _customers;     
+            CustomerDataGrid.ItemsSource = _customers;   
         }
 
         private void EditCustomerBtn(object sender, RoutedEventArgs e)
@@ -71,7 +71,7 @@ namespace WpfApp
         }
         private void ButtonCategory_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("ProductCategory.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("ProductCategories.xaml", UriKind.Relative));
         }
         private void ButtonOrders_Click(object sender, RoutedEventArgs e)
         {

@@ -46,6 +46,7 @@
             <Label HorizontalAlignment="Center"  Content="Edit Customer" FontSize="15" FontWeight="Medium"/>
 
             <StackPanel x:Name="stackone" Grid.Row="1" Width="400">
+
                 <Label HorizontalContentAlignment="Center" Content="First Name"/>
                 <TextBox  Margin="0,5,0,0" x:Name="TextBoxFirstName">
                     <TextBox.Text>
@@ -64,6 +65,7 @@
                         </ControlTemplate>
                     </Validation.ErrorTemplate>
                 </TextBox>
+
                 <Label HorizontalContentAlignment="Center" Content="Middle Name"/>
                 <TextBox  Margin="0,5,0,0" x:Name="TextBoxMiddleName">
                     <TextBox.Text>
