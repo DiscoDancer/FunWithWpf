@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System;
+using DataLibrary.Models;
 using DataLibrary.Models.Entities;
 using DataLibrary.Services.Repository;
 using WpfApp.Services;
@@ -12,7 +13,7 @@ namespace WpfApp
     /// </summary>
     public partial class Products
     {
-        private List<Product> _products = UnitOfWork.Products.GetAll();
+        private List<ExtendedProduct> _products = UnitOfWork.GetAllExtendedProducts();
         public Products()
         {
             InitializeComponent();
@@ -30,13 +31,15 @@ namespace WpfApp
         {
             var product = ((FrameworkElement)sender).DataContext as Product;
             UnitOfWork.Products.Delete(product);
-            _products = UnitOfWork.Products.GetAll();
+            _products = UnitOfWork.GetAllExtendedProducts();
             ProductDataGrid.ItemsSource = _products;
         }
 
         private void EditProductBtn(object sender, RoutedEventArgs e)
         {
-            var product = ((FrameworkElement)sender).DataContext as Product;
+            var extendedProduct = ((FrameworkElement)sender).DataContext as ExtendedProduct;
+            extendedProduct.CategoryName = null;
+            var product = (Product) extendedProduct;
             StateService.CurrentProduct = product;
 
             Uri uri = new Uri("ProductForm.xaml", UriKind.Relative);

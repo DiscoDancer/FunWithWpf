@@ -43,10 +43,10 @@ namespace DataLibrary.Services.Repository
                     " Products.ProductID, Products.Name as ProductName," +
                     " ProductCategories.Name as ProductCategory" +
                     " from Orders " +
-                    " left join Customers on Orders.CustomerID = Customers.CustomerID" +
-                    " left join Employees on Orders.EmployeeID = Employees.EmployeeID" +
-                    " left join Products on Orders.ProductID = Products.ProductID" +
-                    " left join ProductCategories on Products.CategoryID = ProductCategories.CategoryID"
+                    " Inner join Customers on Orders.CustomerID = Customers.CustomerID" +
+                    " Inner join Employees on Orders.EmployeeID = Employees.EmployeeID" +
+                    " Inner join Products on Orders.ProductID = Products.ProductID" +
+                    " Inner join ProductCategories on Products.CategoryID = ProductCategories.CategoryID"
                         )
                     .ToList();
             }

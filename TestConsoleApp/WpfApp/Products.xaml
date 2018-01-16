@@ -44,6 +44,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding ProductID}" Width="*" Header="Product ID"/>
                     <DataGridTextColumn Binding="{Binding Name}" Width="3*" Header="Name"/>
+                    <DataGridTextColumn Binding="{Binding CategoryName}" Width="3*" Header="Category Name"/>
                     <DataGridTextColumn Binding="{Binding Color}" Width="*" Header="Color"/>
                     <DataGridTextColumn Binding="{Binding Description}" Width="6*" Header="Description"/>
                     
