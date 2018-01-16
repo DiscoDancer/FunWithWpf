@@ -5,11 +5,11 @@ using System.Windows.Controls;
 namespace WpfApp
 {
     /// <summary>
-    /// Interaction logic for Page.xaml
+    /// Interaction logic for Logs.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class Logs : Page
     {
-        public Home()
+        public Logs()
         {
             InitializeComponent();
         }

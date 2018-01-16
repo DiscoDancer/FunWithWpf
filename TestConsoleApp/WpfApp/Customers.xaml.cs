@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-using DataLibrary;
-using DataLibrary.Models;
 using DataLibrary.Models.Entities;
 using DataLibrary.Services.Repository;
 using WpfApp.Services;
@@ -71,6 +69,11 @@ namespace WpfApp
         private void ButtonOrders_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));
+        }
+
+        private void ButtonLogs_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Logs.xaml", UriKind.Relative));
         }
     }
 }

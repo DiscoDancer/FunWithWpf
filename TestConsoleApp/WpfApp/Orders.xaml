@@ -1,97 +1,119 @@
 ﻿<Page x:Class="WpfApp.Orders"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:validationRules="clr-namespace:WpfApp.ValidationRules"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignHeight="300"
       Title="Orders">
 
+
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+        <Grid>
 
-        <Button VerticalAlignment="Center" Width="100" Margin="-400,10,0,10" Click="ButtonCustomers_Click" FontSize="14" FontWeight="Bold">
-            <TextBlock>
-                Customers
-            </TextBlock>
-        </Button>
-        <Button  VerticalAlignment="Center" Width="100" Margin="-160,10,0,10" Click="ButtonEmployees_Click" FontSize="14" FontWeight="Bold">
-            <TextBlock>
-                Employees
-            </TextBlock>
-        </Button>
-        <Button  VerticalAlignment="Center" Width="100" Margin="80,10,0,10" Click="ButtonProducts_Click" FontSize="14" FontWeight="Bold">
-            <TextBlock>
-                Products
-            </TextBlock>
-        </Button>
-        <Button  VerticalAlignment="Center" Width="100" Margin="320,10,0,10" Click="ButtonCategory_Click" FontSize="14" FontWeight="Bold">
-            <TextBlock>
-                Categories
-            </TextBlock>
-        </Button>
-        <Button VerticalAlignment="Center" Width="100" Margin="560,10,0,10" IsEnabled="False" Click="ButtonOrders_Click" FontSize="14" FontWeight="Bold">
-            <TextBlock>
-                Orders
-            </TextBlock>
-        </Button>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Content="Add order" Width="90" FontWeight="Bold" Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="AddOrderBtn" x:Name="AddBtn"/>
-        <Grid Grid.Row="1">
-            <DataGrid x:Name="OrderDataGrid" IsReadOnly="True" VerticalAlignment="Top" AutoGenerateColumns="False" ItemsSource="{Binding OrderDataGrid}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding OrderID}" Width="*" Header="Order ID"/>
-                    <DataGridTextColumn Binding="{Binding CustomerName}" Width="2*" Header="Customer FIO"/>
-                    <DataGridTextColumn Binding="{Binding EmployeeName}" Width="2*" Header="Employee FIO"/>
-                    <DataGridTextColumn Binding="{Binding ProductName}" Width="3*" Header="Product Name"/>
-                    <DataGridTextColumn Binding="{Binding ProductCategory}" Width="3*" Header="Product Category"/>
-                    <DataGridTextColumn Binding="{Binding Quantity}" Width="*" Header="Quantity"/>
-                    <DataGridTextColumn Binding="{Binding Price}" Width="*" Header="Price"/>
-                    <DataGridTextColumn Binding="{Binding OrderDate, StringFormat='dd/MM/yyyy'}" Width="2*" Header="Order Date"/>
-                    <DataGridTemplateColumn Width="*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Button Content="Edit" Background="Orange" Click="EditOrderBtn"></Button>
-                                </Grid>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Width="*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Button Content="Delete" Background="Red" Click="DelOrderBtn"></Button>
-                                </Grid>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
+            <Button Grid.Column="0" Grid.Row="0" x:Name="ButtonCustomers" Click="ButtonCustomers_Click"
+                    FontSize="15" FontWeight="Bold">
+                <TextBlock>
+                    Customers
+                </TextBlock>
+            </Button>
+            <Button Grid.Column="1" Grid.Row="0" Click="ButtonEmployees_Click" FontSize="15" FontWeight="Bold">
+                <TextBlock>
+                    Employees
+                </TextBlock>
+            </Button>
+            <Button Grid.Column="2" Grid.Row="0" Click="ButtonProducts_Click" FontSize="15" FontWeight="Bold">
+                <TextBlock>
+                    Products
+                </TextBlock>
+            </Button>
+            <Button Grid.Column="3" Grid.Row="0" Click="ButtonCategory_Click" FontSize="15" FontWeight="Bold">
+                <TextBlock>
+                    Categories
+                </TextBlock>
+            </Button>
+            <Button Grid.Column="4" Grid.Row="0" Click="ButtonOrders_Click" FontSize="15" FontWeight="Bold" IsEnabled="False">
+                <TextBlock>
+                    Orders
+                </TextBlock>
+            </Button>
+            <Button Grid.Column="5" Grid.Row="0" Click="ButtonLogs_Click" FontSize="15" FontWeight="Bold">
+                <TextBlock>
+                    Logs
+                </TextBlock>
+            </Button>
+
+            <Button Grid.Row="1" Grid.Column="0" Content="Add order" Width="90" FontWeight="Bold"
+                    Background="LightGreen" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                    Click="AddOrderBtn" x:Name="AddBtn" />
+
+            <Grid Grid.Row="2" Grid.ColumnSpan="6">
+                <DataGrid x:Name="OrderDataGrid" IsReadOnly="True" VerticalAlignment="Top" AutoGenerateColumns="False"
+                          ItemsSource="{Binding OrderDataGrid}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding OrderID}" Width="*" Header="Order ID" />
+                        <DataGridTextColumn Binding="{Binding CustomerName}" Width="2*" Header="Customer FIO" />
+                        <DataGridTextColumn Binding="{Binding EmployeeName}" Width="2*" Header="Employee FIO" />
+                        <DataGridTextColumn Binding="{Binding ProductName}" Width="3*" Header="Product Name" />
+                        <DataGridTextColumn Binding="{Binding ProductCategory}" Width="3*" Header="Product Category" />
+                        <DataGridTextColumn Binding="{Binding Quantity}" Width="*" Header="Quantity" />
+                        <DataGridTextColumn Binding="{Binding Price}" Width="*" Header="Price" />
+                        <DataGridTextColumn Binding="{Binding OrderDate, StringFormat='dd/MM/yyyy'}" Width="2*"
+                                            Header="Order Date" />
+                        <DataGridTemplateColumn Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Button Content="Edit" Background="Orange" Click="EditOrderBtn"></Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Button Content="Delete" Background="Red" Click="DelOrderBtn"></Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <Label Grid.Row="3" Grid.Column="0" HorizontalContentAlignment="Left" Content="Category filter" />
+            <ComboBox Grid.Row="4" Grid.Column="0" Margin="0,5,0,0" x:Name="ListCategories">
+                <ComboBox.ItemsSource>
+                    <Binding Path="AllCategories" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    </Binding>
+                </ComboBox.ItemsSource>
+                <ComboBox.SelectedValue>
+                    <Binding Path="CurrentCategory" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    </Binding>
+                </ComboBox.SelectedValue>
+            </ComboBox>
 
 
         </Grid>
-
-        <Label Grid.Row="2" HorizontalContentAlignment="Left" Content="Category filter"/>
-        <ComboBox Grid.Row="3" Margin="0,5,0,0" x:Name="ListCategories">
-            <ComboBox.ItemsSource>
-                <Binding Path="AllCategories" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                </Binding>
-            </ComboBox.ItemsSource>
-            <ComboBox.SelectedValue>
-                <Binding Path="CurrentCategory" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                </Binding>
-            </ComboBox.SelectedValue>
-        </ComboBox>
-
     </Grid>
-
 
 </Page>

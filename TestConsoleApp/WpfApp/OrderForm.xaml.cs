@@ -40,6 +40,10 @@ namespace WpfApp
         {
             this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));
         }
+        private void ButtonLogs_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Logs.xaml", UriKind.Relative));
+        }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
