@@ -1,4 +1,6 @@
-﻿using DataLibrary.Services.Repository;
+﻿using System;
+using DataLibrary.Models.Entities;
+using DataLibrary.Services.Repository;
 
 namespace TestConsoleApp
 {
@@ -6,7 +8,11 @@ namespace TestConsoleApp
     {
         public static void Main(string[] args)
         {
-            var zz = UnitOfWork.GetAllExtendedProducts();
+            UnitOfWork.Logs.Add(new Log
+            {
+                LogText = "Hello",
+                LogDate = DateTime.Now
+            });
         }
     }
 }

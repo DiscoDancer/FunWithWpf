@@ -14,6 +14,7 @@ namespace DataLibrary.Services.Repository
         public static IRepository<Product> Products { get; } = new ProductRepository();
         public static IRepository<ProductCategory> ProductCategories { get; } = new ProductCategoryRepository();
         public static IRepository<Order> Orders { get; } = new OrderRepository();
+        public static IRepository<Log> Logs { get; } = new LogRepository();
 
         private static readonly string SqlConnect = ConnectionStringsService.Resolve();
 

@@ -9,8 +9,8 @@ DROP TABLE IF EXISTS Logs;
 CREATE TABLE Logs
 (
 	LogID INT NOT NULL IDENTITY PRIMARY KEY,
-	[Text] nvarchar(100) NOT NULL,
-	[Date] date DEFAULT GETDATE()
+	LogText nvarchar(100) NOT NULL,
+	LogDate datetime DEFAULT GETDATE()
 );
 
 CREATE TABLE Customers

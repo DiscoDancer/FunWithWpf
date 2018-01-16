@@ -72,6 +72,6 @@ VALUES
 (10,4,2,1, 17860, DATEADD(DAY, -5, GETDATE()));
 
 INSERT Logs
-([Text], [Date])
+(LogText, LogDate)
 VALUES
 ('This is radio Clash. The pirats are alive. [demo log]', GETDATE());

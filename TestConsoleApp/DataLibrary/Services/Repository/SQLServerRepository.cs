@@ -94,8 +94,15 @@ namespace DataLibrary.Services.Repository
             foreach (var prop in props)
             {
                 var val = prop.GetValue(entity, null);
-                var valToString = val?.ToString();
-                if (valToString?.Length > 0)
+                if (val == null)
+                {
+                    continue;
+                }
+
+                var valToString = prop.PropertyType == typeof(DateTime) ?
+                    Convert.ToDateTime(val).ToString("yyyy-MM-dd HH:mm:ss.fff")
+                    : val.ToString();
+                if (valToString.Length > 0)
                 {
                     queryDictionary.Add(prop.Name, new Models.IsQuotedValue
                     {
