@@ -26,6 +26,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <Button Grid.Column="0" Grid.Row="0" x:Name="ButtonCustomers" Click="ButtonCustomers_Click"
@@ -65,10 +66,16 @@
                     </TextBlock>
                 </Button>
 
+                <Button Grid.Column="6" Grid.Row="0" Click="ButtonHome_Click" FontSize="15" FontWeight="Bold" IsEnabled="False">
+                    <TextBlock>
+                        Home
+                    </TextBlock>
+                </Button>
+
                 <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Content="Enter SQL Query:" FontSize="15" FontWeight="Medium" />
-                <TextBox Grid.ColumnSpan="6" Grid.Row="2" Margin="0,5,0,0"
+                <TextBox Grid.ColumnSpan="7" Grid.Row="2" Margin="0,5,0,0"
                          Text="{Binding Path=Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <Button Grid.ColumnSpan="6" Grid.Row="3" Click="QueryExecute_Click" FontSize="15" FontWeight="Bold">
+                <Button Grid.ColumnSpan="7" Grid.Row="3" Click="QueryExecute_Click" FontSize="15" FontWeight="Bold">
                     <TextBlock>
                         Execute
                     </TextBlock>
