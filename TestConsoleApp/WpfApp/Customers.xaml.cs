@@ -50,11 +50,6 @@ namespace WpfApp
 
             Uri uri = new Uri("CustomerForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
-
-            //var customer = ((FrameworkElement)sender).DataContext as Customer;
-            //CustomerCRUD.UpdateCustomer(customer);
-            //_customers = CustomerCRUD.GetAll();
-            //CustomerDataGrid.ItemsSource = _customers;
         }
 
         private void ButtonCustomers_Click(object sender, RoutedEventArgs e)

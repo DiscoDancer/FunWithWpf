@@ -36,6 +36,9 @@ namespace WpfApp
         }
         private void EditCategoryBtn(object sender, RoutedEventArgs e)
         {
+            var category = ((FrameworkElement)sender).DataContext as ProductCategory;
+            StateService.CurrentCategory = category;
+
             Uri uri = new Uri("ProductCategoryForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
         }
