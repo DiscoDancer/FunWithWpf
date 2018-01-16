@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Attributes\ForeignKey.cs" />
     <Compile Include="Attributes\PrimaryKey.cs" />
+    <Compile Include="Models\DataLibraryException.cs" />
     <Compile Include="Models\Entities\Log.cs" />
     <Compile Include="Models\Entities\ProductCategory.cs" />
     <Compile Include="Models\ExtendedProduct.cs" />

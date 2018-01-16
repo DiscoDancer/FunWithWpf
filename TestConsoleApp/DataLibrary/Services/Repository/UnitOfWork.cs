@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
@@ -20,37 +21,85 @@ namespace DataLibrary.Services.Repository
 
         public static List<ExtendedProduct> GetAllExtendedProducts()
         {
-            using (var connection = new SqlConnection(SqlConnect))
+            var query =
+                " Select Products.ProductID, Products.CategoryID, Products.Name, Products.Color, Products.Description," +
+                " ProductCategories.Name as CategoryName" +
+                " From Products" +
+                " Inner Join ProductCategories" +
+                " On Products.CategoryID = ProductCategories.CategoryID";
+
+            try
             {
-                return connection.Query<ExtendedProduct>(
-                    " Select Products.ProductID, Products.CategoryID, Products.Name, Products.Color, Products.Description," +
-                    " ProductCategories.Name as CategoryName" +
-                    " From Products" +
-                    " Inner Join ProductCategories" +
-                    " On Products.CategoryID = ProductCategories.CategoryID"
-                ).ToList();
+                using (var connection = new SqlConnection(SqlConnect))
+                {
+                    return connection.Query<ExtendedProduct>(query).ToList();
+                }
             }
+            catch (Exception e)
+            {
+                throw new DataLibraryException
+                {
+                    Method = "GetAllExtendedProducts",
+                    Query = query,
+                    HandledException = e
+                };
+            }
+
+        }
+
+        public static void ExecuteRaw(string query)
+        {
+            try
+            {
+                using (var connection = new SqlConnection(SqlConnect))
+                {
+                    connection.Query(query);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DataLibraryException
+                {
+                    Method = "ExecuteRaw",
+                    Query = query,
+                    HandledException = e
+                };
+            }
+
         }
 
         public static List<ExtendedOrder> GetAllExtendedOrders()
         {
-            using (var connection = new SqlConnection(SqlConnect))
+            var query =
+                " Select" +
+                " Orders.OrderID, Orders.Quantity, Orders.Price, Orders.OrderDate," +
+                " Customers.CustomerID, CONCAT(Customers.LastName, + space(1) + Customers.FirstName, + space(1) + Customers.MiddleName) as CustomerName," +
+                " Employees.EmployeeID, CONCAT(Employees.LastName, + space(1) + Employees.FirstName, + space(1) + Employees.MiddleName) as EmployeeName," +
+                " Products.ProductID, Products.Name as ProductName," +
+                " ProductCategories.Name as ProductCategory" +
+                " from Orders " +
+                " Inner join Customers on Orders.CustomerID = Customers.CustomerID" +
+                " Inner join Employees on Orders.EmployeeID = Employees.EmployeeID" +
+                " Inner join Products on Orders.ProductID = Products.ProductID" +
+                " Inner join ProductCategories on Products.CategoryID = ProductCategories.CategoryID";
+
+            try
             {
-                return connection.Query<ExtendedOrder>(
-                    " Select" +
-                    " Orders.OrderID, Orders.Quantity, Orders.Price, Orders.OrderDate," +
-                    " Customers.CustomerID, CONCAT(Customers.LastName, + space(1) + Customers.FirstName, + space(1) + Customers.MiddleName) as CustomerName," +
-                    " Employees.EmployeeID, CONCAT(Employees.LastName, + space(1) + Employees.FirstName, + space(1) + Employees.MiddleName) as EmployeeName," +
-                    " Products.ProductID, Products.Name as ProductName," +
-                    " ProductCategories.Name as ProductCategory" +
-                    " from Orders " +
-                    " Inner join Customers on Orders.CustomerID = Customers.CustomerID" +
-                    " Inner join Employees on Orders.EmployeeID = Employees.EmployeeID" +
-                    " Inner join Products on Orders.ProductID = Products.ProductID" +
-                    " Inner join ProductCategories on Products.CategoryID = ProductCategories.CategoryID"
-                        )
-                    .ToList();
+                using (var connection = new SqlConnection(SqlConnect))
+                {
+                    return connection.Query<ExtendedOrder>(query).ToList();
+                }
             }
+            catch (Exception e)
+            {
+                throw new DataLibraryException
+                {
+                    Method = "GetAllExtendedOrders",
+                    Query = query,
+                    HandledException = e
+                };
+            }
+
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using DataLibrary.Attributes;
+using DataLibrary.Models;
 
 namespace DataLibrary.Services.Repository
 {
@@ -24,10 +25,22 @@ namespace DataLibrary.Services.Repository
             values = $"({values})";
             var query = $"INSERT INTO {TableName} {names} VALUES {values};";
 
-            using (var connection = new SqlConnection(SqlConnect))
+            try
             {
+                using (var connection = new SqlConnection(SqlConnect))
+                {
 
-                connection.Query(query);
+                    connection.Query(query);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DataLibraryException
+                {
+                    Method = "Add",
+                    Query = query,
+                    HandledException = e
+                };
             }
         }
 
@@ -48,10 +61,23 @@ namespace DataLibrary.Services.Repository
             var query =
                 $"UPDATE {TableName} SET {mergedPairs} WHERE {pk.Item1} = {pk.Item2}";
 
-            using (var connection = new SqlConnection(SqlConnect))
+            try
             {
-                connection.Query(query);
+                using (var connection = new SqlConnection(SqlConnect))
+                {
+                    connection.Query(query);
+                }
             }
+            catch (Exception e)
+            {
+                throw new DataLibraryException
+                {
+                    Method = "Update",
+                    Query = query,
+                    HandledException = e
+                };
+            }
+
         }
 
         public virtual void Delete(T entity)
@@ -60,20 +86,47 @@ namespace DataLibrary.Services.Repository
 
             var query = $"delete from {TableName} where {pk.Item1} = {pk.Item2}";
 
-            using (var connection = new SqlConnection(SqlConnect))
+            try
             {
+                using (var connection = new SqlConnection(SqlConnect))
+                {
 
-                connection.Query(query);
+                    connection.Query(query);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DataLibraryException
+                {
+                    Method = "Delete",
+                    Query = query,
+                    HandledException = e
+                };
             }
         }
 
         public virtual List<T> GetAll()
         {
-            using (var connection = new SqlConnection(SqlConnect))
-            {
+            var query = $"select * from {TableName}";
 
-                return connection.Query<T>($"select * from {TableName}").ToList();
+            try
+            {
+                using (var connection = new SqlConnection(SqlConnect))
+                {
+
+                    return connection.Query<T>(query).ToList();
+                }
             }
+            catch (Exception e)
+            {
+                throw new DataLibraryException
+                {
+                    Method = "GetAll",
+                    Query = query,
+                    HandledException = e
+                };
+            }
+
         }
 
         private (string, string) GetPK(T entity)
