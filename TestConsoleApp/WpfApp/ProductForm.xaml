@@ -64,7 +64,7 @@
                         </ControlTemplate>
                     </Validation.ErrorTemplate>
                 </TextBox>
-                <Label HorizontalContentAlignment="Center" Content="Choose Customer"/>
+                <Label HorizontalContentAlignment="Center" Content="Choose Category"/>
                 <ComboBox Margin="0,5,0,0" x:Name="ListCategories">
                     <ComboBox.ItemsSource>
                         <Binding Path="AllCategories" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
