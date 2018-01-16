@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using DataLibrary.Models.Entities;
+using DataLibrary.Services.Repository;
 
 namespace WpfApp
 {
@@ -9,9 +12,12 @@ namespace WpfApp
     /// </summary>
     public partial class Logs : Page
     {
+        private readonly List<Log> _logs = UnitOfWork.Logs.GetAll();
+
         public Logs()
         {
             InitializeComponent();
+            LogsDataGrid.ItemsSource = _logs;
         }
 
         private void ButtonCustomers_Click(object sender, RoutedEventArgs e)

@@ -13,7 +13,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
                 <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -56,6 +55,17 @@
                     Logs
                 </TextBlock>
             </Button>
+
+            <Grid Grid.Row="1" Grid.ColumnSpan="6">
+                <DataGrid x:Name="LogsDataGrid" IsReadOnly="True" AutoGenerateColumns="False"
+                          ItemsSource="{Binding LogsDataGrid}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding LogID}" Width="1*" Header="Log ID" />
+                        <DataGridTextColumn Binding="{Binding LogText}" Width="10*" Header="Log Text" />
+                        <DataGridTextColumn Binding="{Binding LogDate, StringFormat='dd.MM.yyyy hh:mm:ss'}" Width="3*" Header="Log Date" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
 
         </Grid>
     </Grid>
