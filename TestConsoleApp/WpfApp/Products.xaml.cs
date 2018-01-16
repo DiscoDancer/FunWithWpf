@@ -20,8 +20,8 @@ namespace WpfApp
 
             try
             {
-                ProductDataGrid.ItemsSource = _products;
                 _products = UnitOfWork.GetAllExtendedProducts();
+                ProductDataGrid.ItemsSource = _products;    
             }
             catch (DataLibraryException exception)
             {
