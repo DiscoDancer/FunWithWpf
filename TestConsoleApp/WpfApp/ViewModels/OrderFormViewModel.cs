@@ -5,9 +5,9 @@ using WpfApp.Services;
 
 namespace WpfApp.ViewModels
 {
-    public class OrderViewModel
+    public class OrderFormViewModel
     {
-        public OrderViewModel()
+        public OrderFormViewModel()
         {
             Order = StateService.CurrentOrder;
             AllCustomers = ComboBoxService.GetOptions(ComboBoxTargets.Customers);

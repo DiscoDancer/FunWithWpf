@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using DataLibrary.Models;
 using DataLibrary.Models.Entities;
 using DataLibrary.Services.Repository;
 using WpfApp.Services;
+using WpfApp.ViewModels;
 
 namespace WpfApp
 {
@@ -14,11 +16,20 @@ namespace WpfApp
     public partial class Orders
     {
         private List<ExtendedOrder> _orders = UnitOfWork.GetAllExtendedOrders();
+        private readonly OrdersViewModel _model = new OrdersViewModel();
 
         public Orders()
         {
             InitializeComponent();
             OrderDataGrid.ItemsSource = _orders;
+            DataContext = _model;
+
+            _model.PropertyChanged += (sender, args) =>
+            {
+                OrderDataGrid.ItemsSource = _model.CurrentCategory.ID > 0
+                    ? _orders.Where(x => x.ProductCategory == _model.CurrentCategory.Name)
+                    : _orders;
+            };
         }
 
         private void DelOrderBtn(object sender, RoutedEventArgs e)

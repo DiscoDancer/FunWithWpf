@@ -18,7 +18,7 @@ namespace WpfApp
         public ProductForm()
         {
             InitializeComponent();
-            DataContext = new ProductViewModel();
+            DataContext = new ProductFormViewModel();
         }
 
         private void ButtonCustomers_Click(object sender, RoutedEventArgs e)
@@ -62,7 +62,7 @@ namespace WpfApp
 
             if (!haveErrors)
             {
-                var context = DataContext as ProductViewModel;
+                var context = DataContext as ProductFormViewModel;
                 var product = context.Product;
                 product.CategoryID = context.CurrentCategory.ID;
 

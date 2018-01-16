@@ -18,7 +18,7 @@ namespace WpfApp
         {
             InitializeComponent();
 
-            DataContext = new OrderViewModel();
+            DataContext = new OrderFormViewModel();
         }
         private void ButtonCustomers_Click(object sender, RoutedEventArgs e)
         {
@@ -57,7 +57,7 @@ namespace WpfApp
 
             if (!haveErrors)
             {
-                var context = DataContext as OrderViewModel;
+                var context = DataContext as OrderFormViewModel;
                 var orderExtended = context.Order;
 
                 orderExtended.CustomerName = null;

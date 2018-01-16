@@ -5,9 +5,9 @@ using WpfApp.Services;
 
 namespace WpfApp.ViewModels
 {
-    public class ProductViewModel
+    public class ProductFormViewModel
     {
-        public ProductViewModel()
+        public ProductFormViewModel()
         {
             Product = StateService.CurrentProduct;
             AllCategories = ComboBoxService.GetOptions(ComboBoxTargets.ProductCategories);
