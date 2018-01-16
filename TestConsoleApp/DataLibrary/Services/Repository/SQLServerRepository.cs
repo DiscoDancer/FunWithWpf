@@ -37,9 +37,7 @@ namespace DataLibrary.Services.Repository
             {
                 throw new DataLibraryException
                 {
-                    Method = "Add",
                     Query = query,
-                    HandledException = e
                 };
             }
         }
@@ -72,9 +70,7 @@ namespace DataLibrary.Services.Repository
             {
                 throw new DataLibraryException
                 {
-                    Method = "Update",
-                    Query = query,
-                    HandledException = e
+                    Query = query
                 };
             }
 
@@ -98,9 +94,7 @@ namespace DataLibrary.Services.Repository
             {
                 throw new DataLibraryException
                 {
-                    Method = "Delete",
-                    Query = query,
-                    HandledException = e
+                    Query = query
                 };
             }
         }
@@ -121,9 +115,7 @@ namespace DataLibrary.Services.Repository
             {
                 throw new DataLibraryException
                 {
-                    Method = "GetAll",
-                    Query = query,
-                    HandledException = e
+                    Query = query
                 };
             }
 

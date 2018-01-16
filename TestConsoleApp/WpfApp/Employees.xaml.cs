@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System;
+using DataLibrary.Models;
 using DataLibrary.Models.Entities;
 using DataLibrary.Services.Repository;
 using WpfApp.Services;
@@ -12,12 +13,35 @@ namespace WpfApp
     /// </summary>
     public partial class Employees
     {
-        private List<Employee> _employees = UnitOfWork.Employees.GetAll();
+        private List<Employee> _employees;
 
         public Employees()
         {
             InitializeComponent();
-            EmployeeDataGrid.ItemsSource = _employees;
+            try
+            {
+                _employees = UnitOfWork.Employees.GetAll();
+                EmployeeDataGrid.ItemsSource = _employees;
+            }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }
+            
         }
         private void AddEmployeeBtn(object sender, RoutedEventArgs e)
         {
@@ -28,10 +52,32 @@ namespace WpfApp
 
         private void DelEmployeeBtn(object sender, RoutedEventArgs e)
         {
-            var employee = ((FrameworkElement)sender).DataContext as Employee;
-            UnitOfWork.Employees.Delete(employee);
-            _employees = UnitOfWork.Employees.GetAll();
-            EmployeeDataGrid.ItemsSource = _employees;
+            try
+            {
+                var employee = ((FrameworkElement)sender).DataContext as Employee;
+                UnitOfWork.Employees.Delete(employee);
+                _employees = UnitOfWork.Employees.GetAll();
+                EmployeeDataGrid.ItemsSource = _employees;
+            }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }
+
         }
 
         private void EditEmployeeBtn(object sender, RoutedEventArgs e)

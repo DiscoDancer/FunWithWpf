@@ -68,6 +68,7 @@
       <DependentUpon>Logs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\NameID.cs" />
     <Compile Include="ViewModels\OrderFormViewModel.cs" />
     <Compile Include="ProductCategories.xaml.cs">

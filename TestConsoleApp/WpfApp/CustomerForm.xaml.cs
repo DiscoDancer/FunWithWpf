@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using DataLibrary;
 using DataLibrary.Models;
 using DataLibrary.Models.Entities;
 using DataLibrary.Services.Repository;
@@ -48,32 +47,54 @@ namespace WpfApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var controls = new[]
+            try
             {
-                TextBoxFirstName,
-                TextBoxMiddleName,
-                TextBoxLastName
-            };
-
-            controls.ForEach(x => x.GetBindingExpression(TextBox.TextProperty).UpdateSource());
-            var haveErrors = controls
-                .Select(Validation.GetHasError)
-                .Aggregate((x, y) => x || y);
-
-            if (!haveErrors)
-            {
-                var customer = DataContext as Customer;
-                if (customer.CustomerID > 0)
+                var controls = new[]
                 {
-                    UnitOfWork.Customers.Update(customer);
-                }
-                else
-                {
-                    UnitOfWork.Customers.Add(customer);
-                }
+                    TextBoxFirstName,
+                    TextBoxMiddleName,
+                    TextBoxLastName
+                };
 
-                this.NavigationService.Navigate(new Uri("Customers.xaml", UriKind.Relative));
+                controls.ForEach(x => x.GetBindingExpression(TextBox.TextProperty).UpdateSource());
+                var haveErrors = controls
+                    .Select(Validation.GetHasError)
+                    .Aggregate((x, y) => x || y);
+
+                if (!haveErrors)
+                {
+                    var customer = DataContext as Customer;
+                    if (customer.CustomerID > 0)
+                    {
+                        UnitOfWork.Customers.Update(customer);
+                    }
+                    else
+                    {
+                        UnitOfWork.Customers.Add(customer);
+                    }
+
+                    this.NavigationService.Navigate(new Uri("Customers.xaml", UriKind.Relative));
+                }
             }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }
+            
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)

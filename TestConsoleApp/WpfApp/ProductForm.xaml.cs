@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using DataLibrary.Models;
 using DataLibrary.Models.Entities;
 using DataLibrary.Services.Repository;
 using MoreLinq;
@@ -48,39 +49,61 @@ namespace WpfApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var controlsTextBoxes = new[]
+            try
             {
-                TextBoxName
-            };
-            controlsTextBoxes.ForEach(x => x.GetBindingExpression(TextBox.TextProperty).UpdateSource());
-            var controlsComboBoxes = new[]
-            {
-                ListCategories
-            };
-            controlsComboBoxes.ForEach(x => x.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource());
-
-            var haveErrors = controlsTextBoxes
-                .Select(Validation.GetHasError)
-                .Concat(controlsComboBoxes.Select(Validation.GetHasError))
-                .Aggregate((x, y) => x || y);
-
-            if (!haveErrors)
-            {
-                var context = DataContext as ProductFormViewModel;
-                var product = context.Product;
-                product.CategoryID = context.CurrentCategory.ID;
-
-                if (product.ProductID > 0)
+                var controlsTextBoxes = new[]
                 {
-                    UnitOfWork.Products.Update(product);
-                }
-                else
+                    TextBoxName
+                };
+                controlsTextBoxes.ForEach(x => x.GetBindingExpression(TextBox.TextProperty).UpdateSource());
+                var controlsComboBoxes = new[]
                 {
-                    UnitOfWork.Products.Add(product);
-                }
+                    ListCategories
+                };
+                controlsComboBoxes.ForEach(x => x.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource());
 
-                this.NavigationService.Navigate(new Uri("Products.xaml", UriKind.Relative));
+                var haveErrors = controlsTextBoxes
+                    .Select(Validation.GetHasError)
+                    .Concat(controlsComboBoxes.Select(Validation.GetHasError))
+                    .Aggregate((x, y) => x || y);
+
+                if (!haveErrors)
+                {
+                    var context = DataContext as ProductFormViewModel;
+                    var product = context.Product;
+                    product.CategoryID = context.CurrentCategory.ID;
+
+                    if (product.ProductID > 0)
+                    {
+                        UnitOfWork.Products.Update(product);
+                    }
+                    else
+                    {
+                        UnitOfWork.Products.Add(product);
+                    }
+
+                    this.NavigationService.Navigate(new Uri("Products.xaml", UriKind.Relative));
+                }
             }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }
+            
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)

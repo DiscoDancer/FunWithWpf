@@ -8,6 +8,6 @@ namespace DataLibrary.Models.Entities
         [PrimaryKey]
         public int LogID { get; set; }
         public string LogText { get; set; }
-        public DateTime LogDate { get; set; }
+        public DateTime LogDate { get; set; } = DateTime.Now;
     }
 }

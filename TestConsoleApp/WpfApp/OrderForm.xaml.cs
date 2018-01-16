@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using DataLibrary.Models;
 using DataLibrary.Models.Entities;
 using DataLibrary.Services.Repository;
 using MoreLinq;
@@ -47,43 +48,64 @@ namespace WpfApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var controls = new[]
+            try
             {
-                ListCustomers,
-                ListEmployees,
-                ListProducts
-            };
+                var controls = new[]
+                {
+                    ListCustomers,
+                    ListEmployees,
+                    ListProducts
+                };
 
-            controls.ForEach(x => x.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource());
-            var haveErrors = controls
-                .Select(Validation.GetHasError)
-                .Aggregate((x, y) => x || y);
+                controls.ForEach(x => x.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource());
+                var haveErrors = controls
+                    .Select(Validation.GetHasError)
+                    .Aggregate((x, y) => x || y);
 
-            if (!haveErrors)
+                if (!haveErrors)
+                {
+                    var context = DataContext as OrderFormViewModel;
+                    var orderExtended = context.Order;
+
+                    orderExtended.CustomerName = null;
+                    orderExtended.EmployeeName = null;
+                    orderExtended.ProductName = null;
+
+                    var order = (Order)orderExtended;
+
+                    order.CustomerID = context.CurrentCustomer.ID;
+                    order.EmployeeID = context.CurrentEmployee.ID;
+                    order.ProductID = context.CurrentProduct.ID;
+
+                    if (order.OrderID > 0)
+                    {
+                        UnitOfWork.Orders.Update(order);
+                    }
+                    else
+                    {
+                        UnitOfWork.Orders.Add(order);
+                    }
+
+                    this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));
+                }
+            }
+            catch (DataLibraryException exception)
             {
-                var context = DataContext as OrderFormViewModel;
-                var orderExtended = context.Order;
-
-                orderExtended.CustomerName = null;
-                orderExtended.EmployeeName = null;
-                orderExtended.ProductName = null;
-
-                var order = (Order)orderExtended;
-
-                order.CustomerID = context.CurrentCustomer.ID;
-                order.EmployeeID = context.CurrentEmployee.ID;
-                order.ProductID = context.CurrentProduct.ID;
-
-                if (order.OrderID > 0)
+                UnitOfWork.Logs.Add(new Log
                 {
-                    UnitOfWork.Orders.Update(order);
-                }
-                else
-                {
-                    UnitOfWork.Orders.Add(order);
-                }
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
 
-                this.NavigationService.Navigate(new Uri("Orders.xaml", UriKind.Relative));
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
             }
         }
 

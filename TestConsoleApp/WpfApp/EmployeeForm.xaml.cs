@@ -48,31 +48,52 @@ namespace WpfApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var controls = new[]
+            try
             {
-                TextBoxFirstName,
-                TextBoxMiddleName,
-                TextBoxLastName
-            };
-
-            controls.ForEach(x => x.GetBindingExpression(TextBox.TextProperty).UpdateSource());
-            var haveErrors = controls
-                .Select(Validation.GetHasError)
-                .Aggregate((x, y) => x || y);
-
-            if (!haveErrors)
-            {
-                var employee = DataContext as Employee;
-                if (employee.EmployeeID > 0)
+                var controls = new[]
                 {
-                    UnitOfWork.Employees.Update(employee);
-                }
-                else
+                    TextBoxFirstName,
+                    TextBoxMiddleName,
+                    TextBoxLastName
+                };
+
+                controls.ForEach(x => x.GetBindingExpression(TextBox.TextProperty).UpdateSource());
+                var haveErrors = controls
+                    .Select(Validation.GetHasError)
+                    .Aggregate((x, y) => x || y);
+
+                if (!haveErrors)
                 {
-                    UnitOfWork.Employees.Add(employee);
+                    var employee = DataContext as Employee;
+                    if (employee.EmployeeID > 0)
+                    {
+                        UnitOfWork.Employees.Update(employee);
+                    }
+                    else
+                    {
+                        UnitOfWork.Employees.Add(employee);
+                    }
+                    this.NavigationService.Navigate(new Uri("Employees.xaml", UriKind.Relative));
                 }
-                this.NavigationService.Navigate(new Uri("Employees.xaml", UriKind.Relative));
             }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }       
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataLibrary.Models;
+using DataLibrary.Models.Entities;
 using DataLibrary.Services.Repository;
 using MoreLinq;
 using WpfApp.Services;
@@ -55,31 +57,53 @@ namespace WpfApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var controls = new[]
+            try
             {
-                TextBoxName
-            };
-
-            controls.ForEach(x => x.GetBindingExpression(TextBox.TextProperty).UpdateSource());
-            var haveErrors = controls
-                .Select(Validation.GetHasError)
-                .Aggregate((x, y) => x || y);
-
-            if (!haveErrors)
-            {
-                var z = DataContext;
-                var category = DataContext as DataLibrary.Models.Entities.ProductCategory;
-                if (category.CategoryID > 0)
+                var controls = new[]
                 {
-                    UnitOfWork.ProductCategories.Update(category);
-                }
-                else
-                {
-                    UnitOfWork.ProductCategories.Add(category);
-                }
+                    TextBoxName
+                };
 
-                this.NavigationService.Navigate(new Uri("ProductCategories.xaml", UriKind.Relative));
+                controls.ForEach(x => x.GetBindingExpression(TextBox.TextProperty).UpdateSource());
+                var haveErrors = controls
+                    .Select(Validation.GetHasError)
+                    .Aggregate((x, y) => x || y);
+
+                if (!haveErrors)
+                {
+                    var z = DataContext;
+                    var category = DataContext as DataLibrary.Models.Entities.ProductCategory;
+                    if (category.CategoryID > 0)
+                    {
+                        UnitOfWork.ProductCategories.Update(category);
+                    }
+                    else
+                    {
+                        UnitOfWork.ProductCategories.Add(category);
+                    }
+
+                    this.NavigationService.Navigate(new Uri("ProductCategories.xaml", UriKind.Relative));
+                }
             }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }
+          
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)

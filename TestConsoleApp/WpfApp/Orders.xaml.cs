@@ -15,29 +15,76 @@ namespace WpfApp
     /// </summary>
     public partial class Orders
     {
-        private List<ExtendedOrder> _orders = UnitOfWork.GetAllExtendedOrders();
-        private readonly OrdersViewModel _model = new OrdersViewModel();
+        private List<ExtendedOrder> _orders;
 
         public Orders()
         {
             InitializeComponent();
-            OrderDataGrid.ItemsSource = _orders;
-            DataContext = _model;
 
-            _model.PropertyChanged += (sender, args) =>
+            try
             {
-                OrderDataGrid.ItemsSource = _model.CurrentCategory.ID > 0
-                    ? _orders.Where(x => x.ProductCategory == _model.CurrentCategory.Name)
-                    : _orders;
-            };
+                _orders = UnitOfWork.GetAllExtendedOrders();
+                var model = new OrdersViewModel();
+
+                OrderDataGrid.ItemsSource = _orders;
+                DataContext = model;
+
+                model.PropertyChanged += (sender, args) =>
+                {
+                    OrderDataGrid.ItemsSource = model.CurrentCategory.ID > 0
+                        ? _orders.Where(x => x.ProductCategory == model.CurrentCategory.Name)
+                        : _orders;
+                };
+            }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }
+
         }
 
         private void DelOrderBtn(object sender, RoutedEventArgs e)
         {
-            var order = ((FrameworkElement) sender).DataContext as Order;
-            UnitOfWork.Orders.Delete(order);
-            _orders = UnitOfWork.GetAllExtendedOrders();
-            OrderDataGrid.ItemsSource = _orders;
+            try
+            {
+                var order = ((FrameworkElement)sender).DataContext as Order;
+                UnitOfWork.Orders.Delete(order);
+                _orders = UnitOfWork.GetAllExtendedOrders();
+                OrderDataGrid.ItemsSource = _orders;
+            }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }
+
         }
 
         private void EditOrderBtn(object sender, RoutedEventArgs e)

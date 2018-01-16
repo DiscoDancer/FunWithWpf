@@ -13,11 +13,35 @@ namespace WpfApp
     /// </summary>
     public partial class Products
     {
-        private List<ExtendedProduct> _products = UnitOfWork.GetAllExtendedProducts();
+        private List<ExtendedProduct> _products;
         public Products()
         {
             InitializeComponent();
-            ProductDataGrid.ItemsSource = _products;
+
+            try
+            {
+                ProductDataGrid.ItemsSource = _products;
+                _products = UnitOfWork.GetAllExtendedProducts();
+            }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }
+            
         }
 
         private void AddProductBtn(object sender, RoutedEventArgs e)
@@ -29,10 +53,32 @@ namespace WpfApp
 
         private void DelProductBtn(object sender, RoutedEventArgs e)
         {
-            var product = ((FrameworkElement)sender).DataContext as Product;
-            UnitOfWork.Products.Delete(product);
-            _products = UnitOfWork.GetAllExtendedProducts();
-            ProductDataGrid.ItemsSource = _products;
+            try
+            {
+                var product = ((FrameworkElement)sender).DataContext as Product;
+                UnitOfWork.Products.Delete(product);
+                _products = UnitOfWork.GetAllExtendedProducts();
+                ProductDataGrid.ItemsSource = _products;
+            }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }
+
         }
 
         private void EditProductBtn(object sender, RoutedEventArgs e)

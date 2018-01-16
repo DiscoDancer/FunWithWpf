@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System;
+using DataLibrary.Models;
 using DataLibrary.Models.Entities;
 using DataLibrary.Services.Repository;
 using WpfApp.Services;
@@ -12,12 +13,36 @@ namespace WpfApp
     /// </summary>
     public partial class ProductCategories
     {
-        private List<ProductCategory> _categories = UnitOfWork.ProductCategories.GetAll();
+        private List<ProductCategory> _categories;
 
         public ProductCategories()
         {
             InitializeComponent();
-            ProductCategoryDataGrid.ItemsSource = _categories;
+
+            try
+            {
+                _categories = UnitOfWork.ProductCategories.GetAll();
+                ProductCategoryDataGrid.ItemsSource = _categories;
+            }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }
+            
         }
 
         private void AddCategoryBtn(object sender, RoutedEventArgs e)
@@ -29,10 +54,32 @@ namespace WpfApp
 
         private void DelCategoryBtn(object sender, RoutedEventArgs e)
         {
-            var category = ((FrameworkElement)sender).DataContext as ProductCategory;
-            UnitOfWork.ProductCategories.Delete(category);
-            _categories = UnitOfWork.ProductCategories.GetAll();
-            ProductCategoryDataGrid.ItemsSource = _categories;
+            try
+            {
+                var category = ((FrameworkElement)sender).DataContext as ProductCategory;
+                UnitOfWork.ProductCategories.Delete(category);
+                _categories = UnitOfWork.ProductCategories.GetAll();
+                ProductCategoryDataGrid.ItemsSource = _categories;
+            }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }
+
         }
         private void EditCategoryBtn(object sender, RoutedEventArgs e)
         {

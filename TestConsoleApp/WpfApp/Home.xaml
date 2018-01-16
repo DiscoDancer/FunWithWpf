@@ -15,6 +15,9 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -61,8 +64,18 @@
                         Logs
                     </TextBlock>
                 </Button>
-            </Grid>
 
+                <Label Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Content="Enter SQL Query:" FontSize="15" FontWeight="Medium" />
+                <TextBox Grid.ColumnSpan="6" Grid.Row="2" Margin="0,5,0,0"
+                         Text="{Binding Path=Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Button Grid.ColumnSpan="6" Grid.Row="3" Click="QueryExecute_Click" FontSize="15" FontWeight="Bold">
+                    <TextBlock>
+                        Execute
+                    </TextBlock>
+                </Button>
+
+
+            </Grid>
         </Grid>
     </Border>
 </Page>

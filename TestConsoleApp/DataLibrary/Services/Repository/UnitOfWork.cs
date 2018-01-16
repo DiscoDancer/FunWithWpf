@@ -39,9 +39,7 @@ namespace DataLibrary.Services.Repository
             {
                 throw new DataLibraryException
                 {
-                    Method = "GetAllExtendedProducts",
-                    Query = query,
-                    HandledException = e
+                    Query = query
                 };
             }
 
@@ -60,9 +58,7 @@ namespace DataLibrary.Services.Repository
             {
                 throw new DataLibraryException
                 {
-                    Method = "ExecuteRaw",
                     Query = query,
-                    HandledException = e
                 };
             }
 
@@ -94,9 +90,7 @@ namespace DataLibrary.Services.Repository
             {
                 throw new DataLibraryException
                 {
-                    Method = "GetAllExtendedOrders",
-                    Query = query,
-                    HandledException = e
+                    Query = query
                 };
             }
 

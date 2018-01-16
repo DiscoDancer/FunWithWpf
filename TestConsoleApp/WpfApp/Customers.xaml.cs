@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using DataLibrary.Models;
 using DataLibrary.Models.Entities;
 using DataLibrary.Services.Repository;
 using WpfApp.Services;
@@ -12,12 +13,34 @@ namespace WpfApp
     /// </summary>
     public partial class Customers
     {
-        private List<Customer> _customers = UnitOfWork.Customers.GetAll();
+        private List<Customer> _customers;
 
         public Customers()
         {
             InitializeComponent();
-            CustomerDataGrid.ItemsSource = _customers;
+            try
+            {
+                _customers = UnitOfWork.Customers.GetAll();
+                CustomerDataGrid.ItemsSource = _customers;
+            }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }     
         }
 
         private void CustomerDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -35,17 +58,37 @@ namespace WpfApp
 
         private void DelCustomerBtn(object sender, RoutedEventArgs e)
         {
-            var customer = ((FrameworkElement)sender).DataContext as Customer;
-            UnitOfWork.Customers.Delete(customer);
-            _customers = UnitOfWork.Customers.GetAll();
-            CustomerDataGrid.ItemsSource = _customers;   
+            try
+            {
+                var customer = ((FrameworkElement)sender).DataContext as Customer;
+                UnitOfWork.Customers.Delete(customer);
+                _customers = UnitOfWork.Customers.GetAll();
+                CustomerDataGrid.ItemsSource = _customers;
+            }
+            catch (DataLibraryException exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = $"query = {exception.Query}"
+                });
+                MessageBox.Show("Unsucessfully executed[Handled]! Please see logs!");
+
+                return;
+            }
+            catch (Exception exception)
+            {
+                UnitOfWork.Logs.Add(new Log
+                {
+                    LogText = exception.Message
+                });
+                MessageBox.Show("Unhandled error! Please see logs!");
+            }
         }
 
         private void EditCustomerBtn(object sender, RoutedEventArgs e)
         {
             var customer = ((FrameworkElement)sender).DataContext as Customer;
             StateService.CurrentCustomer = customer;
-
             Uri uri = new Uri("CustomerForm.xaml", UriKind.Relative);
             this.NavigationService.Navigate(uri);
         }
