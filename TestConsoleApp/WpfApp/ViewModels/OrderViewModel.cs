@@ -3,7 +3,7 @@ using System.Linq;
 using DataLibrary.Models;
 using WpfApp.Services;
 
-namespace WpfApp.Models
+namespace WpfApp.ViewModels
 {
     public class OrderViewModel
     {

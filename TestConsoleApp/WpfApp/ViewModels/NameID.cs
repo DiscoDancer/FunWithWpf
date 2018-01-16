@@ -1,4 +1,4 @@
-﻿namespace WpfApp.Models
+﻿namespace WpfApp.ViewModels
 {
     public class NameID
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DataLibrary.Services.Repository;
-using WpfApp.Models;
+using WpfApp.ViewModels;
 
 namespace WpfApp.Services
 {
@@ -18,6 +18,8 @@ namespace WpfApp.Services
                     return GetEmployeesOptions();
                 case ComboBoxTargets.Products:
                     return GetProductsOptions();
+                case ComboBoxTargets.ProductCategories:
+                    return GetProductCategoriesOptions();
                 default:
                     throw new ArgumentOutOfRangeException(nameof(targets), targets, null);
             }
@@ -42,6 +44,13 @@ namespace WpfApp.Services
             {
                 ID = x.CustomerID,
                 Name = $"{x.FirstName} {x.MiddleName} {x.LastName}"
+            }).ToList();
+
+        private static List<NameID> GetProductCategoriesOptions()
+            => UnitOfWork.ProductCategories.GetAll().Select(x => new NameID
+            {
+                ID = x.CategoryID,
+                Name = x.Name
             }).ToList();
     }
 }

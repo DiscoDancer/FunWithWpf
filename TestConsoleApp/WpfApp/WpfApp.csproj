@@ -64,8 +64,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\NameID.cs" />
-    <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="ViewModels\NameID.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ProductCategories.xaml.cs">
       <DependentUpon>ProductCategories.xaml</DependentUpon>
     </Compile>
@@ -78,6 +78,7 @@
     <Compile Include="ValidationRules\NotEmptyStringValidationRule.cs" />
     <Compile Include="ValidationRules\NotNullValidationRule.cs" />
     <Compile Include="ValidationRules\StringToIntValidationRule.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
     <Page Include="CustomerForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

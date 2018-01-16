@@ -49,7 +49,7 @@
                 <Label HorizontalContentAlignment="Center" Content="Name"/>
                 <TextBox  Margin="0,5,0,0" x:Name="TextBoxName">
                     <TextBox.Text>
-                        <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="Product.Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <validationRules:NotEmptyStringRule ValidationStep="RawProposedValue"/>
                             </Binding.ValidationRules>
@@ -58,16 +58,38 @@
                     <Validation.ErrorTemplate>
                         <ControlTemplate>
                             <StackPanel>
-                                <AdornedElementPlaceholder x:Name="textBoxQuantity"/>
+                                <AdornedElementPlaceholder/>
                                 <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
                             </StackPanel>
                         </ControlTemplate>
                     </Validation.ErrorTemplate>
                 </TextBox>
+                <Label HorizontalContentAlignment="Center" Content="Choose Customer"/>
+                <ComboBox Margin="0,5,0,0" x:Name="ListCategories">
+                    <ComboBox.ItemsSource>
+                        <Binding Path="AllCategories" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        </Binding>
+                    </ComboBox.ItemsSource>
+                    <ComboBox.SelectedValue>
+                        <Binding Path="CurrentCategory" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validationRules:NotNullValidationRule ValidationStep="RawProposedValue"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </ComboBox.SelectedValue>
+                    <Validation.ErrorTemplate>
+                        <ControlTemplate>
+                            <StackPanel>
+                                <AdornedElementPlaceholder/>
+                                <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Validation.ErrorTemplate>
+                </ComboBox>
                 <Label HorizontalContentAlignment="Center" Content="Color"/>
-                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Product.Color, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label HorizontalContentAlignment="Center" Content="Description"/>
-                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox  Margin="0,5,0,0" Text="{Binding Path=Product.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Grid Margin="0,5,0,0">
                     <Button Content="Save" Background="LightGreen" Height="20" Grid.Column="0" Click="BtnSave_Click"/>

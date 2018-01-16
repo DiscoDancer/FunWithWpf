@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using DataLibrary.Models.Entities;
 using DataLibrary.Services.Repository;
 using MoreLinq;
-using WpfApp.Models;
+using WpfApp.ViewModels;
 
 namespace WpfApp
 {

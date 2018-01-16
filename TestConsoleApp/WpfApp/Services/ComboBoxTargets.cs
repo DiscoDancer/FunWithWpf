@@ -5,6 +5,6 @@
         Customers,
         Employees,
         Products,
-        ProductCategory
+        ProductCategories
     }
 }

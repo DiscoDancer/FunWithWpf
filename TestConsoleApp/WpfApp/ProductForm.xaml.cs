@@ -6,6 +6,7 @@ using DataLibrary.Models.Entities;
 using DataLibrary.Services.Repository;
 using MoreLinq;
 using WpfApp.Services;
+using WpfApp.ViewModels;
 
 namespace WpfApp
 {
@@ -17,7 +18,7 @@ namespace WpfApp
         public ProductForm()
         {
             InitializeComponent();
-            DataContext = StateService.CurrentProduct;
+            DataContext = new ProductViewModel();
         }
 
         private void ButtonCustomers_Click(object sender, RoutedEventArgs e)
@@ -43,19 +44,28 @@ namespace WpfApp
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var controls = new[]
+            var controlsTextBoxes = new[]
             {
                 TextBoxName
             };
+            controlsTextBoxes.ForEach(x => x.GetBindingExpression(TextBox.TextProperty).UpdateSource());
+            var controlsComboBoxes = new[]
+            {
+                ListCategories
+            };
+            controlsComboBoxes.ForEach(x => x.GetBindingExpression(ComboBox.SelectedValueProperty).UpdateSource());
 
-            controls.ForEach(x => x.GetBindingExpression(TextBox.TextProperty).UpdateSource());
-            var haveErrors = controls
+            var haveErrors = controlsTextBoxes
                 .Select(Validation.GetHasError)
+                .Concat(controlsComboBoxes.Select(Validation.GetHasError))
                 .Aggregate((x, y) => x || y);
 
             if (!haveErrors)
             {
-                var product = DataContext as Product;
+                var context = DataContext as ProductViewModel;
+                var product = context.Product;
+                product.CategoryID = context.CurrentCategory.ID;
+
                 if (product.ProductID > 0)
                 {
                     UnitOfWork.Products.Update(product);
