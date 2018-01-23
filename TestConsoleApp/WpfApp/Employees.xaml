@@ -70,7 +70,6 @@
                 <DataGrid x:Name="EmployeeDataGrid" IsReadOnly="True" AutoGenerateColumns="False"
                           ItemsSource="{Binding EmployeeDataGrid}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding EmployeeID}" Width="*" Header="Employee ID" />
                         <DataGridTextColumn Binding="{Binding LastName}" Width="*" Header="Last Name" />
                         <DataGridTextColumn Binding="{Binding FirstName}" Width="*" Header="First Name" />
                         <DataGridTextColumn Binding="{Binding MiddleName}" Width="*" Header="Middle Name" />

@@ -72,7 +72,6 @@
                 <DataGrid x:Name="ProductDataGrid" IsReadOnly="True" VerticalAlignment="Top" HorizontalAlignment="Left"
                           AutoGenerateColumns="False" ItemsSource="{Binding ProductDataGrid}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding ProductID}" Width="*" Header="Product ID" />
                         <DataGridTextColumn Binding="{Binding Name}" Width="3*" Header="Name" />
                         <DataGridTextColumn Binding="{Binding CategoryName}" Width="3*" Header="Category Name" />
                         <DataGridTextColumn Binding="{Binding Color}" Width="*" Header="Color" />

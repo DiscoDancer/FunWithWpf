@@ -75,10 +75,9 @@
                 <DataGrid x:Name="OrderDataGrid" IsReadOnly="True" VerticalAlignment="Top" AutoGenerateColumns="False"
                           ItemsSource="{Binding OrderDataGrid}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding OrderID}" Width="*" Header="Order ID" />
-                        <DataGridTextColumn Binding="{Binding CustomerName}" Width="2*" Header="Customer FIO" />
-                        <DataGridTextColumn Binding="{Binding EmployeeName}" Width="2*" Header="Employee FIO" />
-                        <DataGridTextColumn Binding="{Binding ProductName}" Width="3*" Header="Product Name" />
+                        <DataGridTextColumn Binding="{Binding CustomerName}" Width="3*" Header="Customer FIO" />
+                        <DataGridTextColumn Binding="{Binding EmployeeName}" Width="3*" Header="Employee FIO" />
+                        <DataGridTextColumn Binding="{Binding ProductName}" Width="4*" Header="Product Name" />
                         <DataGridTextColumn Binding="{Binding ProductCategory}" Width="3*" Header="Product Category" />
                         <DataGridTextColumn Binding="{Binding Quantity}" Width="*" Header="Quantity" />
                         <DataGridTextColumn Binding="{Binding Price}" Width="*" Header="Price" />

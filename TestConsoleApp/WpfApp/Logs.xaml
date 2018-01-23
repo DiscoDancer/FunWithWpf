@@ -66,7 +66,6 @@
                 <DataGrid x:Name="LogsDataGrid" IsReadOnly="True" AutoGenerateColumns="False"
                           ItemsSource="{Binding LogsDataGrid}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding LogID}" Width="1*" Header="Log ID" />
                         <DataGridTextColumn Binding="{Binding LogText}" Width="10*" Header="Log Text" />
                         <DataGridTextColumn Binding="{Binding LogDate, StringFormat='dd.MM.yyyy hh:mm:ss'}" Width="3*" Header="Log Date" />
                     </DataGrid.Columns>

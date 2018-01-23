@@ -4,6 +4,6 @@ namespace DataLibrary.Models
 {
     public class DataLibraryException : Exception
     {
-        public string Query { get; set; }
+        public string Query { get; set; } 
     }
 }

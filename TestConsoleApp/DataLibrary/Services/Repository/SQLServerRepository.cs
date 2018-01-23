@@ -145,7 +145,7 @@ namespace DataLibrary.Services.Repository
                 }
 
                 var valToString = prop.PropertyType == typeof(DateTime) ?
-                    Convert.ToDateTime(val).ToString("yyyy-MM-dd HH:mm:ss.fff")
+                    Convert.ToDateTime(val).ToString("yyyy-MM-ddTHH:mm:ssZ")
                     : val.ToString();
                 if (valToString.Length > 0)
                 {
